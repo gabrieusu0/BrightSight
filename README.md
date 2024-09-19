@@ -30,7 +30,7 @@ Nosso grupo foi formado para atender as soluções de tecnologia das empresas on
 
 -- Links --
 
-Trello: https://trello.com/b/vVGtZ0hb/projeto-brightsight
+Trello: https://trello.com/invite/b/66eb043129bb9ff0cce87401/ATTI8324b2042bf0beba88ddbcf771dba68e0527105B/brightsight-20
 
 Documentação: https://bandteccom-my.sharepoint.com/:w:/g/personal/caio_visconti_sptech_school/ETN4S9wXuOtIk_fcM38NzJYBsT1qz7XW-JfUsGZYLSRkFw?e=nLjfqM
 
