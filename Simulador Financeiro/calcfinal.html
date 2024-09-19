@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    <h1><b><u>Quanto você pode lucrar com o nosso serviço?</u></b></h1>
+    <h3>O nosso projeto envolve a venda por varejo de dispositivos que fazem a leitura da quantidade de incidência de luz em um determinado local e a manutenção mensal do mesmo, no entanto isso acontece de forma indireta,<br> você compra o nosso produto e o revende para o usuário, fornecendo uma grande margem de lucro.</h3><br>
+    <h3>Caso a quantidade de sensores seja maior que 50 ou 100, um desconto é aplicado</h3>
+    <br>
+    <p><b>O contrato ocorre com a quantidade de clientes que utilizarão o produto.</b></p> <br>
+    <p><b>A cada cliente, será cobrado R$1000,00 mais R$20,00 por dispositivo.</b></p> <br> <br>
+    <b>Quantos dispositivos gostaria de comprar?</u> <br>
+    <input type="number" id="ipt_dispositivos"> <br>
+        
+    <button onclick="simular()">Simulação</button> <br> <br>
+
+    <div id="div_valorInicial"></div>
+    <div id="div_pergunta"></div>
+    <div id="div_lucroPreju"></div>
+    <div id="div_botao"></div>
+    <div id="div_final"></div>
+</body>
+</html>
+
+<script>
+    function simular() {
+        var qtd = Number(ipt_dispositivos.value);
+        var valorDispositivos = qtd * 50;
+        var contrato = 1000 + (qtd * 20);
+        if (qtd <= 0) {
+            div_valorInicial.innerHTML = `<b>Por favor inserir valores maiores que zero.</b>`;
+        } else if (qtd >= 100) {
+            valorDispositivos = qtd * 20;
+            var totalNosso = valorDispositivos + contrato;
+            div_valorInicial.innerHTML = `<p style="color:blue"><b>Ao contratar o nosso serviço para um cliente e comprando ${qtd} dispositivos, você gastará inicialmente R$${totalNosso} e,<br> depois do primeiro mês, gastará R$${contrato} por cliente ao mês, sem gastos adicionais nos dispositivos comprados.</b></p> <br>
+            <h2><u>Quanto você cobrará para cada cliente?</u></h2> <br> <b>Coloque um valor que cobraria de clientes com esses valores em vista:</b> <br>
+            <input type="number" id="ipt_cobrado"> <br>
+            <button onclick="calcularLucro(${valorDispositivos})">Lucro/Prejuízo</button>`
+        } else if (qtd >= 50) {
+            valorDispositivos = qtd * 30;
+            var totalNosso = valorDispositivos + contrato;
+            div_valorInicial.innerHTML = `<p style="color:blue"><b>Ao contratar o nosso serviço para um cliente e comprando ${qtd} dispositivos, você gastará inicialmente R$${totalNosso} e,<br> depois do primeiro mês, gastará R$${contrato} por cliente ao mês, sem gastos adicionais nos dispositivos comprados.</b></p> <br>
+            <h2><u>Quanto você cobrará para cada cliente?</u></h2> <br> <b>Coloque um valor que cobraria de clientes com esses valores em vista:</b> <br>
+            <input type="number" id="ipt_cobrado"> <br>
+            <button onclick="calcularLucro(${valorDispositivos})">Lucro/Prejuízo</button>`
+        } else if (qtd <= 49) {
+            valorDispositivos = qtd * 50;
+            var totalNosso = valorDispositivos + contrato;
+            div_valorInicial.innerHTML = `<p style="color:blue"><b>Ao contratar o nosso serviço para um cliente e comprando ${qtd} dispositivos, você gastará inicialmente R$${totalNosso} e,<br> depois do primeiro mês, gastará R$${contrato} por cliente ao mês, sem gastos adicionais nos dispositivos comprados.</b></p> <br>
+            <h2><u>Quanto você cobrará para cada cliente?</u></h2> <br> <b>Coloque um valor que cobraria de clientes com esses valores em vista:</b> <br>
+            <input type="number" id="ipt_cobrado"> <br>
+            <button onclick="calcularLucro(${valorDispositivos})">Lucro/Prejuízo</button>`
+        }
+    }
+
+    function calcularLucro(valorDispositivos) {
+        var qtd = Number(ipt_dispositivos.value);
+        var contrato = 1000 + (qtd * 20);
+        var totalNosso = valorDispositivos + contrato;
+        var valorCobrado = Number(ipt_cobrado.value);
+        var lucro = valorCobrado - totalNosso;
+        var lucro2 = valorCobrado - contrato;
+
+        if (lucro > 0) {
+            div_final.innerHTML = `<span style="color:green">Você terá R$${lucro} de lucro no primeiro mês e R$${lucro2} após o primeiro mês!</span>`;
+        } else if (lucro < 0) {
+            div_final.innerHTML = `<span style="color:red">Você terá R$${lucro * (-1)} de prejuízo no primeiro mês e R$${lucro2} de prejuízo após o primeiro mês!</span>`;
+
+            if (valorCobrado > contrato) {
+                div_final.innerHTML = `<span style="color: red;">Você terá R$${lucro * (-1)} de prejuízo no primeiro mês</span> e <span style="color: green;">R$${lucro2} de lucro após o primeiro mês</span> `;
+            } else {
+                div_final.innerHTML = `<span style="color:red">Você terá R$${lucro * (-1)} de prejuízo no primeiro mês e R$${lucro2 * -1} de prejuízo após o primeiro mês!</span>`;
+            }
+        } else if (lucro == 0) {
+            div_final.innerHTML = `<span>Você não terá lucro algum no primeiro mês e <span style="color: green;">R$${lucro2} de lucro após o primeiro mês</span></span>`;
+        }
+        if ( lucro2 == 0){
+            div_final.innerHTML=`<span style="color:red">Você terá R$${lucro * (-1)} de prejuízo no primeiro mês e </span> nenhum lucro após o primeiro mês `
+        }
+    }
+</script>
