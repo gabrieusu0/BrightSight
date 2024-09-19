@@ -1,11 +1,11 @@
 # BrightSight
 
 <h1>
-    <img align="center" width="80px" src="https://avatars.githubusercontent.com/u/180440007?v=4" img width="80" alt="{a} logo" class="img-fluid"></a>
+<!--     <img align="center" width="80px" src="https://avatars.githubusercontent.com/u/180440007?v=4" img width="80" alt="{a} logo" class="img-fluid"></a> -->
     <span>BrightSight Soluções Tecnológicas</span>
 </h1>
 
-Nosso grupo foi formado para atender as soluções de tecnologia das empresas onde a linha de produção apresenta problemas de retrabalho, desvio indevido de material e necessidade de melhorias no processo.
+Nosso grupo foi formado para atender as soluções de tecnologia referentes a energias renováveis, visando uma melhor sustentabilidade.
 
 ## Colaboradores
 - Enrico D'Amaro
