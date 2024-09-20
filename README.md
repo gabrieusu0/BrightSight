@@ -1,8 +1,8 @@
 # BrightSight
 
 <h1>
-<img align="center" width="80px" src="C:\Users\etmca\OneDrive\Área de Trabalho\SPTech\2ª Sprint\WhatsApp Image 2024-09-19 at 20.49.46.jpeg" img width="80" alt="{a} logo" class="img-fluid"></a>
-    <span>BrightSight Soluções Tecnológicas</span>
+<img align="center" width="80px" src="WhatsApp Image 2024-09-19 at 20.49.46.jpeg" img width="80" alt="{a} logo" class="img-fluid"></a>
+    <span>BrightSight Soluções Tecnológicas.</span>
 </h1>
 
 Nosso grupo foi formado para atender as soluções de tecnologia referentes a energias renováveis, visando uma melhor sustentabilidade.
