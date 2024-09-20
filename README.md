@@ -1,7 +1,7 @@
 # BrightSight
 
 <h1>
-<!--     <img align="center" width="80px" src="https://avatars.githubusercontent.com/u/180440007?v=4" img width="80" alt="{a} logo" class="img-fluid"></a> -->
+<img align="center" width="80px" src="C:\Users\etmca\OneDrive\Área de Trabalho\SPTech\2ª Sprint\WhatsApp Image 2024-09-19 at 20.49.46.jpeg" img width="80" alt="{a} logo" class="img-fluid"></a>
     <span>BrightSight Soluções Tecnológicas</span>
 </h1>
 
