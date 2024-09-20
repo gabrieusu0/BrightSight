@@ -10,7 +10,7 @@ Nosso grupo foi formado para atender as soluções de tecnologia referentes a en
 ## Colaboradores
 - Enrico D'Amaro
 - Gabriel de Oliveira Santos
-- Guilgerme Ortiz de Camargo
+- Guilherme Ortiz de Camargo
 - Kaio Gabriel Lemos Ricz
 - Isabela de Carvalho Francisco
 - Vinicius Dias
@@ -32,6 +32,6 @@ Nosso grupo foi formado para atender as soluções de tecnologia referentes a en
 
 Trello: https://trello.com/invite/b/66eb043129bb9ff0cce87401/ATTI8324b2042bf0beba88ddbcf771dba68e0527105B/brightsight-20
 
-Documentação: https://bandteccom-my.sharepoint.com/:w:/g/personal/caio_visconti_sptech_school/ETN4S9wXuOtIk_fcM38NzJYBsT1qz7XW-JfUsGZYLSRkFw?e=nLjfqM
+Documentação: 
 
 Apresentação Sprint1: https://prezi.com/p/edit/4pbeqsawsxxo/
