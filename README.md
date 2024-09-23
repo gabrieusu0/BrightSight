@@ -13,7 +13,7 @@ Nosso grupo foi formado para atender as soluções de tecnologia referentes a en
 - Guilherme Ortiz de Camargo
 - Kaio Gabriel Lemos Ricz
 - Isabela de Carvalho Francisco
-- Vinicius Dias
+- Vinicius Dias da Silva
 
 ## Parceiros Tecnológicos
 - <a href="https://www.sptech.school/">
