@@ -12,12 +12,12 @@
         <option value="off">Off-Grid</option>
     </select> <br>
 
-    <h2>Qual a potencia máxima de suas placas em Watts?</h2> <br>
-    <input type="number" id="ipt_potencia"> <br> <br>
-
-
-    <h2>Qual o tempo médio de incidencia solar no dia? </h2><br>
-    <input type="number" id="ipt_tempo"> <br> <br>
+    <h2>Qual a potencia máxima de suas placas em Watts?</h2> 
+    <input type="number" id="ipt_potencia"> <br>
+    <h2>Qual o tempo médio de incidencia solar no dia? </h2>
+    <input type="number" id="ipt_tempo"> <br> 
+    <h2>Quantas placas solares possui? </h2>
+    <input type="number" id="ipt_quantidade"> <br> <br>
 
     <button onclick="calcularIrradiancia()">Calcular Energia</button> <br> <br>
 
@@ -30,24 +30,30 @@
             var modelo = slc_modelo.value;
             var potencia = Number(ipt_potencia.value);
             var incidencia = Number(ipt_tempo.value);
+            var quantidade = Number(ipt_quantidade.value);
             var perda = "";
             var solucao = 0.30;
             var energiaSemSolucao = "";
             var energiaComSolucao = "";
+            var energiaGanha = potencia * incidencia;
+            var incidenciaSolucao = incidencia * solucao;
 
             if (modelo == 'on') {
-                perda = (potencia * incidencia) * 0.20
+                perda = energiaGanha * 0.20
             }else if (modelo == 'off'){
-                perda = (potencia * incidencia) * 0.35
+                perda = energiaGanha * 0.35
             }
             // Energia = Potência * tempo de incidência solar * rendimento.
-            energiaSemSolucao = (potencia * incidencia) - perda
+            energiaSemSolucao = (energiaGanha - perda) /1000;
             
-            energiaComSolucao = (((incidencia * solucao) + incidencia) * potencia) - perda
+            energiaComSolucao = (((incidenciaSolucao + incidencia) * potencia) - perda) / 1000;
+
+            var energiaReal = energiaComSolucao - energiaSemSolucao;
 
             resultadoSemSolucao.innerHTML = `Sem a nossa solução, seus painéis geram cerca de ${energiaSemSolucao}kWh de energia por dia (Cada um)`;
             resultadoComSolucao.innerHTML = `Com a nossa solução, seus painéis vão gerar ${energiaComSolucao}kWh de energia por dia (Cada um) <br>
-            Nesse caso, considerando o período de 30 dias, a placa produziria ${energiaComSolucao * 30} kWh.`;
+            <br>Nesse caso, considerando o período de 30 dias, cada placa produziria ${energiaComSolucao * 30} kWh. <br>
+            Analisando os dois cenarios, terá um lucro real de R$ ${((energiaReal * 0.75) * 30) * quantidade} por mês.`;
 
 
             // Exibir os resultados
