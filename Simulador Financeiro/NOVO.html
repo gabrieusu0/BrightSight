@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Irradiância Solar</title>
+</head>
+<body>
+    <h1>Selecione o modelo de sua placa solar: <br>
+    <select id="slc_modelo">
+        <option value="on">On-Grid</option>
+        <option value="off">Off-Grid</option>
+    </select> <br>
+
+    <h2>Qual a potencia máxima de suas placas em Watts?</h2> <br>
+    <input type="number" id="ipt_potencia"> <br> <br>
+
+
+    <h2>Qual o tempo médio de incidencia solar no dia? </h2><br>
+    <input type="number" id="ipt_tempo"> <br> <br>
+
+    <button onclick="calcularIrradiancia()">Calcular Energia</button> <br> <br>
+
+    <h3>Resultado:</h3>
+    <p id="resultadoSemSolucao"></p>
+    <p id="resultadoComSolucao"></p>
+
+    <script>
+        function calcularIrradiancia() {
+            var modelo = slc_modelo.value;
+            var potencia = Number(ipt_potencia.value);
+            var incidencia = Number(ipt_tempo.value);
+            var perda = "";
+            var solucao = 0.30;
+            var energiaSemSolucao = "";
+            var energiaComSolucao = "";
+
+            if (modelo == 'on') {
+                perda = (potencia * incidencia) * 0.20
+            }else if (modelo == 'off'){
+                perda = (potencia * incidencia) * 0.35
+            }
+            // Energia = Potência * tempo de incidência solar * rendimento.
+            energiaSemSolucao = (potencia * incidencia) - perda
+            
+            energiaComSolucao = (((incidencia * solucao) + incidencia) * potencia) - perda
+
+            resultadoSemSolucao.innerHTML = `Sem a nossa solução, seus painéis geram cerca de ${energiaSemSolucao}kWh de energia por dia (Cada um)`;
+            resultadoComSolucao.innerHTML = `Com a nossa solução, seus painéis vão gerar ${energiaComSolucao}kWh de energia por dia (Cada um) <br>
+            Nesse caso, considerando o período de 30 dias, a placa produziria ${energiaComSolucao * 30} kWh.`;
+
+
+            // Exibir os resultados
+        }
+    </script>
+</body>
+</html>
