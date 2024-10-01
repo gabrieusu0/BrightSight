@@ -1,161 +1,186 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
-    
-    * {
+/* Importa a fonte "Karla" do Google Fonts */
+
+* {
     box-sizing: border-box;
-    }
+}
+/* Define o box-sizing para incluir padding e bordas no cálculo das dimensões dos elementos */
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden; /* Remove a barra de rolagem */
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+/* Remove as margens e padding padrão do body e html, define a altura total para 100% e remove a barra de rolagem */
 
-    #centralizar{
-        width:100%;
-        height:100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Mantém os elementos espaçados na tela */
-        margin: 0 auto;
-    }
-    .titulo{
-        font-family: 'Karla', sans-serif;
-        display: flex;
-        font-size: 40px;
-        text-align: center;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    .container {
-        display: flex;
-        justify-content: space-evenly; /* Espaçamento entre o formulário e a área de resultados */
-        align-items: flex-end;
-        height: 80%; /* Ajuste para o conteúdo principal caber na tela */
-        margin-bottom: 5px; /* Espaço entre o conteúdo e o footer */
-        padding-bottom: 5px; /* Ajuste adicional para criar espaçamento */
-    }
+#centralizar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+/* Centraliza todo o conteúdo da página e utiliza flexbox para espaçar os elementos verticalmente, ocupando 100% da altura da tela */
 
+.titulo {
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* Define a fonte, o tamanho e o alinhamento do título "Simulador de Resultados" */
 
-    .quadrado {
-        background-color: white;
-        border: 2px solid #000;
-        padding: 10px;
-        width: 30%; /* Ajusta o tamanho das caixas para não ultrapassar o layout */
-        margin-left: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: auto; /* Permite ajuste flexível */
-        
-    }
-    h1 {
-        font-family: 'Karla', sans-serif;
-        font-size: 20px;
-        text-align: center;
-    }
-    .select {
-        background-color: #c5c5c5;
-        width: 70%;
-        height: 40px;
-        text-align: center;
-        
-    }
-    select{
-        margin-top: 20px;
-        font-weight: 700;
-        font-size: 15px;
-    }
-    h2 {
-        
-        font-family: 'Karla', sans-serif;
-        font-size: 20px;
-        text-align: center;
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    height: 80%;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+/* Define um contêiner flex para o formulário e a área de resultados, garantindo que eles fiquem espaçados horizontalmente e alinhados na parte inferior */
 
-    }
-    .input{
-        width: 200px;
-    }
-    .botao{
-        background-color: #d36d00;
-        padding: 8px;
-        border-radius: 40px;
-        border: 2px solid #d36d00;
-        width: 100px;
-        font-weight: 700;        
-    }
-    .quadrado2 {
-        display: flex;
-        border: 2px solid black;
-        width: 550px;
-        height: 350px;
-        justify-content: center;
-        align-items: center;
-    }
-    .resultado {
-        text-align: center;
-        width: 100%;
-        font-family: 'Karla', sans-serif;
-        
-    }
+.quadrado {
+    background-color: white;
+    border: 2px solid #000;
+    padding: 10px;
+    width: 30%;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+/* Estiliza o formulário como um "quadrado", centralizando seu conteúdo e definindo suas dimensões e bordas */
 
-    .resultado h3 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+/* Estiliza os títulos menores dentro do formulário (ex: "Selecione o modelo de sua placa solar") */
 
-    #resultadoSemSolucao, #resultadoComSolucao {
-        margin: 0 auto;
-        width: 90%; /* Para limitar a largura e evitar que o texto se expanda além do contêiner */
-        font-size: 16px; /* Ajusta o tamanho da fonte para melhor leitura */
-        line-height: 1.5; /* Define o espaçamento entre linhas para leitura confortável */
+.select {
+    background-color: #c5c5c5;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+}
+/* Define o estilo da caixa de seleção do modelo de placa solar */
 
-    }
-    .container2{
-        display: flex;
-        justify-content: space-between;  /* Horizontal */
-        align-items: flex-end;
-        flex-direction: column;
-        margin-right: 200px;
-    }
-    .imagem {
-        display: flex;
-        margin-right: 170px;
-        height: 200px;
-        width: 200px;
-    }
-    footer {
-        background-color: #010415;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        /* Centraliza verticalmente a imagem e o texto */
-        font-size: 18px;
-        margin-top: 10px;
-        height: 60px;
+select {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 15px;
+}
+/* Estiliza o próprio elemento <select>, definindo margens e o peso da fonte */
 
-    }
-    
-    footer .logo {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        left: 20px;
-        /* Posiciona a imagem no lado esquerdo do rodapé */
-    }
-    
-    footer .logo img {
-        width: 110px;
-        height: auto;
-        margin-right: 15px;
-        margin-top: 5px;
-    }
-    
-    footer b {
-        margin: 0;
-        text-align: center;
-        flex: 1;
-        font-family: 'Karla', sans-serif;
-        /* Faz o parágrafo ocupar o espaço central */
-    }
+h2 {
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+/* Estiliza os cabeçalhos <h2> dentro do formulário, como os textos de perguntas "Qual a potência máxima de suas placas?" */
+
+.input {
+    width: 200px;
+}
+/* Define o tamanho das caixas de entrada de dados (inputs de número) */
+
+.botao {
+    background-color: #d36d00;
+    padding: 8px;
+    border-radius: 40px;
+    border: 2px solid #d36d00;
+    width: 100px;
+    font-weight: 700;
+}
+/* Estiliza o botão "SIMULE", com cor de fundo, bordas arredondadas e borda sólida */
+
+.quadrado2 {
+    display: flex;
+    border: 2px solid black;
+    width: 550px;
+    height: 350px;
+    justify-content: center;
+    align-items: center;
+}
+/* Define o estilo da área de resultados (quadrado com bordas e centrado), onde as informações simuladas serão exibidas */
+
+.resultado {
+    text-align: center;
+    width: 100%;
+    font-family: 'Karla', sans-serif;
+}
+/* Estiliza a área de resultados com o texto centrado e a fonte definida */
+
+.resultado h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* Estiliza o cabeçalho "RESULTADOS:" dentro da área de resultados */
+
+#resultadoSemSolucao, #resultadoComSolucao {
+    margin: 0 auto;
+    width: 90%;
+    font-size: 16px;
+    line-height: 1.5;
+}
+/* Estiliza os parágrafos que exibem os resultados da simulação, limitando sua largura e ajustando o espaçamento entre linhas */
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-right: 200px;
+}
+/* Define o estilo do contêiner que contém a imagem e o quadrado de resultados, alinhando-os em colunas e ajustando o espaço entre eles */
+
+.imagem {
+    display: flex;
+    margin-right: 170px;
+    height: 200px;
+    width: 200px;
+}
+/* Define o tamanho e a posição da imagem no lado direito do formulário */
+
+footer {
+    background-color: #010415;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 5px;
+    height: 70px;
+}
+/* Estiliza o rodapé da página, centralizando o conteúdo e aplicando cor de fundo e altura fixa */
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+/* Posiciona a logo no rodapé à esquerda e a alinha verticalmente */
+
+footer .logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+/* Define o tamanho da logo no rodapé e o espaçamento em relação ao texto */
+
+footer b {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+    font-family: 'Karla', sans-serif;
+}
+/* Centraliza o texto "Faça parte da nossa comunidade!" no rodapé */
