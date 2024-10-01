@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Irradiância Solar</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div id="centralizar">
+
+    <h1 class="titulo">Simulador de Resultados</h1>
+    <div class="container">
+        <!-- Formulário -->
+    <div class="quadrado">
+    <h1>Selecione o modelo de sua placa solar: <br>
+    <select id="slc_modelo" class="select">
+       <option class="valor" value="on">On-Grid</option>
+       <option value="off">Off-Grid</option>
+    </select> <br>
+
+    <h2>Qual a potencia máxima de suas placas em Watts?</h2> 
+    <input class="input" type="number" id="ipt_potencia"> <br>
+    <h2>Qual o tempo médio de incidencia solar no dia? </h2>
+    <input class="input" type="number" id="ipt_tempo"> <br> 
+    <h2>Quantas placas solares possui? </h2>
+    <input class="input" type="number" id="ipt_quantidade"> <br> <br>
+     
+    <button class="botao" onclick="calcularIrradiancia()">SIMULE</button> <br> <br>
+    </div>
+    
+    <!-- formulario -->
+     <div class="container2">
+        <div ><img class="imagem" src="Wavy_Eco-01_Single-04.jpg" alt=""></div>
+        <div class="quadrado2">
+            <div class="resultado">
+                <h3>RESULTADOS:</h3>
+                <p id="resultadoSemSolucao"></p>
+                <p id="resultadoComSolucao"></p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="logo">
+            <img src="bright_sight-removebg-preview.png" alt="Logo">
+        </div>
+        <b>Faça parte da nossa comunidade!</b>
+    </footer>
+    </div>
+</body>
+</html>
+
+
+    <script>
+        function calcularIrradiancia() {
+            var modelo = slc_modelo.value;
+            var potencia = Number(ipt_potencia.value);
+            var incidencia = Number(ipt_tempo.value);
+            var quantidade = Number(ipt_quantidade.value);
+            var perda = "";
+            var solucao = 0.30;
+            var energiaSemSolucao = "";
+            var energiaComSolucao = "";
+            var energiaGanha = potencia * incidencia;
+            var incidenciaSolucao = incidencia * solucao;
+
+            if (modelo == 'on') {
+                perda = energiaGanha * 0.20
+            }else if (modelo == 'off'){
+                perda = energiaGanha * 0.35
+            }
+            // Energia = (Potência * tempo de incidência solar) - rendimento.
+            energiaSemSolucao = (energiaGanha - perda) /1000;
+            
+            energiaComSolucao = (((incidenciaSolucao + incidencia) * potencia) - perda) / 1000;
+
+            var energiaReal = energiaComSolucao - energiaSemSolucao;
+            var trintaDias = energiaComSolucao * 30
+            var lucroSolucao = ((energiaReal * 0.75) * 30) * quantidade
+
+            // Limitar para 2 casas decimais
+            energiaSemSolucao = energiaSemSolucao.toFixed(2);
+            energiaComSolucao = energiaComSolucao.toFixed(2);
+            energiaReal = energiaReal.toFixed(2);
+            trintaDias = trintaDias.toFixed(2);
+            lucroSolucao = lucroSolucao.toFixed(2);
+
+            resultadoSemSolucao.innerHTML = `<b style = 'color: red; font-size: 18px'>Sem a nossa solução:</b> cada um de seus painéis geram ${energiaSemSolucao}kWh de energia por dia.`;
+            resultadoComSolucao.innerHTML = `<b style = 'color: #1F9006; font-size: 18px'>Com a nossa solução:</b> cada um de seus painéis geram  ${energiaComSolucao}kWh de energia por dia <br>
+            <br>Nesse caso, considerando o período de 30 dias, cada placa produziria ${trintaDias} kWh. <br>
+            Analisando os dois cenarios: <b style = 'color: #1F9006; font-size: 18px'>terá um lucro real de R$ ${lucroSolucao} por mês.</b>`;
+
+
+            // Exibir os resultados
+        }
+    </script>
+
