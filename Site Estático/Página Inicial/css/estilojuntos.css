@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
+}
+
+.header { /*define o tamanho do header*/
+    height: 80px;
+    border-bottom: 2px solid #010415;
+    background-color: #010415;
+}
+
+.container { /*define como será os elementos dentro*/
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .container { /*quando se encontrarem terá essa estilização*/
+    justify-content: space-between; /*um em cada lado da tela*/
+    align-items: center;
+    height: 100%;
+}
+
+.navbar{ /*define como será os elementos de inicial, simulador, espaçamentos...*/
+    display: flex;
+    justify-content: space-evenly; /*espaça os campos entre si*/
+    width: 600px; /*separa um pouco mais os textos*/
+    align-items: center;
+    list-style: none; /* tira a bolinha */
+    color: #fff;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+}
+
+.imagem {
+    height: 130px;
+    width: 130px;
+    margin-top: 15px;
+}
+
+.agora {/* estiliza o inicial no header */
+    font-weight: 800; /*grossura da fonte*/
+}
+
+.azul {
+    background-color: #091D65;
+    border: none;
+    padding: 8px;
+    border-radius: 25px;
+    width: 100px; 
+}
+
+.laranja {
+    background-color: #F66B0E;
+    border: none;
+    padding: 8px;
+    border-radius: 25px;
+    width: 100px;
+}
+
+
+/* BODY */
+
+/* Estilização do banner */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 570px;
+    background-color: #f0f0f0;
+}
+
+.banner-left {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-left h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    justify-content: center;
+    text-align: justify;
+    padding: 40px;
+}
+
+.banner-right {
+    flex: 1;
+}
+
+.banner-right img {
+    width: 100%;
+}
+.btn-banner {
+    background-color: #091D65;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* VISÃO, MISSÃO E VALORES */
+
+.social {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social .container .boxes{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    padding: 30px;
+}
+
+.box img {
+    width: 170px;
+}
+
+footer {
+    background-color: #010415;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    /* Centraliza verticalmente a imagem e o texto */
+    font-size: 18px;
+    margin-top: 10px;
+    height: 60px;
+
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    /* Posiciona a imagem no lado esquerdo do rodapé */
+}
+
+footer .logo img {
+    width: 110px;
+    height: auto;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+footer b {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+    font-family: 'Karla', sans-serif;
+    /* Faz o parágrafo ocupar o espaço central */
+}
