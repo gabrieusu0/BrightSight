@@ -10,5 +10,5 @@ void loop() { // Criação de um loop para sempre aparecer o dado obtido pelo se
 
   Serial.println(valorLuminosidade); // Valor obtido pelo sensor na mensagem
 
-  delay(1000); // Haverá uma demora de 2 segundos para que haja a obtenção do dado novamente (1000 = 1 segundo)
+  delay(600000); // Haverá uma demora de 2 segundos para que haja a obtenção do dado novamente (1000 = 1 segundo)
 }
