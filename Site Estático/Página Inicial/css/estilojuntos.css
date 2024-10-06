@@ -57,6 +57,8 @@ body {
     padding: 8px;
     border-radius: 25px;
     width: 100px; 
+    color: white;
+    cursor: pointer;
 }
 
 .laranja {
@@ -65,6 +67,8 @@ body {
     padding: 8px;
     border-radius: 25px;
     width: 100px;
+    color: white;
+    cursor: pointer;
 }
 
 
@@ -110,6 +114,12 @@ body {
     border: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+.btn-banner a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
 }
 
 
@@ -174,4 +184,50 @@ footer b {
     flex: 1;
     font-family: 'Karla', sans-serif;
     /* Faz o parágrafo ocupar o espaço central */
+}
+
+
+/* NOSSA SOLUÇÃO */
+
+.nossaSolucao {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff; /* Cor de fundo clara */
+}
+
+.nossaSolucao h1 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Estilo para o container principal que vai agrupar as seções */
+.container3 {
+    display: flex;
+    justify-content: space-around; /* Distribui os itens com espaçamento entre eles */
+    margin: 0 auto; /* Centraliza o container na página */
+    max-width: 1200px; /* Define a largura máxima do container */
+    height: 550px;
+    border: 2px solid #ccc; /* Adiciona uma borda cinza clara ao redor do container */
+    padding: 10px; /* Adiciona espaçamento interno */
+    margin-bottom: 50px;
+}
+
+/* Estilo para cada uma das seções (box) */
+.box {
+    width: 30%; /* Define a largura de cada seção para ocupar 30% do espaço do container */
+    text-align: center; /* Centraliza o texto e a imagem dentro da seção */
+    margin-top: 50px;
+}
+
+/* Estilo para o texto dentro de cada box */
+.box p {
+    font-size: 24px;
+    margin-bottom: 20px; /* Adiciona um espaço entre o texto e a imagem */
+}
+
+/* Estilo para as imagens dentro de cada box */
+.box img {
+    width: 350px; /* Define que as imagens ocupem toda a largura do box */
+    height: 300px; /* Mantém a proporção da imagem */
 }
