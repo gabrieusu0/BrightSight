@@ -18,8 +18,8 @@
             <p class="texto_forte">Informe sua senha: </p>
             <input type="password" id="ipt_senha" class="inputCadastro"><br>
             <p class="texto_forte">Confirme sua senha: </p>
-            <input type="password" id="ipt_senha" class="inputCadastro"><br>
-            <button class="button">Cadastrar</button>
+            <input type="password" id="ipt_senhaconfirmada" class="inputCadastro"><br>
+            <button onclick="analisar()" class="button">Cadastrar</button>
             <div>
                 <p>Já possui um cadastro?</p>
                 <p style="color:#F66B0E;">Clique aqui para fazer o login</p>
@@ -38,3 +38,27 @@
 
 </body>
 </html>
+
+<script>
+
+    function analisar(){
+        
+        var usuario = ipt_usuario.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var senhaconfirmada = ipt_senhaconfirmada.value;
+
+        if (usuario == '' || email == '' || senha == '') {
+            alert("Todos os campos devem ser preenchidos.");
+        
+        }
+
+        senhaTemMaiusculo = senha.toLowerCase();
+        if (senha == senhaTemMaiusculo) {
+            alert("A senha deve conter pelo menos uma letra maiúscula.");
+        } else if (senha != senhaconfirmada) {
+            alert("As senhas não estão iguais.");
+        }
+
+    }
+</script>
