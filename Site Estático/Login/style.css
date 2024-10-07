@@ -6,29 +6,96 @@ html, body {
     overflow: hidden;
 }
 
+.header { /*define o tamanho do header*/
+    height: 50px;
+    border-bottom: 2px solid #010415;
+    background-color: #010415;
+}
+
+.container { /*define como será os elementos dentro*/
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .container { /*quando se encontrarem terá essa estilização*/
+    justify-content: space-between; /*um em cada lado da tela*/
+    align-items: center;
+    height: 100%;
+}
+
+.navbar{ /*define como será os elementos de inicial, simulador, espaçamentos...*/
+    display: flex;
+    justify-content: space-evenly; /*espaça os campos entre si*/
+    width: 200px; /*separa um pouco mais os textos*/
+    align-items: center;
+    list-style: none; /* tira a bolinha */
+    color: #fff;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+}
+
+.imagem2 {
+    height: 100px;
+    width: 100px;
+    margin-top: 15px;
+}
+
+.agora {/* estiliza o inicial no header */
+    font-weight: 800; /*grossura da fonte*/
+}
+
+.azul {
+    background-color: #091D65;
+    border: none;
+    padding: 5px;
+    border-radius: 25px;
+    width: 100px; 
+    color: white;
+    cursor: pointer;
+}
+
+.laranja {
+    background-color: #F66B0E;
+    border: none;
+    padding: 5px;
+    border-radius: 25px;
+    width: 100px;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+
 .principal{
     display: flex;
     flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
     justify-content: space-evenly;
-    margin-top: 30px;
-    margin-bottom: 28px;
+    margin-top: 15px;
 }
 
 .principal2{
     display: flex;
     flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    align-items: center;
+    justify-content: space-evenly;
     margin-top: 80px;
-    margin-bottom: 28px;
-    margin-left: 100px;
-
 }
+
+
 
 
 
 .Login{
     border-radius:50px ;
     padding: 30px;
-    width: 450px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +107,6 @@ html, body {
 }
 
 .cadastro{
-
     border-radius:50px ;
     width: 450px;
     display: flex;
@@ -129,23 +195,14 @@ button{
     margin-left: 1000px ;
 }
 
-.principal2{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    margin-right: 200px;
-    
-}
 
 .imagem {
     display: flex;
-    margin-right: 170px;
     height: 500px;
     width: 450px;
     justify-content: space-evenly;
     flex-direction: row;
-    margin-left: 200px;
+
     
 }
 
@@ -162,7 +219,7 @@ footer {
     display: flex;
     align-items: center;
     font-size: 18px;
-    height: 70px;
+    height: 50px;
     width: 100%;
     position: absolute;
     bottom: 0;

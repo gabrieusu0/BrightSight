@@ -7,7 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+    <div class="header">
+        <div class="container">
+          <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
+          <ul class="navbar">
+            <li>
+              <a href="../Página Inicial/juntos.html">Inicial</a>
+            </li>
+            <li>
+              <button class="laranja"><a href="../Login/login2.html">Login</a></button>
+            </li>
+          </ul>
+        </div>
+      </div>
     <div class="principal">
             <div class="cadastro">
                 <h1>Cadastro</h1>
@@ -22,7 +34,7 @@
             <button onclick="analisar()" class="button">Cadastrar</button>
             <div>
                 <p>Já possui um cadastro?</p>
-                <p style="color:#F66B0E;">Clique aqui para fazer o login</p>
+                <p> <a href="./login2.html" style="color:#F66B0E;"> Clique aqui para fazer o login</a></p>
             </div>
             </div>
             <div>
@@ -30,9 +42,6 @@
             </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
     </div>
         <footer>
-            <div class="logo">
-                <img src="./assets/imgs/logo.png" alt="Logo">
-            </div>
             <b>Faça parte da nossa comunidade!</b>
         </footer>
 
@@ -40,25 +49,24 @@
 </html>
 
 <script>
+  function analisar(){
+      
+      var usuario = ipt_usuario.value;
+      var email = ipt_email.value;
+      var senha = ipt_senha.value;
+      var senhaconfirmada = ipt_senhaconfirmada.value;
 
-    function analisar(){
-        
-        var usuario = ipt_usuario.value;
-        var email = ipt_email.value;
-        var senha = ipt_senha.value;
-        var senhaconfirmada = ipt_senhaconfirmada.value;
+      if (usuario == '' || email == '' || senha == '') {
+          alert("Todos os campos devem ser preenchidos.");
+      
+      }
 
-        if (usuario == '' || email == '' || senha == '') {
-            alert("Todos os campos devem ser preenchidos.");
-        
-        }
+      senhaTemMaiusculo = senha.toLowerCase();
+      if (senha == senhaTemMaiusculo) {
+          alert("A senha deve conter pelo menos uma letra maiúscula.");
+      } else if (senha != senhaconfirmada) {
+          alert("As senhas não estão iguais.");
+      }
 
-        senhaTemMaiusculo = senha.toLowerCase();
-        if (senha == senhaTemMaiusculo) {
-            alert("A senha deve conter pelo menos uma letra maiúscula.");
-        } else if (senha != senhaconfirmada) {
-            alert("As senhas não estão iguais.");
-        }
-
-    }
+  }
 </script>
