@@ -251,3 +251,7 @@ footer b {
 }
 /* Centraliza o texto "Faça parte da nossa comunidade!" no rodapé */
 
+.resposta{
+    display: flex;
+    text-align: center;
+}

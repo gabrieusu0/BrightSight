@@ -9,7 +9,6 @@
     <title>BrightSight | Login</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -35,10 +34,11 @@
             <input type="text" id="ipt_usuario" class="input"><br>
             <p class="texto_forte">Digite a senha: </p>
             <input type="password" id="ipt_senha" class="input"><br>
-            <button class="button">Login</button>
+            <button class="button" id="button_login" onclick="login()">Login</button>
             <div>
                 <p>Não possui cadastro?</p>
                 <p><a href="./cadastro.html" style="color:#F66B0E;">Clique aqui para se cadastrar</a></p>
+                <div id="div_resposta" class="resposta"></div>
             </div>
             </div>
             <div>
@@ -52,3 +52,30 @@
 </body>
 
 </html>
+<script>
+
+  var contador = 3
+  const ipt_u = document.getElementById('ipt_usuario');
+  const ipt_s = document.getElementById('ipt_senha');
+  const btn_l = document.getElementById('button_login')
+  const div_resposta = document.getElementById('div_resposta');
+  function login(){
+      var usuario = ipt_u.value;
+      var senha = ipt_s.value;
+      if(usuario == 'Enrico' && senha == '123'){
+          div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
+          contador = 3;
+      }else{
+          contador --;
+          div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS`
+          if(contador <= 0){
+                  ipt_u.disabled = true;
+                  ipt_s.disabled = true;
+                  btn_l.disabled = true;
+
+                  div_resposta.innerHTML += `<br>ACESSO BLOQUEADO!`;
+              }
+      }
+      
+  }
+</script>
