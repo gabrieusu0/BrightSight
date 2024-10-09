@@ -9,12 +9,24 @@
     <title>BrightSight | Login</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-  
+    <div class="header">
+        <div class="container">
+          <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
+          <ul class="navbar">
+            <li>
+              <a href="../Página Inicial/juntos.html">Inicial</a>
+            </li>
+
+            <li>
+              <button class="azul"><a href="../Login/cadastro.html">Cadastro</a></button>
+            </li>
+          </ul>
+        </div>
+      </div>
     <div class="principal2">
             <div class="Login">
                 <h1>Login</h1>
@@ -22,10 +34,16 @@
             <input type="text" id="ipt_usuario" class="input"><br>
             <p class="texto_forte">Digite a senha: </p>
             <input type="password" id="ipt_senha" class="input"><br>
-            <button class="button">Login</button>
+            <button class="button" id="button_login" onclick="login()">Login</button>
             <div>
+<<<<<<< HEAD
                 <p>Não possui cadastro?</p>
                 <a href="../Login/cadastro.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para se cadastrar</p></a>
+=======
+                <p >Não possui cadastro?</p>
+                <p><a href="./cadastro.html" style="color:#F66B0E;">Clique aqui para se cadastrar</a></p>
+                <div id="div_resposta" class="resposta"></div>
+>>>>>>> 6f37fa263dafeece7dee0bdf447232595dd649e7
             </div>
             </div>
             <div>
@@ -33,12 +51,37 @@
             </div>
     </div>
         <footer>
-            <div class="logo">
-                <img src="./assets/imgs/logo.png" alt="Logo">
-            </div>
             <b>Faça parte da nossa comunidade!</b>
         </footer>
 
 </body>
 
 </html>
+<script>
+
+  var contador = 3
+  const ipt_u = document.getElementById('ipt_usuario');
+  const ipt_s = document.getElementById('ipt_senha');
+  const btn_l = document.getElementById('button_login')
+  const div_resposta = document.getElementById('div_resposta');
+  function login(){
+      var usuario = ipt_u.value;
+      var senha = ipt_s.value;
+      if(usuario == 'Enrico' && senha == '123'){
+          div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
+          contador = 3;
+      }else{
+          contador --;
+          div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS`
+          if(contador <= 0){
+                  ipt_u.disabled = true;
+                  ipt_s.disabled = true;
+                  btn_l.disabled = true;
+
+                  div_resposta.innerHTML = `<u style="margin-left: 20px;">Clique aqui para redefinir</u>`;
+                  alert('Usuário bloqueado')
+              }
+      }
+      
+  }
+</script>

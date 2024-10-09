@@ -151,6 +151,192 @@ body {
     width: 170px;
 }
 
+
+/* NOSSA SOLUÇÃO */
+
+.nossaSolucao {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0; /* Cor de fundo clara */
+    padding: 10px;
+}
+
+.nossaSolucao h1 {
+    font-size: 28px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Estilo para o container principal que vai agrupar as seções */
+.container3 {
+    display: flex;
+    justify-content: space-around; /* Distribui os itens com espaçamento entre eles */
+    margin: 0 auto; /* Centraliza o container na página */
+    max-width: 1200px; /* Define a largura máxima do container */
+    height: 550px;
+    border: 2px solid #ccc; /* Adiciona uma borda cinza clara ao redor do container */
+    padding: 10px; /* Adiciona espaçamento interno */
+    margin-bottom: 50px;
+    background-color: #fff;
+}
+
+/* Estilo para cada uma das seções (box) */
+.box {
+    width: 30%; /* Define a largura de cada seção para ocupar 30% do espaço do container */
+    text-align: center; /* Centraliza o texto e a imagem dentro da seção */
+    margin-top: 50px;
+}
+
+/* Estilo para o texto dentro de cada box */
+.box p {
+    font-size: 24px;
+    margin-bottom: 20px; /* Adiciona um espaço entre o texto e a imagem */
+}
+
+/* Estilo para as imagens dentro de cada box */
+.box img {
+    width: 250px; /* Define que as imagens ocupem toda a largura do box */
+    height: 200px; /* Mantém a proporção da imagem */
+}
+
+
+/* Simulador */
+
+
+.sec_simulador {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff; /* Cor de fundo clara */
+}
+
+.titulo {
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* Define a fonte, o tamanho e o alinhamento do título "Simulador de Resultados" */
+
+.container5 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    height: 80%;
+    margin-bottom: 5px;
+    padding-bottom: 25px;
+}
+/* Define um contêiner flex para o formulário e a área de resultados, garantindo que eles fiquem espaçados horizontalmente e alinhados na parte inferior */
+
+.quadrado {
+    background-color: white;
+    border: 2px solid #000;
+    padding: 5px;
+    width: 30%;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+/* Estiliza o formulário como um "quadrado", centralizando seu conteúdo e definindo suas dimensões e bordas */
+
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+/* Estiliza os títulos menores dentro do formulário (ex: "Selecione o modelo de sua placa solar") */
+
+.select {
+    background-color: #c5c5c5;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+}
+/* Define o estilo da caixa de seleção do modelo de placa solar */
+
+select {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 15px;
+}
+/* Estiliza o próprio elemento <select>, definindo margens e o peso da fonte */
+
+h2 {
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+/* Estiliza os cabeçalhos <h2> dentro do formulário, como os textos de perguntas "Qual a potência máxima de suas placas?" */
+
+.input {
+    width: 200px;
+}
+/* Define o tamanho das caixas de entrada de dados (inputs de número) */
+
+.botao {
+    background-color: #d36d00;
+    padding: 8px;
+    border-radius: 40px;
+    border: 2px solid #d36d00;
+    width: 100px;
+    font-weight: 700;
+}
+/* Estiliza o botão "SIMULE", com cor de fundo, bordas arredondadas e borda sólida */
+
+.quadrado2 {
+    display: flex;
+    border: 2px solid black;
+    width: 550px;
+    height: 350px;
+    justify-content: center;
+    align-items: center;
+}
+/* Define o estilo da área de resultados (quadrado com bordas e centrado), onde as informações simuladas serão exibidas */
+
+.resultado {
+    text-align: center;
+    width: 100%;
+    font-family: 'Karla', sans-serif;
+}
+/* Estiliza a área de resultados com o texto centrado e a fonte definida */
+
+.resultado h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* Estiliza o cabeçalho "RESULTADOS:" dentro da área de resultados */
+
+#resultadoSemSolucao, #resultadoComSolucao {
+    margin: 0 auto;
+    width: 90%;
+    font-size: 16px;
+    line-height: 1.5;
+}
+/* Estiliza os parágrafos que exibem os resultados da simulação, limitando sua largura e ajustando o espaçamento entre linhas */
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-right: 200px;
+}
+/* Define o estilo do contêiner que contém a imagem e o quadrado de resultados, alinhando-os em colunas e ajustando o espaço entre eles */
+
+.imagem5 {
+    display: flex;
+    margin-right: 170px;
+    height: 200px;
+    width: 200px;
+}
+
+
+/* FOOTER */
+
 footer {
     background-color: #010415;
     color: #fff;
@@ -184,50 +370,4 @@ footer b {
     flex: 1;
     font-family: 'Karla', sans-serif;
     /* Faz o parágrafo ocupar o espaço central */
-}
-
-
-/* NOSSA SOLUÇÃO */
-
-.nossaSolucao {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #fff; /* Cor de fundo clara */
-}
-
-.nossaSolucao h1 {
-    font-size: 28px;
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-/* Estilo para o container principal que vai agrupar as seções */
-.container3 {
-    display: flex;
-    justify-content: space-around; /* Distribui os itens com espaçamento entre eles */
-    margin: 0 auto; /* Centraliza o container na página */
-    max-width: 1200px; /* Define a largura máxima do container */
-    height: 550px;
-    border: 2px solid #ccc; /* Adiciona uma borda cinza clara ao redor do container */
-    padding: 10px; /* Adiciona espaçamento interno */
-    margin-bottom: 50px;
-}
-
-/* Estilo para cada uma das seções (box) */
-.box {
-    width: 30%; /* Define a largura de cada seção para ocupar 30% do espaço do container */
-    text-align: center; /* Centraliza o texto e a imagem dentro da seção */
-    margin-top: 50px;
-}
-
-/* Estilo para o texto dentro de cada box */
-.box p {
-    font-size: 24px;
-    margin-bottom: 20px; /* Adiciona um espaço entre o texto e a imagem */
-}
-
-/* Estilo para as imagens dentro de cada box */
-.box img {
-    width: 350px; /* Define que as imagens ocupem toda a largura do box */
-    height: 300px; /* Mantém a proporção da imagem */
 }
