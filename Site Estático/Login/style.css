@@ -6,6 +6,12 @@ html, body {
     overflow: hidden;
 }
 
+.MsgErro {
+    color: red;
+    font-size: 12px;
+    font-weight: 800;
+}
+
 .header { /*define o tamanho do header*/
     height: 50px;
     border-bottom: 2px solid #010415;

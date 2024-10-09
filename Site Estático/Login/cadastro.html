@@ -22,16 +22,22 @@
       </div>
     <div class="principal">
             <div class="cadastro">
-                <h1>Cadastro</h1>
-                <p class="texto_forte">Digite o usuário: </p>
+            <h1>Cadastro</h1>
+            <p class="texto_forte">Digite o usuário: </p>
             <input type="text" id="ipt_usuario" class="inputCadastro"><br>
+            <div id="div_mensagemLogin" class="MsgErro"></div>
             <p class="texto_forte">Informe seu email: </p>
             <input type="text" id="ipt_email" class="inputCadastro"><br>
+            <div id="div_mensagemEmail" class="MsgErro"></div>
             <p class="texto_forte">Informe sua senha: </p>
             <input type="password" id="ipt_senha" class="inputCadastro"><br>
+            <div id="div_senha" class="MsgErro"></div>
             <p class="texto_forte">Confirme sua senha: </p>
             <input type="password" id="ipt_senhaconfirmada" class="inputCadastro"><br>
+            <div id="div_senhaconfirmada" class="MsgErro"></div><br>
             <button onclick="analisar()" class="button">Cadastrar</button>
+            <br>
+            <div id="div_msgFinal" class="MsgErro"></div>
             <div>
                 <p>Já possui um cadastro?</p>
                 <a href="../Login/login2.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para fazer o login</p></a>
@@ -57,15 +63,19 @@
       var senhaconfirmada = ipt_senhaconfirmada.value;
 
       if (usuario == '' || email == '' || senha == '') {
-          alert("Todos os campos devem ser preenchidos.");
+          div_msgFinal.innerHTML = `Todos os campos devem estar preenchidos!`;
       
+      }
+      var usuarioTemMaiusculo = usuario.toLowerCase
+      if (usuarioTemMaiusculo == usuario) {
+        div_mensagemLogin.innerHTML = `A senha deve conter pelo menos uma letra maiúscula.`
       }
 
       senhaTemMaiusculo = senha.toLowerCase();
       if (senha == senhaTemMaiusculo) {
-          alert("A senha deve conter pelo menos uma letra maiúscula.");
+         div_senha.innerHTML = `A senha deve conter pelo menos uma letra maiúscula.`;
       } else if (senha != senhaconfirmada) {
-          alert("As senhas não estão iguais.");
+         div_senhaConfirmada.innerHTML = `As senhas não coincidem.`;
       }
 
   }
