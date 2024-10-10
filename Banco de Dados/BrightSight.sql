@@ -15,11 +15,11 @@ CREATE TABLE empresa (
 );
 
 INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha) VALUES
-('SolarTech', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123'),
-('EcoEnergy', '98765432000188', 'Av. Paulista', 'Bela Vista', 'São Paulo', '01310000', '200', 'EcoSenha2024'),
-('GreenPower', '56473829000177', 'Rua Verde', 'Jardim das Águas', 'Curitiba', '80010000', '300', 'Green2024'),
-('EnergiaLimpa', '11223344000166', 'Rua da Luz', 'Alto da Lapa', 'São Paulo', '05050000', '150', 'LuzSegura2024'),
-('SolEnergia', '22334455000155', 'Av. Solar', 'Sol Nascente', 'Belo Horizonte', '30110000', '250', 'SolForte2024');
+	('SolarTech', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123'),
+	('EcoEnergy', '98765432000188', 'Av. Paulista', 'Bela Vista', 'São Paulo', '01310000', '200', 'EcoSenha2024'),
+	('GreenPower', '56473829000177', 'Rua Verde', 'Jardim das Águas', 'Curitiba', '80010000', '300', 'Green2024'),
+	('EnergiaLimpa', '11223344000166', 'Rua da Luz', 'Alto da Lapa', 'São Paulo', '05050000', '150', 'LuzSegura2024'),
+	('SolEnergia', '22334455000155', 'Av. Solar', 'Sol Nascente', 'Belo Horizonte', '30110000', '250', 'SolForte2024');
 
 SELECT * FROM empresa;
 
@@ -69,6 +69,9 @@ INSERT INTO quadrante (idQuadrante, fkLocal, potenciaIdeal, posicao) VALUES
 	(2, 5, 630, 'Norte'),
 	(1, 6, 890, 'Sul'),
 	(2, 6, 940, 'Leste');
+    
+SELECT * FROM quadrante
+ORDER BY fkLocal;
 
 
 CREATE TABLE sensor (
@@ -93,6 +96,8 @@ VALUES
 	(2, 5, 'Sensor SP-Norte'),
 	(1, 6, 'Sensor RJ-Sul'),
 	(2, 6, 'Sensor RJ-Leste');
+    
+SELECT * FROM sensor;
 
 
 CREATE TABLE dados (
@@ -116,6 +121,9 @@ INSERT INTO dados (potenciaAtual, horaData, fkSensor) VALUES
 	(360, '2024-10-09 19:00:00', 10),
 	(280, '2024-10-09 20:00:00', 11),
 	(100, '2024-10-09 21:00:00', 12);
+    
+SELECT * FROM dados
+WHERE fkSensor = 2;
 
 
 SELECT * FROM empresa JOIN local_sensor ON FkEmpresa = idEmpresa;
@@ -138,5 +146,5 @@ JOIN sensor as s                    /*sensor para mostrar seu numero de serie*/
 ON q.idQuadrante = s.fkQuadrante AND q.fkLocal = s.fkLocal   /*Referencias as duas chaves primarias pois é composta*/
 JOIN dados as d                     /*dados para mostrar a potencia registrada e data/hora*/
 ON s.idSensor = d.fkSensor          /*idSensor em sensor = fkSensor em dados*/
-ORDER BY ls.estado;                 /*ordenar pelos estados em ordem alfabetica*/
+ORDER BY d.potenciaAtual desc;       /*ordenar pelos estados em ordem alfabetica*/
 

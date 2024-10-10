@@ -11,39 +11,37 @@
     <div class="perfil">
         <div class="centralizar">
         <div><img class="foto" src="do-utilizador.png" alt=""></div>
-        <div style="color: white;">USERNAME</div>
+        <div style="color: white; font-size: 20px;"><p>| VISÃO GERAL DOS LOCAIS</p></div>
         </div>
             <div class="opcoes">
-                <div class="box1">
-                    <p>Calendário</p>
-                    <img src="/Dashboard/calendario.png" alt="">
-                </div>
-                <div class="box2">
-                    <p>Locais</p>
-                    <img src="/Dashboard/locais.png" alt="">
-                </div>
-                <div class="box3">
-                    <p>Sair</p>
-                    <img src="/Dashboard/sair.png" alt="">
-                </div>
+                <select class="box1">
+                    <option value="#">ANO</option>
+                </select>
+                <!-- <img src="calendario.selectng" alt=""> -->
+            
+                <select class="box2">
+                    <option value="#">MÊS</option>
+                </select>
+                <!-- <img src="locais.selectng" alt=""> -->
+            
+                <select class="box3">
+                    <option value="#">LOCAL</option>
+                </select>
+                <!-- <img src="sair.selectng" alt=""> -->
             </div>
     </div>
-    <div class="dash"> <!-- tudo do dash board dentro dessa div -->
+    <div class="dash"> 
         <div class="indicadores">
             <div class="parte1">
                 <p>MÉDIA DE INCIDÊNCIA POR LOCAL</p>
-                <p class="sp">São Paulo - 740</p> 
-                <p class="rj">Rio de Janeiro - 610</p>
+
             </div>
             <div class="parte2">
                 <p>LOCAL COM MAIOR PICO DE CAPTAÇÃO</p>
-                <p class="sp">São Paulo - 740</p> 
-                <p class="rj">Rio de Janeiro - 610</p>
+
             </div>
             <div class="parte3">
                 <p>VARIAÇÃO DIÁRIA MÁXIMA POR LOCAL</p>
-                <p class="sp">São Paulo - 740</p> 
-                <p class="rj">Rio de Janeiro - 610</p>
             </div>
         </div>
         <div class="chartjs">
