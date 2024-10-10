@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chamando a biblioteca -->
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body style="display: flex;">
+    <div class="perfil">
+        <div class="centralizar">
+        <div><img class="foto" src="do-utilizador.png" alt=""></div>
+        <div style="color: white;">USERNAME</div>
+        </div>
+            <div class="opcoes">
+                <div class="box1">
+                    <p>Calendário</p>
+                    <img src="/Dashboard/calendario.png" alt="">
+                </div>
+                <div class="box2">
+                    <p>Locais</p>
+                    <img src="/Dashboard/locais.png" alt="">
+                </div>
+                <div class="box3">
+                    <p>Sair</p>
+                    <img src="/Dashboard/sair.png" alt="">
+                </div>
+            </div>
+    </div>
+    <div class="dash"> <!-- tudo do dash board dentro dessa div -->
+        <div class="indicadores">
+            <div class="parte1">
+                <p>MÉDIA DE INCIDÊNCIA POR LOCAL</p>
+                <p class="sp">São Paulo - 740</p> 
+                <p class="rj">Rio de Janeiro - 610</p>
+            </div>
+            <div class="parte2">
+                <p>LOCAL COM MAIOR PICO DE CAPTAÇÃO</p>
+                <p class="sp">São Paulo - 740</p> 
+                <p class="rj">Rio de Janeiro - 610</p>
+            </div>
+            <div class="parte3">
+                <p>VARIAÇÃO DIÁRIA MÁXIMA POR LOCAL</p>
+                <p class="sp">São Paulo - 740</p> 
+                <p class="rj">Rio de Janeiro - 610</p>
+            </div>
+        </div>
+        <div class="chartjs">
+        
+            <div class="grafico1">
+                <canvas id="myChart" style="position: relative; height:40vh; width:30vw;"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+            </div>
+            <div class="grafico2">
+                <canvas id="myChart2" style="position: relative; height:40vh; width:30vw"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const labels = [
+        '06:00',
+        '07:00',
+        '08:00',
+        '09:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'São Paulo',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [140, 150, 160, 180, 500, 300, 350, 600, 670, 740, 650, 440, 320, 100],
+
+
+        },
+        {
+            label: 'Rio de Janeiro',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [170, 190, 420, 480, 420, 400, 410, 550, 570, 610, 590, 530, 380, 150],
+        }
+    ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+// SEGUNDO GRÁFICO
+
+
+    const labels2 = [
+        'Dia 08/10/2024 - Luminosidade (Média)',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'São Paulo',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [5300],
+
+
+        },
+        {
+            label: 'Rio de Janeiro',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [5870],
+        }
+    ]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+        // type: 'doughnut',
+        // data: data,
+        
+    };
+
+
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>

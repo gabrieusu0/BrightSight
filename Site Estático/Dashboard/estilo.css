@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+img{
+    height: 100%;
+    width: 60%;
+}
+
+p{
+    color: white;
+}
+
+.perfil { /*define o tamanho do header*/
+    height: 100%;
+    border-bottom: 2px solid #010415;
+    background-color: #010415;
+    width: 25%;
+}
+
+.centralizar {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.foto {
+    height: 150px;
+    width: 150px;
+    border-radius: 25px;
+
+}
+
+.opcoes{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 90%;
+    /* border: 2px solid rgb(24, 174, 211); */
+    margin-left: 10px;
+    align-items: center;
+}
+
+.box1{
+    display: flex;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 60%;
+    border: 2px solid rgb(10, 30, 181);
+    border-radius: 30px;
+    margin-top: 30px;
+    padding: 10px;
+
+}
+
+.box2{
+    display: flex;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 60%;
+    border: 2px solid rgb(10, 30, 181);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.box3{
+    display: flex;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 60%;
+    border: 2px solid rgb(10, 30, 181);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.dash{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(85, 10, 205);
+    background-color: #dbdbdb;
+    border-radius: 25px;
+    height: 90%;
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 30px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.indicadores{
+    display: flex;
+    /* border: 2px solid rgb(211, 24, 24); */
+    height: 30%;
+    width: 75%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.parte1 {
+    border: 2px solid #5abcd7ab;
+    border-radius: 10px;
+    height: 85%;
+    width: 30%;
+    text-align: center;
+    background-color: #5abcd7ab;
+}
+
+.parte2 {
+    border: 2px solid #5abcd7ab;
+    border-radius: 10px;
+    height: 85%;
+    width: 30%;
+    text-align: center;
+    background-color: #5abcd7ab;
+}
+
+.sp {
+    display: flex;
+    flex-direction: column;
+    background-color: #252e8c;
+    padding: 8px;
+    color: aliceblue;
+}
+
+.rj {
+    display: flex;
+    flex-direction: column;
+    background-color: #b431a7;
+    padding: 8px;
+    color: aliceblue;
+}
+
+.parte3 {
+    border: 2px solid #5abcd7ab;
+    border-radius: 10px;
+    height: 85%;
+    width: 30%;
+    text-align: center;
+    background-color: #5abcd7ab;
+}
+
+.chartjs{
+    display: flex;
+}
+
+.grafico1 {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    height: 300px;
+    width: 500px;
+    margin-right: 20px
+}
+
+.grafico2{
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    height: 300px;
+    width: 500px;
+}
+
+
+
+
+
