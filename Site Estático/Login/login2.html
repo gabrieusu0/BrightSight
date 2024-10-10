@@ -35,6 +35,7 @@
             <p class="texto_forte">Digite a senha: </p>
             <input type="password" id="ipt_senha" class="input"><br>
             <button class="button" id="button_login" onclick="login()">Login</button>
+            <div class="resposta" id="div_resposta"></div>
             <div>
                 <p>Não possui cadastro?</p>
                 <a href="../Login/cadastro.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para se cadastrar</p></a>
@@ -72,7 +73,7 @@
                   ipt_s.disabled = true;
                   btn_l.disabled = true;
 
-                  div_resposta.innerHTML = `<u style="margin-left: 20px;">Clique aqui para redefinir</u>`;
+                  div_resposta.innerHTML = `<p>Clique aqui para redefinir</p>`;
                   alert('Usuário bloqueado')
               }
       }

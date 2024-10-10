@@ -24,19 +24,18 @@
             <div class="cadastro">
             <h1>Cadastro</h1>
             <p class="texto_forte">Digite o usuário: </p>
-            <input type="text" oninput="analisar()" id="ipt_usuario" class="inputCadastro"><br>
+            <input type="text" oninput="analisar()" id="ipt_usuario" class="inputCadastro">
             <div id="div_mensagemLogin" class="MsgErro"></div>
             <p class="texto_forte">Informe seu email: </p>
-            <input type="text" oninput="analisar()" id="ipt_email" class="inputCadastro"><br>
+            <input type="text" oninput="analisar()" id="ipt_email" class="inputCadastro">
             <div id="div_mensagemEmail" class="MsgErro"></div>
             <p class="texto_forte">Informe sua senha: </p>
-            <input type="password" oninput="analisar()" id="ipt_senha" class="inputCadastro"><br>
+            <input type="password" oninput="analisar()" id="ipt_senha" class="inputCadastro">
             <div id="div_senha" class="MsgErro"></div>
             <p class="texto_forte">Confirme sua senha: </p>
-            <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro"><br>
-            <div id="div_senhaConfirmada" class="MsgErro"></div><br>
+            <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
+            <div id="div_senhaConfirmada" class="MsgErro"></div> <br>
             <button onclick="analisar()" class="button">Cadastrar</button>
-            <br>
             <div id="div_msgFinal" class="MsgErro"></div>
             <div>
                 <p>Já possui um cadastro?</p>
@@ -86,7 +85,7 @@
         div_mensagemLogin.innerHTML = `<br>O login deve conter pelo menos uma letra maiúscula.`
       }else if(usuarioTemMinusculo == usuario){
         div_mensagemLogin.innerHTML = `<br>O login deve conter pelo menos uma letra minúscula.`
-      }else if(usuarioTemMaiusculo != usuario && usuarioTemMinusculo != usuario){
+      }else if((usuarioTemMaiusculo != usuario) && (usuarioTemMinusculo != usuario)){
         div_mensagemLogin.innerHTML = ``
       }
 
