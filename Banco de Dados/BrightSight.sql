@@ -99,14 +99,23 @@ VALUES
     
 SELECT * FROM sensor;
 
+CREATE TABLE teste (
+idTeste INT PRIMARY KEY AUTO_INCREMENT,
+dados decimal(6,2)
+);
+
+select * from teste;
 
 CREATE TABLE dados (
 	idDados INT PRIMARY KEY AUTO_INCREMENT,
     potenciaAtual INT,
-    horaData DATETIME,
+    horaData TIMESTAMP default current_timestamp,
     fkSensor INT,
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
+
+alter table dados
+modify column potenciaAtual decimal;
 
 INSERT INTO dados (potenciaAtual, horaData, fkSensor) VALUES 
 	(400, '2024-10-09 10:00:00', 1),
@@ -122,8 +131,7 @@ INSERT INTO dados (potenciaAtual, horaData, fkSensor) VALUES
 	(280, '2024-10-09 20:00:00', 11),
 	(100, '2024-10-09 21:00:00', 12);
     
-SELECT * FROM dados
-WHERE fkSensor = 2;
+SELECT * FROM dados;
 
 
 SELECT * FROM empresa JOIN local_sensor ON FkEmpresa = idEmpresa;
@@ -146,5 +154,5 @@ JOIN sensor as s                    /*sensor para mostrar seu numero de serie*/
 ON q.idQuadrante = s.fkQuadrante AND q.fkLocal = s.fkLocal   /*Referencias as duas chaves primarias pois é composta*/
 JOIN dados as d                     /*dados para mostrar a potencia registrada e data/hora*/
 ON s.idSensor = d.fkSensor          /*idSensor em sensor = fkSensor em dados*/
-ORDER BY d.potenciaAtual desc;       /*ordenar pelos estados em ordem alfabetica*/
+ORDER BY d.potenciaAtual desc;      /*ordenar pelos sensor mais potente*/
 
