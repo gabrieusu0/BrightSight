@@ -65,6 +65,7 @@
       if(usuario == 'Enrico' && senha == '123'){
           div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
           contador = 3;
+          window.location.href = "../Dashboard/index.html"; // Altere "pagina_sucesso.html" para o nome da página desejada
       }else{
           contador --;
           div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS`

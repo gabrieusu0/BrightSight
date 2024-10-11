@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,54 +8,90 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chamando a biblioteca -->
     <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body style="display: flex;">
     <div class="perfil">
         <div class="centralizar">
-        <div><img class="foto" src="do-utilizador.png" alt=""></div>
-        <div style="color: white; font-size: 20px;"><p>| VISÃO GERAL DOS LOCAIS</p></div>
-        </div>
-            <div class="opcoes">
-                <select class="box1">
-                    <option value="#">ANO</option>
-                </select>
-                <!-- <img src="calendario.selectng" alt=""> -->
-            
-                <select class="box2">
-                    <option value="#">MÊS</option>
-                </select>
-                <!-- <img src="locais.selectng" alt=""> -->
-            
-                <select class="box3">
-                    <option value="#">LOCAL</option>
-                </select>
-                <!-- <img src="sair.selectng" alt=""> -->
+            <div><img class="foto" src="imgs/logo.png" alt=""></div>
+            <div style="color: white; font-size: 20px;">
+                <p>| VISÃO GERAL DOS LOCAIS</p>
             </div>
+        </div>
+        <div class="opcoes">
+            <select class="box1">
+                <option value="#">ANO</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+            <!-- <img src="calendario.selectng" alt=""> -->
+
+            <select class="box2">
+                <option value="#">MÊS</option>
+                <option value="#">Janeiro</option>
+                <option value="#">Fevereiro</option>
+                <option value="#">Março</option>
+                <option value="#">Abril</option>
+                <option value="#">Maio</option>
+                <option value="#">Junho</option>
+                <option value="#">Julho</option>
+                <option value="#">Agosto</option>
+                <option value="#">Setembro</option>
+                <option value="#">Outubro</option>
+                <option value="#">Novembro</option>
+                <option value="#">Dezembro</option>
+            </select>
+            <!-- <img src="locais.selectng" alt=""> -->
+
+            <select class="box3">
+                <option value="#">LOCAL</option>
+                <option value="#">São Paulo</option>
+                <option value="#">Rio de Janeiro</option> <!-- Futuramente será por cidades, mais especifico-->
+            </select>
+            <!-- <img src="sair.selectng" alt=""> -->
+            <button class="box4"><a href="../Página Inicial/juntos.html">INICIO</a></button>
+        </div>
     </div>
-    <div class="dash"> 
+    <div class="dash">
         <div class="indicadores">
             <div class="parte1">
-                <p>MÉDIA DE INCIDÊNCIA POR LOCAL</p>
-
+                <p>Maior média de incidência</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/media.png" alt="">
+                    <p>RIO DE JANEIRO: <br> 419</p>
+                </div>
             </div>
             <div class="parte2">
-                <p>LOCAL COM MAIOR PICO DE CAPTAÇÃO</p>
-
+                <p>Maior pico de Captação</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/temperatura-alta (3).png" alt="">
+                    <p>RIO DE JANEIRO: <br> 419</p>
+                </div>
             </div>
             <div class="parte3">
-                <p>VARIAÇÃO DIÁRIA MÁXIMA POR LOCAL</p>
+                <p>Variação diária máxima</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/placas-tectonicas.png" alt="">
+                    <p>RIO DE JANEIRO: <br> 419</p>
+                </div>
             </div>
         </div>
         <div class="chartjs">
-        
+
             <div class="grafico1">
-                <canvas id="myChart" style="position: relative; height:40vh; width:30vw;"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                <canvas id="myChart" style="position: relative; height:40vh; width:30vw;"></canvas>
+                <!-- Adicionando quadro para pintar o gráfico -->
             </div>
             <div class="grafico2">
-                <canvas id="myChart2" style="position: relative; height:40vh; width:30vw"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                <canvas id="myChart2" style="position: relative; height:40vh; width:30vw"></canvas>
+                <!-- Adicionando quadro para pintar o gráfico -->
             </div>
         </div>
     </div>
 </body>
+
 </html>
 <script>
     const labels = [
@@ -91,7 +128,7 @@
             borderColor: 'rgb(0, 0, 255)',
             data: [170, 190, 420, 480, 420, 400, 410, 550, 570, 610, 590, 530, 380, 150],
         }
-    ]
+        ]
     };
 
     const config = {
@@ -100,39 +137,30 @@
         options: {}
     };
 
-// SEGUNDO GRÁFICO
+    // SEGUNDO GRÁFICO
 
 
     const labels2 = [
-        'Dia 08/10/2024 - Luminosidade (Média)',
-    ];
+        'São Paulo', 'Rio de Janeiro'
+    ]; // As duas metades do gráfico
 
     const data2 = {
-        labels: labels2,
+        labels: labels2, // Os estados serão as categorias do gráfico
         datasets: [{
-            label: 'São Paulo',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [5300],
-
-
-        },
-        {
-            label: 'Rio de Janeiro',
-            backgroundColor: 'rgb(0, 0, 255)',
-            borderColor: 'rgb(0, 0, 255)',
-            data: [5870],
+            label: 'Luminosidade Média por Estado',
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor de cada fatia
+            borderColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor das bordas
+            data: [5300, 5870], // Dados de luminosidade para cada estado
         }
     ]
     };
 
     const config2 = {
-        type: 'bar',
+        type: 'pie', // Mude o tipo do gráfico para 'pie' ou 'doughnut'
         data: data2,
-        options: {}
-        // type: 'doughnut',
-        // data: data,
-        
+        options: {
+        responsive: true, // O gráfico será ajustado automaticamente ao tamanho da tela
+        }
     };
 
 

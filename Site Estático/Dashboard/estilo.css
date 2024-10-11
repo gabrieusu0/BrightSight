@@ -37,8 +37,8 @@ p{
 }
 
 .foto {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 25px;
 
 }
@@ -46,9 +46,9 @@ p{
 .opcoes{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     height: 40%;
-    width: 60%;
+    width: 50%;
     align-items: center;
 }
 
@@ -60,7 +60,6 @@ p{
     width: 30%;
     border: 2px solid rgb(10, 30, 181);
     border-radius: 30px;
-    margin-top: 30px;
     padding: 10px;
 
 }
@@ -73,7 +72,6 @@ p{
     width: 30%;
     border: 2px solid rgb(10, 30, 181);
     border-radius: 30px;
-    margin-top: 30px;
     padding: 10px;
 }
 
@@ -85,8 +83,25 @@ p{
     width: 30%;
     border: 2px solid rgb(10, 30, 181);
     border-radius: 30px;
-    margin-top: 30px;
     padding: 10px;
+}
+
+.box4{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 10%;
+    border: 2px solid rgb(10, 30, 181);
+    border-radius: 80px;
+    padding: 10px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .dash{
@@ -108,45 +123,53 @@ p{
     justify-content: space-around;
 }
 
+.indicadores p{
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Karla', Helvetica, sans-serif;
+}
+
+.media{
+    display: flex;
+    height: 70%;
+    width: 100%;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.media .imagem{
+    height: 75%;
+    width: 30%;
+}
+
+.media p {
+    display: flex;
+    margin-top: 12px;
+
+}
+
 .parte1 {
     border-radius: 10px;
-    height: 85%;
+    height: 90%;
     width: 30%;
     text-align: center;
     background-color: #695ad7ab;
 }
 
-
 .parte2 {
     border-radius: 10px;
-    height: 85%;
+    height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #e252d1fc;
-}
-
-.sp {
-    display: flex;
-    flex-direction: column;
-    background-color: #252e8c;
-    padding: 8px;
-    color: aliceblue;
-}
-
-.rj {
-    display: flex;
-    flex-direction: column;
-    background-color: #b431a7;
-    padding: 8px;
-    color: aliceblue;
+    background-color: #e252d1c4;
 }
 
 .parte3 {
     border-radius: 10px;
-    height: 85%;
+    height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #5abcd7ab;
+    background-color: #dd5050be;
 }
 
 .chartjs{
@@ -155,6 +178,7 @@ p{
 
 .grafico1 {
     display: flex;
+    justify-content: center;
     background-color: white;
     border-radius: 20px;
     padding: 10px;
@@ -165,6 +189,7 @@ p{
 
 .grafico2{
     display: flex;
+    justify-content: center;
     background-color: white;
     border-radius: 20px;
     padding: 10px;
