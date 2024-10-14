@@ -57,24 +57,30 @@
     <div class="dash">
         <div class="indicadores">
             <div class="parte1">
-                <p>Maior média de incidência</p>
+                <p>Melhor média de incidência</p>
                 <div class="media">    
                     <img class="imagem" src="imgs/media.png" alt="">
-                    <p>RIO DE JANEIRO: <br> 419</p>
+                    <div class="mensagem">
+                    <p>ATIBAIA: <br> 419 (lux)</p>
+                    </div>
                 </div>
             </div>
             <div class="parte2">
                 <p>Maior pico de Captação</p>
                 <div class="media">    
                     <img class="imagem" src="imgs/temperatura-alta (3).png" alt="">
-                    <p>RIO DE JANEIRO: <br> 419</p>
+                    <div class="mensagem">
+                    <p>CAMPINAS:<br> 740 (lux)</p>
+                    </div>
                 </div>
             </div>
             <div class="parte3">
-                <p>Variação diária máxima</p>
+                <p>Menor Variação diária</p>
                 <div class="media">    
                     <img class="imagem" src="imgs/placas-tectonicas.png" alt="">
-                    <p>RIO DE JANEIRO: <br> 419</p>
+                    <div class="mensagem">
+                    <p>ATIBAIA: <br> 460 (lux)</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,7 +121,7 @@
     const data = {
         labels: labels,
         datasets: [{
-            label: 'São Paulo',
+            label: 'Campinas',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [140, 150, 160, 180, 500, 300, 350, 600, 670, 740, 650, 440, 320, 100],
@@ -123,7 +129,7 @@
 
         },
         {
-            label: 'Rio de Janeiro',
+            label: 'Atibaia',
             backgroundColor: 'rgb(0, 0, 255)',
             borderColor: 'rgb(0, 0, 255)',
             data: [170, 190, 420, 480, 420, 400, 410, 550, 570, 610, 590, 530, 380, 150],
@@ -141,7 +147,7 @@
 
 
     const labels2 = [
-        'São Paulo', 'Rio de Janeiro'
+        'Campinas', 'Atibaia'
     ]; // As duas metades do gráfico
 
     const data2 = {
