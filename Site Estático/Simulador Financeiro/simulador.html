@@ -104,9 +104,13 @@
 
         // Cálculo de 30 dias de operação
         var trintaDias = energiaComSolucao * 30;
+        var trintaDiasSEM = energiaSemSolucao * 30;
 
         // Cálculo do lucro gerado pela solução
-        var lucroSolucao = ((energiaReal * 0.75) * 30) * quantidade;
+        // var lucroSolucao = ((energiaReal * 0.75) * 30) * quantidade;
+
+        // Calculo de lucro em KWH
+        var lucroKWH = energiaComSolucao - energiaSemSolucao
 
         // Limitar os valores para duas casas decimais
         energiaSemSolucao = energiaSemSolucao.toFixed(2);
@@ -120,6 +124,6 @@
 
         resultadoComSolucao.innerHTML = `<b style='color: #1F9006; font-size: 18px'>Com a nossa solução:</b> cada um de seus painéis gera ${energiaComSolucao} kWh de energia por dia.<br><br>
         Nesse caso, considerando o período de 30 dias, cada placa produziria ${trintaDias} kWh.<br>
-        Analisando os dois cenários: <b style='color: #1F9006; font-size: 18px'>terá um lucro real de R$ ${lucroSolucao} por mês.</b>`;
+        Analisando os dois cenários: <b style='color: #1F9006; font-size: 18px'>terá um ganho de ${lucroKWH}kWh por mês.</b>`;
     }
 </script>
