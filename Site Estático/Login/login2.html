@@ -62,10 +62,10 @@
   function login(){
       var usuario = ipt_u.value;
       var senha = ipt_s.value;
-      if(usuario == 'Enrico' && senha == '123'){
+      if(usuario == 'Usuario123' && senha == 'Admin123'){
           div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
           contador = 3;
-          window.location.href = "../Dashboard/index.html"; // Altere "pagina_sucesso.html" para o nome da página desejada
+          window.location.href = "../Dashboard/index.html";
       }else{
           contador --;
           div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS`
