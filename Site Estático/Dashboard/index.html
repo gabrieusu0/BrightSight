@@ -21,21 +21,31 @@
 
             <!-- <img src="calendario.selectng" alt=""> -->
 
-            <input class="box2" type="date">
+            <input 
+            type="text" 
+            placeholder="DD/MM/YYYY"
+            onfocus="this.type='date'" 
+            onblur="if (!this.value) this.type='text'"
+            class="box2"
+            >
+            <!-- Quando o usuário clica no campo, a função onfocus é disparada. Ela altera o tipo do campo para "date", 
+              Quando o campo perde o foco (o usuário clica fora dele), a função onblur é ativada. Se o campo estiver vazio (!this.value),
+            ele volta a ser um campo de TYPE TEXT -->
+
             <!-- <img src="locais.selectng" alt=""> -->
             <select class="box3">
-                <option value="#">LOCAL</option>
+                <option value="#">ESTADOS</option>
                 <option value="#">São Paulo</option>
                 <option value="#">Rio de Janeiro</option> <!-- Futuramente será por cidades, mais especifico-->
             </select>
 
             <select class="box1">
-                <option value="#">QUADRANTE</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="#">CIDADES</option>
+                <option value="1">Campinas</option>
+                <option value="2">Atibaia</option>
             </select>
+
+
             <!-- <img src="sair.selectng" alt=""> -->
             <button class="box4"><a href="../Página Inicial/juntos.html">INICIO</a></button>
         </div>
@@ -43,11 +53,11 @@
     <div class="dash">
         <div class="indicadores">
             <div class="parte1">
-                <p>Melhor média de incidência</p>
+                <p>Média de incidência</p>
                 <div class="media">    
                     <img class="imagem" src="imgs/media.png" alt="">
                     <div class="mensagem">
-                    <p>ATIBAIA: <br> 419 (lux)</p>
+                    <p>ATIBAIA: <br> 436 (lux)</p>
                     </div>
                 </div>
             </div>
@@ -56,16 +66,16 @@
                 <div class="media">    
                     <img class="imagem" src="imgs/temperatura-alta (3).png" alt="">
                     <div class="mensagem">
-                    <p>CAMPINAS:<br> 740 (lux)</p>
+                    <p>ATIBAIA (13h):<br> 610 (lux)</p>
                     </div>
                 </div>
             </div>
             <div class="parte3">
-                <p>Menor Variação diária</p>
+                <p>Diferença Real-Ideal</p>
                 <div class="media">    
                     <img class="imagem" src="imgs/placas-tectonicas.png" alt="">
                     <div class="mensagem">
-                    <p>ATIBAIA: <br> 460 (lux)</p>
+                    <p>Diferença de: <br> 25 (lux/dia)</p>
                     </div>
                 </div>
             </div>
@@ -106,43 +116,61 @@
 
     const data = {
         labels: labels,
-        datasets: [{
-            label: 'Campinas',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [140, 150, 160, 180, 500, 300, 350, 600, 670, 740, 650, 440, 320, 100],
+        datasets: [ // {
+        //     label: 'Campinas',
+        //     backgroundColor: 'rgb(255, 99, 132)',
+        //     borderColor: 'rgb(255, 99, 132)',
+        //     data: [140, 150, 160, 180, 500, 300, 350, 600, 670, 740, 650, 440, 320, 100],
 
 
-        },
+        // },
         {
-            label: 'Atibaia',
+            label: 'Potência Real (Atibaia)',
             backgroundColor: 'rgb(0, 0, 255)',
             borderColor: 'rgb(0, 0, 255)',
-            data: [170, 190, 420, 480, 420, 400, 410, 550, 570, 610, 590, 530, 380, 150],
+            data: [170, 190, 320, 480, 440, 500, 570, 610, 570, 610, 590, 530, 380, 150],
+        },
+        {
+            label: 'Potência Ideal',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [165, 200, 300, 460, 500, 550, 620, 650, 630, 620, 610, 550, 400, 150],
         }
         ]
+        
     };
 
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true, // Começa o eixo Y em zero
+                    max: 700, // Define o valor máximo do eixo Y
+                    ticks: {
+                        stepSize: 50 // Define o intervalo entre os ticks
+                    }
+                }
+            }
+        }
     };
 
     // SEGUNDO GRÁFICO
 
 
     const labels2 = [
-        'Campinas', 'Atibaia'
+        'Ideal (%)', 'Real (%)'
     ]; // As duas metades do gráfico
 
     const data2 = {
         labels: labels2, // Os estados serão as categorias do gráfico
         datasets: [{
-            label: 'Luminosidade Média por Estado',
+            label: 'Luminosidade Média por Cidade',
             backgroundColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor de cada fatia
             borderColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor das bordas
-            data: [5300, 5870], // Dados de luminosidade para cada estado
+            // data: [436, 458], // Dados de luminosidade para cada estado
+            data: [51.23, 48.77], // Dados de luminosidade para cada estado
         }
     ]
     };

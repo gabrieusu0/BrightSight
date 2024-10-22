@@ -52,6 +52,10 @@ p{
     align-items: center;
 }
 
+input::placeholder { /*pseudoclasse */
+    color: black; 
+}
+
 .box1{
     display: flex;
     align-items: center;
