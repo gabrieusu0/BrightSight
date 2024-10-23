@@ -8,7 +8,7 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3300; // não muda
 
 // habilita ou desabilita a inserção de dados no banco de dados
-const HABILITAR_OPERACAO_INSERIR = false; //colocar true quando for para armazenar
+const HABILITAR_OPERACAO_INSERIR = true; //colocar true quando for para armazenar
 
 // função para comunicação serial
 const serial = async (
@@ -21,7 +21,7 @@ const serial = async (
             host: 'localhost', //deixa assim
             user: 'INSERT_BD', // muda de acordo com nosso usuario
             password: 'Urubu@100', // muda de acordo com a senha
-            database: 'brightsight', // muda de acordo com no banco de dados
+            database: 'BrightSight', // muda de acordo com no banco de dados
             port: 3307 // muda de acordo com a porta da vm
         }
     ).promise();
@@ -66,7 +66,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO dados (potenciaAtual) VALUES (?)',
+                'INSERT INTO dados (potenciaAtual, fkSensor) VALUES (?, 1)',
                 [sensorAnalogico]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico);
