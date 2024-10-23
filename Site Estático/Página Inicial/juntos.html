@@ -160,7 +160,7 @@
       var incidencia = Number(ipt_tempo.value);
       var quantidade = Number(ipt_quantidade.value);
 
-      // Variáveis para cálculos
+      // Variáveis para cálculos na calculadora
       var perda = ""; // Perda de energia com base no modelo (On-Grid ou Off-Grid)
       var solucao = 0.30; // Solução aplicada para melhorar a incidência solar
       var energiaSemSolucao = ""; // Energia gerada sem solução
@@ -188,6 +188,7 @@
       var trintaDias = energiaComSolucao * 30;
 
       // Cálculo do lucro gerado pela solução
+      // Nosso lucro baseado na nossa solução
       var lucroSolucao = ((energiaReal * 0.75) * 30) * quantidade;
 
       // Limitar os valores para duas casas decimais
@@ -197,7 +198,7 @@
       trintaDias = trintaDias.toFixed(2);
       lucroSolucao = lucroSolucao.toFixed(2);
 
-      // Exibição dos resultados na tela
+      // Exibição dos resultados na tela da calculadora
       resultadoSemSolucao.innerHTML = `<b style='color: red; font-size: 18px'>Sem a nossa solução:</b> cada um de seus painéis gera ${energiaSemSolucao} kWh de energia por dia.`;
 
       resultadoComSolucao.innerHTML = `<b style='color: #1F9006; font-size: 18px'>Com a nossa solução:</b> cada um de seus painéis gera ${energiaComSolucao} kWh de energia por dia.<br><br>

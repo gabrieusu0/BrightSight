@@ -82,7 +82,7 @@ CREATE TABLE sensor (
     FOREIGN KEY (fkQuadrante, fkLocal) REFERENCES quadrante (idQuadrante, fkLocal)
 );
 
-INSERT INTO SENSOR (fkQuadrante, fkLocal, numero_serie)
+INSERT INTO sensor (fkQuadrante, fkLocal, numero_serie)
 VALUES 
 	(1, 1, 'Sensor SP-Norte'),
 	(2, 1, 'Sensor SP-Sul'),
