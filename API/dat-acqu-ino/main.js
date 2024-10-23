@@ -31,7 +31,7 @@ const serial = async (
     const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
     if (!portaArduino) {
         throw new Error('O arduino não foi encontrado em nenhuma porta serial');
-    }
+    } // erro caso não esteja em nenhuma porta
 
     // configura a porta serial com o baud rate especificado
     const arduino = new serialport.SerialPort(
