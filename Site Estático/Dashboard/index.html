@@ -12,7 +12,11 @@
 <body style="display: flex;">
     <div class="perfil">
         <div class="centralizar">
-            <div><img class="foto" src="imgs/logo.png" alt=""></div>
+            <div>
+                <a href="../Página Inicial/juntos.html">
+                    <img class="foto" src="imgs/logo.png" alt="">
+                </a>
+            </div>
             <div style="color: white; font-size: 20px;">
                 <p>| VISÃO GERAL DOS LOCAIS</p>
             </div>
@@ -47,10 +51,10 @@
 
 
             <!-- <img src="sair.selectng" alt=""> -->
-            <button class="box4"><a href="../Página Inicial/juntos.html">INICIO</a></button>
+            <button class="box4" onclick= mostrarDash()>GERAR</button>
         </div>
     </div>
-    <div class="dash">
+    <div class="dash" style="display: none;">  <!-- O display none oculta o dashboard até que o botão seja clicado -->
         <div class="indicadores">
             <div class="parte1">
                 <p>Média de incidência</p>
@@ -95,6 +99,15 @@
 </body>
 
 </html>
+<script>
+    // Função para exibir a div com a classe 'dash'
+    function mostrarDash() {
+        var dash =  document.getElementsByClassName('dash')[0]; // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        dash.style.display = 'flex'; // tornando a div visível
+    }
+</script>
+
+
 <script>
     const labels = [
         '06:00',
