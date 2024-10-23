@@ -61,7 +61,7 @@
 </html>
 
 <script>
-  const ipt_usu = document.getElementById('ipt_usuario');
+  const ipt_usu = document.getElementById('ipt_usuario'); // constante utilizada para pegar a input de usuario
   const ipt_email = document.getElementById('ipt_email');
   const ipt_se1 = document.getElementById('ipt_senha');
   const ipt_se2 = document.getElementById('ipt_senhaconfirmada')
@@ -151,7 +151,7 @@
       if (senha != senhaconfirmada) {
         div_senhaConfirmada.innerHTML = `As senhas não coincidem.`; 
         v_senha2 = 0;
-      }   // checa se as senhas coincidem, se não exibe a mensagem "As senhas não coincidem"
+      }   // checa se as senhas coincidem, se não exibe a mensagem "As senhas não coincidem" para o usuário
       else{  
         div_senhaConfirmada.innerHTML = ``;
         v_senha2 = 1;
@@ -183,7 +183,7 @@
         ipt_but.disabled = false;
         ipt_but.style.backgroundColor ="rgb(14, 125, 250)" ;
       }else{
-        ipt_but.disabled = true;  // este else é necessário pois vai desabilitar o cadastro sempre que as validações deixarem de ser verdadeiras
+        ipt_but.disabled = true;  // este else é necessário pois vai desabilitar o cadastro sempre que as validações deixarem de ser verdadeiras fazendo com que a página bloqueie
         ipt_but.style.backgroundColor="rgb(0, 98, 209)"
       }
       }

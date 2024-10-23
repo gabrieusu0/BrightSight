@@ -68,13 +68,13 @@
           window.location.href = "../Dashboard/index.html";
       }else{
           contador --;
-          div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS`
+          div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS` // A PÁGINA TRAVA E PRECISA SER RECARREGADA QUANDO ACABAR AS TENTATIVAS
           if(contador <= 0){
                   ipt_u.disabled = true;
                   ipt_s.disabled = true;
                   btn_l.disabled = true;
 
-                  div_resposta.innerHTML = `<p>Clique aqui para redefinir</p>`;
+                  div_resposta.innerHTML = `<p><u>Clique aqui para redefinir</u></p>`;
                   alert('Usuário bloqueado')
               }
       }
