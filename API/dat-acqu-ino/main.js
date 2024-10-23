@@ -8,7 +8,7 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3300; // não muda
 
 // habilita ou desabilita a inserção de dados no banco de dados
-const HABILITAR_OPERACAO_INSERIR = false; //colocar true quando for para armazenar
+const HABILITAR_OPERACAO_INSERIR = true; //colocar true quando for para armazenar
 
 // função para comunicação serial
 const serial = async (
