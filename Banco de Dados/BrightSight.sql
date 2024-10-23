@@ -153,6 +153,5 @@ ON ls.idLocal = q.fkLocal           /*idLocal em local_sensor = fkLocal em quadr
 JOIN sensor as s                    /*sensor para mostrar seu numero de serie*/
 ON q.idQuadrante = s.fkQuadrante AND q.fkLocal = s.fkLocal   /*Referencias as duas chaves primarias pois é composta*/
 JOIN dados as d                     /*dados para mostrar a potencia registrada e data/hora*/
-ON s.idSensor = d.fkSensor          /*idSensor em sensor = fkSensor em dados*/
-ORDER BY d.potenciaAtual desc;      /*ordenar pelos sensor mais potente*/
+ON s.idSensor = d.fkSensor;          /*idSensor em sensor = fkSensor em dados*/
 
