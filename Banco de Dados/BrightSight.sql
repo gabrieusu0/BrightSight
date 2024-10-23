@@ -13,7 +13,7 @@ CREATE TABLE empresa (
 	numero CHAR(11),
 	senha VARCHAR(45)
 );
-/* INSERT DAS EMPRESAS*/
+
 INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha) VALUES
 	('SolarTech', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123'),
 	('EcoEnergy', '98765432000188', 'Av. Paulista', 'Bela Vista', 'São Paulo', '01310000', '200', 'EcoSenha2024'),
@@ -82,7 +82,7 @@ CREATE TABLE sensor (
     FOREIGN KEY (fkQuadrante, fkLocal) REFERENCES quadrante (idQuadrante, fkLocal)
 );
 
-INSERT INTO sensor (fkQuadrante, fkLocal, numero_serie)
+INSERT INTO sensor  (fkQuadrante, fkLocal, numero_serie)
 VALUES 
 	(1, 1, 'Sensor SP-Norte'),
 	(2, 1, 'Sensor SP-Sul'),
