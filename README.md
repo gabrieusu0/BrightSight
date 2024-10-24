@@ -11,7 +11,6 @@ Nosso grupo foi formado para atender as soluções de tecnologia referentes a en
 - Enrico D'Amaro
 - Gabriel de Oliveira Santos
 - Guilherme Ortiz de Camargo
-- Kaio Gabriel Lemos Ricz
 - Isabela de Carvalho Francisco
 - Vinicius Dias da Silva
 
