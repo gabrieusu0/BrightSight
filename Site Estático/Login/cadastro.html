@@ -41,7 +41,7 @@
             <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
             <div id="div_senhaConfirmada" class="MsgErro"></div> <br>
 
-            <button onclick="cadastro()" id="button_cadastro" class="button">Cadastrar</button>
+            <button disabled onclick="cadastro()" id="button_cadastro" class="button">Cadastrar</button>
             <div id="div_msgFinal" class="MsgErro"></div>
 
             <div>
@@ -179,6 +179,8 @@
         div_mensagemEmail.innerHTML = ``
         v_email = 1;
       }
+
+      
       if((v_email == 1 && v_usu == 1) && (v_senha1 == 1 && v_senha2 == 1)){ // se todas validações estiverem corretas as variáveis vão estar em 1, ou seja se toda estiverem com o valor 1 o usuário poderá clicar no butão consequentemente realizar de fato o cadastro
         ipt_but.disabled = false;
         ipt_but.style.backgroundColor ="rgb(14, 125, 250)" ;
@@ -187,4 +189,15 @@
         ipt_but.style.backgroundColor="rgb(0, 98, 209)"
       }
       }
+
+      function manipuladorPreenchimento() {
+        validarUsuario()
+        validarEmail()
+        validarSenha()
+        validarConfirmacao()
+
+        if (v_usu == 1 && v_email == 1 && v_senha1 == 1 && v_senha2 == 1) {
+          btn_cadastrar.disabled = false;
+        } 
+    }
 </script>

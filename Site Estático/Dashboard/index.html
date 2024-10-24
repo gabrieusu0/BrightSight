@@ -37,16 +37,16 @@
             ele volta a ser um campo de TYPE TEXT -->
 
             <!-- <img src="locais.selectng" alt=""> -->
-            <select class="box3">
+            <select class="box3" id="slc_estados">
                 <option value="#">ESTADOS</option>
-                <option value="#">São Paulo</option>
-                <option value="#">Rio de Janeiro</option> <!-- Futuramente será por cidades, mais especifico-->
+                <option value="sp">São Paulo</option>
+                <option value="rj">Rio de Janeiro</option> <!-- Futuramente será por cidades, mais especifico-->
             </select>
 
-            <select class="box1">
+            <select class="box1" id="slc_cidades">
                 <option value="#">CIDADES</option>
-                <option value="1">Campinas</option>
-                <option value="2">Atibaia</option>
+                <option value="camp">Campinas</option>
+                <option value="atibaia">Atibaia</option>
             </select>
 
 
@@ -102,8 +102,14 @@
 <script>
     // Função para exibir a div com a classe 'dash'
     function mostrarDash() {
-        var dash =  document.getElementById('dash'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
-        dash.style.display = 'flex'; // tornando a div visível
+        var estado = slc_estados.value;
+        var cidade = slc_cidades.value;
+
+        if (estado == 'sp' && cidade == 'atibaia') {
+            var dash =  document.getElementById('dash'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+            dash.style.display = 'flex'; // tornando a div visível 
+        }
+
     }
 </script>
 

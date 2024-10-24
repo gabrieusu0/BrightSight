@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    #div_red {
+        display: none;
+        background-color: red;
+        height: 100px;
+        width: 100px;
+    }
+
+    #div_blue {
+        display: none;
+        background-color: blue;
+        height: 100px;
+        width: 100px;
+    }
+</style>
+
+<body>
+
+    <div>
+        <div id="div_buttons">
+            <button onclick="exibirVermelho()">Exibir div vermelha</button>
+            <button onclick="exibirAzul()">Exibir div azul</button>
+            <button onclick="trocar()">Trocar</button>
+        </div>
+        <div id="div_red"></div>
+        <div id="div_blue"></div>
+    </div>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+
+
+<script>
+    var minutos = 5;
+    var segundos = 60;
+    div_mensagem.innerHTML = segundos;
+
+    setInterval(function () {
+        segundos--;
+
+        if (segundos < 0) {
+            segundos = 59;
+            minutos--;
+        }
+
+        div_mensagem.innerHTML = `${minutos}m${segundos}s`
+    }, 1000);
+</script>
+
+
+<script>
+    function exibirAzul() {
+        div_blue.style.display = "flex";
+    }
+    function exibirVermelho() {
+        div_red.style.display = "flex";
+    }
+    function trocar() {
+        if (div_blue.style.display == "flex") {
+            div_blue.style.display = "none"
+            div_red.style.display = "flex"
+        } else if (div_red.style.display == "flex") {
+            div_red.style.display = "none"
+            div_blue.style.display = "flex"
+        }
+
+    }
+</script>
+
+
+<script>
+
+    // PESQUISAR FETCH, REQUISIÇÕES HTTP, 
+    fetch('http://google.com.br')
+
+    mostrarDash()
+
+
+</script>
