@@ -96,6 +96,49 @@
             </div>
         </div>
     </div>
+
+    <div class="dash" id="dash2" style="display: none;">  <!-- O display none oculta o dashboard até que o botão seja clicado -->
+        <div class="indicadores">
+            <div class="parte1">
+                <p>Média de incidência</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/media.png" alt="">
+                    <div class="mensagem">
+                    <p>CAMPINAS: <br> 485 (lux)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="parte2">
+                <p>Maior pico de Captação</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/temperatura-alta (3).png" alt="">
+                    <div class="mensagem">
+                    <p>CAMPINAS (13h):<br> 750 (lux)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="parte3">
+                <p>Diferença Real-Ideal</p>
+                <div class="media">    
+                    <img class="imagem" src="imgs/placas-tectonicas.png" alt="">
+                    <div class="mensagem">
+                    <p>Diferença de: <br> 51 (lux/dia)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chartjs">
+
+            <div class="grafico1">
+                <canvas id="myChart_campinas1" style="position: relative; height:40vh; width:30vw;"></canvas>
+                <!-- Adicionando quadro para pintar o gráfico -->
+            </div>
+            <div class="grafico2">
+                <canvas id="myChart_campinas2" style="position: relative; height:40vh; width:30vw"></canvas>
+                <!-- Adicionando quadro para pintar o gráfico -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -104,12 +147,17 @@
     function mostrarDash() {
         var estado = slc_estados.value;
         var cidade = slc_cidades.value;
+        var dash =  document.getElementById('dash'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash2 =  document.getElementById('dash2'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
 
         if (estado == 'sp' && cidade == 'atibaia') {
-            var dash =  document.getElementById('dash'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
             dash.style.display = 'flex'; // tornando a div visível 
-        }
+            dash2.style.display = "none"
 
+        }else if (estado == 'sp' && cidade == 'camp') {
+            dash2.style.display = 'flex'; // tornando a div visível 
+            dash.style.display = "none"
+        }
     }
 </script>
 
@@ -150,7 +198,7 @@
             data: [170, 190, 320, 480, 440, 500, 570, 610, 570, 610, 590, 530, 380, 150],
         },
         {
-            label: 'Potência Ideal',
+            label: 'Potência Esperado',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [165, 200, 300, 460, 500, 550, 620, 650, 630, 620, 610, 550, 400, 150],
@@ -179,17 +227,17 @@
 
 
     const labels2 = [
-        'Ideal (%)', 'Real (%)'
+        'Real (%)', 'Esperado (%)'
     ]; // As duas metades do gráfico
 
     const data2 = {
         labels: labels2, // Os estados serão as categorias do gráfico
         datasets: [{
-            label: 'Luminosidade Média por Cidade',
-            backgroundColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor de cada fatia
-            borderColor: ['rgb(255, 99, 132)', 'rgb(0, 0, 255)'], // Cor das bordas
+            label: 'Luminosidade Média',
+            backgroundColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor de cada fatia
+            borderColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor das bordas
             // data: [436, 458], // Dados de luminosidade para cada estado
-            data: [51.23, 48.77], // Dados de luminosidade para cada estado
+            data: [48.77, 51.23], // Dados de luminosidade para cada estado
         }
     ]
     };
@@ -213,5 +261,118 @@
     const myChart2 = new Chart(
         document.getElementById('myChart2'),
         config2
+    );
+</script>
+
+
+
+
+
+
+<!-- CAMPINAS -->
+
+
+
+
+
+<script>
+    const labels_campinas1 = [
+        '06:00',
+        '07:00',
+        '08:00',
+        '09:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+
+    ];
+
+    const data_campinas1 = {
+        labels: labels_campinas1,
+        datasets: [ // {
+        //     label: 'Campinas',
+        //     backgroundColor: 'rgb(255, 99, 132)',
+        //     borderColor: 'rgb(255, 99, 132)',
+        //     data: [140, 150, 160, 180, 500, 300, 350, 600, 670, 740, 650, 440, 320, 100],
+
+
+        // },
+        {
+            label: 'Potência Real (Campinas)',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [185, 200, 340, 520, 480, 550, 710, 750, 700, 640, 610, 550, 400, 150],
+        },
+        {
+            label: 'Potência Esperado',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [150, 180, 300, 450, 460, 510, 580, 630, 650, 610, 570, 530, 350, 100],
+        }
+        ]
+        
+    };
+
+    const config_campinas1 = {
+        type: 'line',
+        data: data_campinas1,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true, // Começa o eixo Y em zero
+                    max: 800, // Define o valor máximo do eixo Y
+                    ticks: {
+                        stepSize: 50 // Define o intervalo entre os ticks
+                    }
+                }
+            }
+        }
+    };
+
+    // SEGUNDO GRÁFICO
+
+
+    const labels_campinas2 = [
+        'Real (%)', 'Esperado (%)'
+    ]; // As duas metades do gráfico
+
+    const data_campinas2 = {
+        labels: labels_campinas2, // Os estados serão as categorias do gráfico
+        datasets: [{
+            label: 'Luminosidade Média',
+            backgroundColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor de cada fatia
+            borderColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor das bordas
+            // data: [436, 458], // Dados de luminosidade para cada estado
+            data: [52.79, 47.22], // Dados de luminosidade para cada estado
+        }
+    ]
+    };
+
+    const config_campinas2 = {
+        type: 'pie', // Mude o tipo do gráfico para 'pie' ou 'doughnut'
+        data: data_campinas2,
+        options: {
+        responsive: true, // O gráfico será ajustado automaticamente ao tamanho da tela
+        }
+    };
+
+
+</script>
+
+<script>
+    const myChart_campinas1 = new Chart(
+        document.getElementById('myChart_campinas1'),
+        config_campinas1
+    );
+    const myChart_campinas2 = new Chart(
+        document.getElementById('myChart_campinas2'),
+        config_campinas2
     );
 </script>
