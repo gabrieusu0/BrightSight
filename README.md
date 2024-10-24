@@ -31,6 +31,8 @@ Nosso grupo foi formado para atender as soluções de tecnologia referentes a en
 
 Trello: https://trello.com/invite/b/66eb043129bb9ff0cce87401/ATTI8324b2042bf0beba88ddbcf771dba68e0527105B/brightsight-20
 
-Documentação: 
+Canva: https://www.canva.com/design/DAGTpZfUO7c/vYspAJVsszKrrkWs_qXjEA/edit
+
+Documentação: Arquivo no repositório
 
 Apresentação Sprint1: https://prezi.com/p/edit/4pbeqsawsxxo/
