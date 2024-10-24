@@ -54,7 +54,7 @@
             <button class="box4" onclick= mostrarDash()>GERAR</button>
         </div>
     </div>
-    <div class="dash" style="display: none;">  <!-- O display none oculta o dashboard até que o botão seja clicado -->
+    <div class="dash" id="dash" style="display: none;">  <!-- O display none oculta o dashboard até que o botão seja clicado -->
         <div class="indicadores">
             <div class="parte1">
                 <p>Média de incidência</p>
@@ -102,7 +102,7 @@
 <script>
     // Função para exibir a div com a classe 'dash'
     function mostrarDash() {
-        var dash =  document.getElementsByClassName('dash')[0]; // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash =  document.getElementById('dash'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
         dash.style.display = 'flex'; // tornando a div visível
     }
 </script>
