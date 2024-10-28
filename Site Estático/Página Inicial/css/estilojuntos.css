@@ -371,3 +371,27 @@ footer b {
     font-family: 'Karla', sans-serif;
     /* Faz o parágrafo ocupar o espaço central */
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    border: 3px solid red;
+    padding-bottom: 1px;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 320px;
+    background-color: #d36d00;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
