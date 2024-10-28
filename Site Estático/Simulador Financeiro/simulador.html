@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,44 @@
     <!-- Link para o arquivo de estilo externo -->
     <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
     <div id="centralizar">
         <!-- Título principal -->
         <h1 class="titulo">Simulador de Resultados</h1>
-        
+
         <div class="container">
             <!-- Formulário de entrada de dados -->
             <div class="quadrado">
                 <h1>Selecione o modelo de sua placa solar:</h1>
-                <select id="slc_modelo" class="select">
-                    <option class="valor" value="on">On-Grid</option>
-                    <option value="off">Off-Grid</option>
-                </select>
+                <div style="width: 80%;padding-left: 100px;">
+                    <select id="slc_modelo" class="select">
+                        <option class="valor" value="on">On-Grid</option>
+                        <option value="off">Off-Grid</option>
+                    </select>
+                    <div class="tooltip" style="margin-left: 10px;">❓
+                        <span class="tooltiptext">ON-GRID = Conectado à rede pública, sem o uso de baterias <br> OFF-GRID = Independente da
+                            rede, com o uso de baterias</span>
+                    </div>
+                </div>
                 <br>
-
                 <!-- Entrada para a potência das placas solares -->
-                <h2>Qual a potência máxima de suas placas em Watts?</h2> 
-                <input class="input" type="number" id="ipt_potencia"> 
+                <h2>Qual a potência máxima de suas placas em Watts?</h2>
+                <input class="input" type="number" id="ipt_potencia">
                 <br>
 
                 <!-- Entrada para o tempo de incidência solar -->
                 <h2>Qual o tempo médio de incidência solar no dia?</h2>
                 <input class="input" type="number" id="ipt_tempo">
-                <br> 
+                <br>
 
                 <!-- Entrada para a quantidade de placas solares -->
                 <h2>Quantas placas solares possui?</h2>
                 <input class="input" type="number" id="ipt_quantidade">
                 <br><br>
-                
+
                 <!-- Botão de simulação -->
-                <button class="botao" onclick="calcularIrradiancia()">SIMULE</button> 
+                <button class="botao" onclick="calcularIrradiancia()">SIMULE</button>
                 <br><br>
             </div>
 
@@ -69,6 +76,7 @@
         </footer>
     </div>
 </body>
+
 </html>
 <script>
     function calcularIrradiancia() {
