@@ -18,12 +18,10 @@
                 <a href="#sec_simulador">Simulador</a>
               </li>
             <li>
-              <a href="../Login/cadastro.html" >
-                <button class="laranja">Cadastro</button>
-              </a>
+              <button class="azul"><a href="../Login/cadastro.html">Cadastro</a></button>
             </li>
             <li>
-              <button class="azul"><a href="../Login/login2.html">Login</a></button>
+              <button class="laranja"><a href="../Login/login2.html">Login</a></button>
             </li>
           </ul>
         </div>
@@ -104,10 +102,15 @@
     <!-- Formulário de entrada de dados -->
     <div class="quadrado">
         <h1>Selecione o modelo de sua placa solar:</h1>
+        <div style="width: 80%;padding-left: 100px;">
         <select id="slc_modelo" class="select">
             <option class="valor" value="on">On-Grid</option>
             <option value="off">Off-Grid</option>
         </select>
+<div class="tooltip" style="margin-left: 10px;">❓
+  <span class="tooltiptext">ON-GRID = Conectado à rede pública <BR> OFF-GRID =  Independente da rede, com baterias</span>
+</div>
+</div>
         <br>
 
         <!-- Entrada para a potência das placas solares -->
@@ -162,7 +165,7 @@
       var incidencia = Number(ipt_tempo.value);
       var quantidade = Number(ipt_quantidade.value);
 
-      // Variáveis para cálculos na calculadora
+      // Variáveis para cálculos
       var perda = ""; // Perda de energia com base no modelo (On-Grid ou Off-Grid)
       var solucao = 0.30; // Solução aplicada para melhorar a incidência solar
       var energiaSemSolucao = ""; // Energia gerada sem solução
@@ -190,7 +193,6 @@
       var trintaDias = energiaComSolucao * 30;
 
       // Cálculo do lucro gerado pela solução
-      // Nosso lucro baseado na nossa solução
       var lucroSolucao = ((energiaReal * 0.75) * 30) * quantidade;
 
       // Limitar os valores para duas casas decimais
@@ -200,22 +202,11 @@
       trintaDias = trintaDias.toFixed(2);
       lucroSolucao = lucroSolucao.toFixed(2);
 
-      // Exibição dos resultados na tela da calculadora
+      // Exibição dos resultados na tela
       resultadoSemSolucao.innerHTML = `<b style='color: red; font-size: 18px'>Sem a nossa solução:</b> cada um de seus painéis gera ${energiaSemSolucao} kWh de energia por dia.`;
 
-      resultadoComSolucao.innerHTML = `<b style='color: #1F9006; font-size: 18px'>Com a nossa solução:</b> cada um de seus painéis gera ${energiaComSolucao} kWh de energia por dia.<br><br>
+      resultadoComSolucao.innerHTML = `<b style='color: #1F9006; font-size: 18px'><hr style="height: 2px; background-color: black;">Com a nossa solução:</b> cada um de seus painéis gera ${energiaComSolucao} kWh de energia por dia.<br>
       Nesse caso, considerando o período de 30 dias, cada placa produziria ${trintaDias} kWh.<br>
       Analisando os dois cenários: <b style='color: #1F9006; font-size: 18px'>terá um lucro real de R$ ${lucroSolucao} por mês.</b>`;
   }
 </script>
-
-<!-- <script>
-
-  document.addEventListener("keydown", function (evento) {
-    if (evento.key == "ArrowDown") {
-      evento.preventDefault();
-    }
-    console.log(evento);
-  })
-
-</script> -->
