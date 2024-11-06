@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightSight | Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+          <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
+          <ul class="navbar">
+            <li>
+              <a href="../Página Inicial/juntos.html">Inicial</a>
+            </li>
+            <li>
+              <button class="laranja" onclick=""><a href="../Login/login2.html">Login</a></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="principal">
+            <div class="cadastro">
+            <h1>Cadastro</h1>
+            <p class="texto_forte">Digite o usuário: </p>
+            <input type="text" oninput="analisar()" id="ipt_usuario" class="inputCadastro">
+            <div id="div_mensagemLogin" class="MsgErro"></div>
+            <div id="div_tlogin" class="MsgErro"></div>
+
+            <p class="texto_forte">Informe seu email: </p>
+            <input type="text" oninput="analisar()" id="ipt_email" class="inputCadastro">
+            <div id="div_mensagemEmail" class="MsgErro"></div>
+
+            <p class="texto_forte">Informe sua senha: </p>
+            <input type="password" oninput="analisar()" id="ipt_senha" class="inputCadastro">
+            <div id="div_senha" class="MsgErro"></div>
+            <div id="div_tsenha" class="MsgErro"></div>
+
+            <p class="texto_forte">Confirme sua senha: </p>
+            <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
+            <div id="div_senhaConfirmada" class="MsgErro"></div> <br>
+
+            <button disabled onclick="cadastro()" id="button_cadastro" class="button">Cadastrar</button>
+            <div id="div_msgFinal" class="MsgErro"></div>
+
+            <div>
+                <p>Já possui um cadastro?</p>
+                <a href="../Login/login2.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para fazer o login</p></a>
+            </div>
+            </div>
+            <div>
+                <img class="imagemCadastro" src="../Login/assets/imgs/cadastro.jpeg" alt="imagem ilustrativa da inserção do login">
+            </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
+    </div>
+        <footer>
+            <b>Faça parte da nossa comunidade!</b>
+        </footer>
+
+</body>
+</html>
+
+<script>
+  const ipt_usu = document.getElementById('ipt_usuario'); // constante utilizada para pegar a input de usuario
+  const ipt_email = document.getElementById('ipt_email'); 
+  const ipt_se1 = document.getElementById('ipt_senha');
+  const ipt_se2 = document.getElementById('ipt_senhaconfirmada')
+  const ipt_but = document.getElementById('button_cadastro');
+
+  ipt_but.disabled = true;
+
+  
+  function cadastro(){ // function para o botão funcionar
+    window.location.href = "../Login/login2.html";
+  }
+  function analisar(){
+      
+      var usuario = ipt_usuario.value;
+      var email = ipt_email.value;
+      var senha = ipt_senha.value;
+      var senhaconfirmada = ipt_senhaconfirmada.value;
+
+      var v_usu = 0;
+      var v_senha1 = 0;
+      var v_senha2 = 0;
+      var v_email = 0;
+
+
+      if (usuario == '' || email == '' || senha == '') {
+          div_msgFinal.innerHTML = `<br>Todos os campos devem estar preenchidos!`; // verifica se algum dos campos não foi preenchido
+        }else{
+          div_msgFinal.innerHTML = ``
+        }
+        
+        // validação do usuário
+        
+        var usuarioTemMaiusculo = usuario.toLowerCase();
+        var usuarioTemMinusculo = usuario.toUpperCase();
+        var tamanhoUsuario = usuario.length;
+        if(tamanhoUsuario != 0 && tamanhoUsuario < 8){
+          div_tlogin.innerHTML = `O usuário tem que ter ao menos 8 caracteres`
+          v_usu = 0;          
+      }else{
+        div_tlogin.innerHTML = ``
+        v_usu = 1;
+      }
+      if(tamanhoUsuario == 0){
+        div_mensagemLogin.innerHTML = ``
+        v_usu = 0;
+
+      }
+      else if (usuarioTemMaiusculo == usuario) {
+        div_mensagemLogin.innerHTML = `<br>O login deve conter pelo menos uma letra maiúscula.`
+        v_usu = 0;
+      }else if(usuarioTemMinusculo == usuario){
+        div_mensagemLogin.innerHTML = `<br>O login deve conter pelo menos uma letra minúscula.`
+        v_usu = 0;
+      }else if((usuarioTemMaiusculo != usuario) && (usuarioTemMinusculo != usuario)){
+        div_mensagemLogin.innerHTML = ``
+        v_usu = 1;
+      }
+
+      // validação de senha
+
+      var senhaTemMaiusculo = senha.toLowerCase(); //transforma a senha toda em minúsculo
+      var senhaTemMinusculo = senha.toUpperCase(); // transforma a senha toda em maiúscula
+      var tamanhoSenha = senha.length; // variável que pega o tamanho da senha 
+      if (tamanhoSenha != 0 && tamanhoSenha < 8){ // verifica se o tamanho é menor que 8
+        div_tsenha.innerHTML = `A senha deve ter ao menos 8 caracteres`
+        v_senha1 = 0;
+      }else{
+        div_tsenha.innerHTML = ``
+        v_senha1 = 1;
+      }
+      if(tamanhoSenha == 0){
+        div_senha.innerHTML = ``; // checa se o campo estiver vazio
+        v_senha1 = 0;
+      }
+      else if (senha == senhaTemMaiusculo) {
+         div_senha.innerHTML = `A senha deve conter pelo menos uma letra maiúscula.`; // checa se a senha contem algum caracter em maiúsculo
+         v_senha1 = 0;
+      }else if (senha == senhaTemMinusculo){
+        div_senha.innerHTML = `A senha deve conter pelo menos uma letra minúscula.`; // checa se a senha contem algum caracter em minúsculo
+        v_senha1 = 0;
+      }else if((senhaTemMaiusculo != senha) && (senhaTemMinusculo != senha)){
+        div_senha.innerHTML = ``; // checa se a senha é válida
+        v_senha1 = 1;
+      }
+
+
+      if (senha != senhaconfirmada) {
+        div_senhaConfirmada.innerHTML = `As senhas não coincidem.`; 
+        v_senha2 = 0;
+      }   // checa se as senhas coincidem, se não exibe a mensagem "As senhas não coincidem" para o usuário
+      else{  
+        div_senhaConfirmada.innerHTML = ``;
+        v_senha2 = 1;
+      }
+
+      // validação do email
+
+      var index_email = email.indexOf('@'); // pega a casa onde estava a "casa" do caracter @
+
+      var index_com = email.indexOf('.com'); //pega a casa onde começa as "casas" do ".com"
+
+      var tamanhoEmail = email.length; // pega o tamanho do email
+
+      if(index_email == -1 && email.length == 0){ // verifica se não possui @ e se o valor está vazio
+        div_mensagemEmail.innerHTML = ``
+        v_email = 0;
+      }else if(index_email == -1 && email.length != 0){ //verifica se não possui @ mesmo se existir valor dentro da input
+        div_mensagemEmail.innerHTML = `Email inválido, deve possuir @`
+        v_email = 0;
+      }
+      else if (index_email > index_com){ // verifica se o @ vem depois do .com
+        div_mensagemEmail.innerHTML = `<br> Email inválido, o @ deve vir antes do .com`
+        v_email = 0;
+      }else if (index_email < index_com){ // verifica se o @ vem antes do .com
+        div_mensagemEmail.innerHTML = ``
+        v_email = 1;
+      }
+
+      
+      if((v_email == 1 && v_usu == 1) && (v_senha1 == 1 && v_senha2 == 1)){ // se todas validações estiverem corretas as variáveis vão estar em 1, ou seja se toda estiverem com o valor 1 o usuário poderá clicar no butão consequentemente realizar de fato o cadastro
+        ipt_but.disabled = false;
+        ipt_but.style.backgroundColor ="rgb(14, 125, 250)" ;
+      }else{
+        ipt_but.disabled = true;  // este else é necessário pois vai desabilitar o cadastro sempre que as validações deixarem de ser verdadeiras fazendo com que a página bloqueie
+        ipt_but.style.backgroundColor="rgb(0, 98, 209)"
+      }
+      }
+
+      function manipuladorPreenchimento() {
+        validarUsuario()
+        validarEmail()
+        validarSenha()
+        validarConfirmacao()
+
+        if (v_usu == 1 && v_email == 1 && v_senha1 == 1 && v_senha2 == 1) {
+          btn_cadastrar.disabled = false;
+        } 
+    }
+</script>

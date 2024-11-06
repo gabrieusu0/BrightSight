@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BrightSight | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+          <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
+          <ul class="navbar">
+            <li>
+              <a href="../Página Inicial/juntos.html">Inicial</a>
+            </li>
+
+            <li>
+              <button class="azul"><a href="../Login/cadastro.html">Cadastro</a></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="principal2">
+            <div class="Login">
+                <h1>Login</h1>
+                <p class="texto_forte">Digite o usuário: </p>
+            <input type="text" id="ipt_usuario" class="input"><br>
+            <p class="texto_forte">Digite a senha: </p>
+            <input type="password" id="ipt_senha" class="input"><br>
+            <button class="button" id="button_login" onclick="login()">Login</button>
+            <div class="resposta" id="div_resposta"></div>
+            <div>
+                <p>Não possui cadastro?</p>
+                <a href="../Login/cadastro.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para se cadastrar</p></a>
+            </div>
+            </div>
+            <div>
+                <img class="imagem" src="./assets/imgs/login_novo.png" alt="imagem ilustrativa da inserção do login">
+            </div>
+    </div>
+        <footer>
+            <b>Faça parte da nossa comunidade!</b>
+        </footer>
+
+</body>
+
+</html>
+<script>
+
+  var contador = 3 // var de tentativas
+  const ipt_u = document.getElementById('ipt_usuario');
+  const ipt_s = document.getElementById('ipt_senha');
+  const btn_l = document.getElementById('button_login')
+  const div_resposta = document.getElementById('div_resposta');
+  function login(){
+      var usuario = ipt_u.value;
+      var senha = ipt_s.value;
+      if(usuario == 'Usuario123' && senha == 'Admin123'){
+          div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
+          contador = 3;
+          window.location.href = "../Dashboard/index.html";
+      }else{
+          contador --;
+          div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS` // A PÁGINA TRAVA E PRECISA SER RECARREGADA QUANDO ACABAR AS TENTATIVAS
+          if(contador <= 0){
+                  ipt_u.disabled = true;
+                  ipt_s.disabled = true;
+                  btn_l.disabled = true;
+
+                  div_resposta.innerHTML = `<p><u>Clique aqui para redefinir</u></p>`;
+                  alert('Usuário bloqueado')
+              }
+      }
+      
+  }
+</script>

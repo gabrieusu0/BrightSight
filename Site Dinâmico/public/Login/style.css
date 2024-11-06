@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.MsgErro {
+    color: red;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.header { /*define o tamanho do header*/
+    height: 50px;
+    border-bottom: 2px solid #010415;
+    background-color: #010415;
+}
+
+.container { /*define como será os elementos dentro*/
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .container { /*quando se encontrarem terá essa estilização*/
+    justify-content: space-between; /*um em cada lado da tela*/
+    align-items: center;
+    height: 100%;
+}
+
+.navbar{ /*define como será os elementos de inicial, simulador, espaçamentos...*/
+    display: flex;
+    justify-content: space-evenly; /*espaça os campos entre si*/
+    width: 200px; /*separa um pouco mais os textos*/
+    align-items: center;
+    list-style: none; /* tira a bolinha */
+    color: #fff;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+}
+
+.imagem2 {
+    height: 100px;
+    width: 100px;
+    margin-top: 15px;
+}
+
+.agora {/* estiliza o inicial no header */
+    font-weight: 800; /*grossura da fonte*/
+}
+
+.azul {
+    background-color: #091D65;
+    border: none;
+    padding: 5px;
+    border-radius: 25px;
+    width: 100px; 
+    color: white;
+    cursor: pointer;
+}
+
+.laranja {
+    background-color: #F66B0E;
+    border: none;
+    padding: 5px;
+    border-radius: 25px;
+    width: 100px;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+
+.principal{
+    display: flex;
+    flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.principal2{
+    display: flex;
+    flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 80px;
+}
+
+
+
+
+
+.Login{
+    border-radius:50px ;
+    padding: 30px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Karla', sans-serif;
+    border-color: #0062d1;
+    border-style: solid;
+    border-width: 1px;
+    height: 450px;
+}
+
+.cadastro{
+    border-radius:50px ;
+    width: 450px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Karla', sans-serif;
+    border-color: #0062d1;
+    border-style: solid;
+    border-width: 1px;
+    height: 600px;
+
+}
+
+.cadastro p{
+    font-weight: 700;
+    text-align: center;
+}
+
+
+.Login p{
+    font-weight: 700;
+    text-align: center;
+}
+
+.input{
+    width: 80%;
+    height: 26px;
+    border-radius: 8px;
+    border-width: 1px;
+}
+
+.inputCadastro{
+    width: 80%;
+    height: 26px;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 3px;
+}
+
+button{
+    width: 80%;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #0062d1;
+    font-size: 17px;
+}
+
+
+
+:root {
+    --tamanho-footer: 65px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-footer));
+}
+
+
+
+.cadastro .principal {
+    display: flex;
+    flex-direction: row;
+    height: var(--tamanho-login);
+    justify-content: space-evenly;
+    align-items: start;
+    margin-left: 300px;
+}
+
+.card-login {
+    background-color: #e5e5e5;
+    padding: 0 90px 20px 90px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.footer h1{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin-left: 1000px ;
+}
+
+
+.imagem {
+    display: flex;
+    height: 500px;
+    width: 450px;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    
+}
+
+.imagemCadastro{
+    height: 520px;
+    width: 550px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+footer {
+    background-color: #010415;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+/* Estiliza o rodapé da página, centralizando o conteúdo e aplicando cor de fundo e altura fixa */
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+/* Posiciona a logo no rodapé à esquerda e a alinha verticalmente */
+
+footer .logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+/* Define o tamanho da logo no rodapé e o espaçamento em relação ao texto */
+
+footer b {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+    font-family: 'Karla', sans-serif;
+}
+/* Centraliza o texto "Faça parte da nossa comunidade!" no rodapé */
+
+.resposta{
+    display: flex;
+    text-align: center;
+}
