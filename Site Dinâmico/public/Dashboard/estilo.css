@@ -164,7 +164,7 @@ a {
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #695ad7ab;
+    background-color: #f2f535de;
 }
 
 .parte2 {
@@ -172,7 +172,7 @@ a {
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: rgb(255, 99, 132);
+    background-color: rgb(31, 204, 45);
 }
 
 .parte3 {
@@ -180,7 +180,7 @@ a {
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #dd5050be;
+    background-color: #fa0000e7;
 }
 
 .chartjs{
