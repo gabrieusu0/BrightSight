@@ -127,6 +127,10 @@ html, body {
 
 }
 
+.cadastro h1{
+ margin-top: 20px;
+ margin-bottom: 0px;
+}
 .cadastro p{
     font-weight: 700;
     text-align: center;

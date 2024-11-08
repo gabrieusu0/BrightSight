@@ -39,7 +39,11 @@
 
             <p class="texto_forte">Confirme sua senha: </p>
             <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
-            <div id="div_senhaConfirmada" class="MsgErro"></div> <br>
+            <div id="div_senhaConfirmada" class="MsgErro"></div>
+            
+            <!-- <p class="texto_forte">Código de confirmação: </p>
+            <input type="text" oninput="analisar()" id="ipt_codigoConfirmacao" class="inputCadastro">
+            <div id="div_codigoCorfimacao" class="MsgErro"></div><br> -->
 
             <button disabled onclick="cadastro()" id="button_cadastro" class="button">Cadastrar</button>
             <div id="div_msgFinal" class="MsgErro"></div>
@@ -64,7 +68,8 @@
   const ipt_usu = document.getElementById('ipt_usuario'); // constante utilizada para pegar a input de usuario
   const ipt_email = document.getElementById('ipt_email'); 
   const ipt_se1 = document.getElementById('ipt_senha');
-  const ipt_se2 = document.getElementById('ipt_senhaconfirmada')
+  const ipt_se2 = document.getElementById('ipt_senhaconfirmada');
+  // const ipt_codCon = document.getElementById('ipt_codigoConfirmacao')
   const ipt_but = document.getElementById('button_cadastro');
 
   ipt_but.disabled = true;
@@ -79,14 +84,17 @@
       var email = ipt_email.value;
       var senha = ipt_senha.value;
       var senhaconfirmada = ipt_senhaconfirmada.value;
+      // var codigo = ipt_codigoConfirmacao.value;
 
       var v_usu = 0;
       var v_senha1 = 0;
       var v_senha2 = 0;
       var v_email = 0;
+      // var v_cod = 0;
 
 
-      if (usuario == '' || email == '' || senha == '') {
+      // || codigo == ''
+      if (usuario == '' || email == '' || senha == '' ) {
           div_msgFinal.innerHTML = `<br>Todos os campos devem estar preenchidos!`; // verifica se algum dos campos não foi preenchido
         }else{
           div_msgFinal.innerHTML = ``
