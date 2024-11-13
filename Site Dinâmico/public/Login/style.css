@@ -3,7 +3,10 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no Webkit */
 }
 
 .MsgErro {
@@ -123,7 +126,7 @@ html, body {
     border-color: #0062d1;
     border-style: solid;
     border-width: 1px;
-    height: 600px;
+    /* height: 600px; */
 
 }
 
@@ -231,7 +234,8 @@ footer {
     font-size: 18px;
     height: 50px;
     width: 100%;
-    position: absolute;
+    margin-top: 30px;
+    /* position: absolute; */
     bottom: 0;
     left: 0;
 }
