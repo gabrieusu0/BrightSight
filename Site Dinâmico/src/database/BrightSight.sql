@@ -2,14 +2,6 @@ CREATE DATABASE BrightSight;
 
 USE BrightSight;
 
-CREATE TABLE usuario (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45),
-    email VARCHAR(45),
-    senha VARCHAR(45),
-    fkEmpresa int,
-    CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
-    );
     
 CREATE TABLE empresa (
 	idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,6 +22,15 @@ INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha, codigo
 	('GreenPower', '56473829000177', 'Rua Verde', 'Jardim das Águas', 'Curitiba', '80010000', '300', 'Green2024', 'A3B4C5'),
 	('EnergiaLimpa', '11223344000166', 'Rua da Luz', 'Alto da Lapa', 'São Paulo', '05050000', '150', 'LuzSegura2024', 'A4B5C6'),
 	('SolEnergia', '22334455000155', 'Av. Solar', 'Sol Nascente', 'Belo Horizonte', '30110000', '250', 'SolForte2024', 'A5B6C7');
+    
+CREATE TABLE usuario (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45),
+    email VARCHAR(45),
+    senha VARCHAR(45),
+    fkEmpresa int,
+    CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+    );
 
 SELECT * FROM empresa;
 
@@ -109,12 +110,6 @@ VALUES
     
 SELECT * FROM sensor;
 
-CREATE TABLE teste (
-idTeste INT PRIMARY KEY AUTO_INCREMENT,
-dados decimal(6,2)
-);
-
-select * from teste;
 
 CREATE TABLE dados (
 	idDados INT PRIMARY KEY AUTO_INCREMENT,
@@ -127,21 +122,10 @@ CREATE TABLE dados (
 alter table dados
 modify column potenciaAtual decimal;
 
-INSERT INTO dados (potenciaAtual, horaData, fkSensor) VALUES 
-	(400, '2024-10-09 10:00:00', 1),
-	(600, '2024-10-09 11:00:00', 2),
-	(900, '2024-10-09 12:00:00', 3),
-	(750, '2024-10-09 13:00:00', 4),
-	(680, '2024-10-09 14:00:00', 5),
-	(590, '2024-10-09 15:00:00', 6),
-	(550, '2024-10-09 16:00:00', 7),
-	(460, '2024-10-09 17:00:00', 8),
-	(420, '2024-10-09 18:00:00', 9),
-	(360, '2024-10-09 19:00:00', 10),
-	(280, '2024-10-09 20:00:00', 11),
-	(100, '2024-10-09 21:00:00', 12);
     
 SELECT * FROM dados;
+
+SELECT * FROM usuario;
 
 
 SELECT * FROM empresa JOIN local_sensor ON FkEmpresa = idEmpresa;
