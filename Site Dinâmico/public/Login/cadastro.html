@@ -69,7 +69,7 @@
   const ipt_email = document.getElementById('ipt_email'); 
   const ipt_se1 = document.getElementById('ipt_senha');
   const ipt_se2 = document.getElementById('ipt_senhaconfirmada');
-  // const ipt_codCon = document.getElementById('ipt_codigoConfirmacao')
+  const ipt_codCon = document.getElementById('ipt_codigoConfirmacao');
   const ipt_but = document.getElementById('button_cadastro');
 
   ipt_but.disabled = true;
@@ -84,13 +84,13 @@
       var email = ipt_email.value;
       var senha = ipt_senha.value;
       var senhaconfirmada = ipt_senhaconfirmada.value;
-      // var codigo = ipt_codigoConfirmacao.value;
+      var codigo = ipt_codigoConfirmacao.value;
 
       var v_usu = 0;
       var v_senha1 = 0;
       var v_senha2 = 0;
       var v_email = 0;
-      // var v_cod = 0;
+      var v_cod = 0;
 
 
       // || codigo == ''
