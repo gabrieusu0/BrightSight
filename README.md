@@ -5,7 +5,7 @@
     <span>BrightSight Soluções Tecnológicas.</span>
 </h1>
 
-Nosso grupo foi formado para atender as soluções de tecnologia referentes a energias renováveis, visando uma melhor sustentabilidade.
+Nosso grupo foi formado para atender as soluções de tecnologia referentes a atendimento as empresas instaladoras de paineis solares.
 
 ## Colaboradores
 - Enrico D'Amaro
