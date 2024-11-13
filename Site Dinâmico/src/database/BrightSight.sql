@@ -2,6 +2,15 @@ CREATE DATABASE BrightSight;
 
 USE BrightSight;
 
+CREATE TABLE usuario (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45),
+    email VARCHAR(45),
+    senha VARCHAR(45),
+    fkEmpresa int,
+    CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
+    );
+    
 CREATE TABLE empresa (
 	idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(50),
@@ -155,4 +164,3 @@ JOIN sensor as s                    /*sensor para mostrar seu numero de serie*/
 ON q.idQuadrante = s.fkQuadrante AND q.fkLocal = s.fkLocal   /*Referencias as duas chaves primarias pois é composta*/
 JOIN dados as d                     /*dados para mostrar a potencia registrada e data/hora*/
 ON s.idSensor = d.fkSensor;          /*idSensor em sensor = fkSensor em dados*/
-
