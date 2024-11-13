@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body style="height: 100vh;">
     <div class="header">
         <div class="container">
           <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
@@ -30,11 +30,11 @@
     <div class="principal2">
             <div class="Login">
                 <h1>Login</h1>
-                <p class="texto_forte">Digite o usuário: </p>
-            <input type="text" id="ipt_usuario" class="input"><br>
+                <p class="texto_forte">Digite o email: </p>
+            <input type="text" id="ipt_email" class="input"><br>
             <p class="texto_forte">Digite a senha: </p>
             <input type="password" id="ipt_senha" class="input"><br>
-            <button class="button" id="button_login" onclick="login()">Login</button>
+            <button class="button" id="button_login" onclick="entrar()">Login</button>
             <div class="resposta" id="div_resposta"></div>
             <div>
                 <p>Não possui cadastro?</p>
@@ -55,19 +55,82 @@
 <script>
 
   var contador = 3 // var de tentativas
-  const ipt_u = document.getElementById('ipt_usuario');
+  const ipt_u = document.getElementById('ipt_email');
   const ipt_s = document.getElementById('ipt_senha');
   const btn_l = document.getElementById('button_login')
   const div_resposta = document.getElementById('div_resposta');
-  function login(){
+  
+  
+  // function login(){
+
+
+
+  function entrar() {
+
       var usuario = ipt_u.value;
       var senha = ipt_s.value;
-      if(usuario == 'Usuario123' && senha == 'Admin123'){
-          div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
-          contador = 3;
-          window.location.href = "../Dashboard/index.html";
-      }else{
-          contador --;
+
+      // if(usuario == 'Usuario123' && senha == 'Admin123'){
+      //     div_resposta.innerHTML = `USUÁRIO AUTENTICADO COM SUCESSO`
+      //     contador = 3;
+      //     window.location.href = "../Dashboard/index.html";
+      // }else{
+      //     contador --;
+      //     div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS` // A PÁGINA TRAVA E PRECISA SER RECARREGADA QUANDO ACABAR AS TENTATIVAS
+      //     if(contador <= 0){
+      //             ipt_u.disabled = true;
+      //             ipt_s.disabled = true;
+      //             btn_l.disabled = true;
+
+      //             div_resposta.innerHTML = `<p><u>Clique aqui para redefinir</u></p>`;
+      //             alert('Usuário bloqueado')
+      //         }
+      // }
+      
+
+
+        // aguardar();
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value; 
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location.href = "../Dashboard/index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                // alert("Email ou senha incorretos!");
+                contador --;
           div_resposta.innerHTML = `FALHA DE AUTENTICAÇÃO VOCÊ POSSUI MAIS ${contador} TENTATIVAS` // A PÁGINA TRAVA E PRECISA SER RECARREGADA QUANDO ACABAR AS TENTATIVAS
           if(contador <= 0){
                   ipt_u.disabled = true;
@@ -77,7 +140,18 @@
                   div_resposta.innerHTML = `<p><u>Clique aqui para redefinir</u></p>`;
                   alert('Usuário bloqueado')
               }
-      }
-      
-  }
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
 </script>

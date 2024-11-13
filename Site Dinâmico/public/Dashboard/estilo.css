@@ -7,6 +7,10 @@ html, body {
     flex-direction: column;
 }
 
+body::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no Webkit */
+}
+
 img{
     height: 100%;
     width: 60%;
