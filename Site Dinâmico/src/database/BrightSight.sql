@@ -11,15 +11,16 @@ CREATE TABLE empresa (
 	cidade VARCHAR(45),
 	cep CHAR(8),
 	numero CHAR(11),
-	senha VARCHAR(45)
+	senha VARCHAR(45),
+    codigoVerificacao CHAR(6)
 );
 
-INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha) VALUES
-	('SolarTech', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123'),
-	('EcoEnergy', '98765432000188', 'Av. Paulista', 'Bela Vista', 'São Paulo', '01310000', '200', 'EcoSenha2024'),
-	('GreenPower', '56473829000177', 'Rua Verde', 'Jardim das Águas', 'Curitiba', '80010000', '300', 'Green2024'),
-	('EnergiaLimpa', '11223344000166', 'Rua da Luz', 'Alto da Lapa', 'São Paulo', '05050000', '150', 'LuzSegura2024'),
-	('SolEnergia', '22334455000155', 'Av. Solar', 'Sol Nascente', 'Belo Horizonte', '30110000', '250', 'SolForte2024');
+INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha, codigoVerificacao) VALUES
+	('SolarTech', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123', 'A1B2C3'),
+	('EcoEnergy', '98765432000188', 'Av. Paulista', 'Bela Vista', 'São Paulo', '01310000', '200', 'EcoSenha2024', 'A2B3C4'),
+	('GreenPower', '56473829000177', 'Rua Verde', 'Jardim das Águas', 'Curitiba', '80010000', '300', 'Green2024', 'A3B4C5'),
+	('EnergiaLimpa', '11223344000166', 'Rua da Luz', 'Alto da Lapa', 'São Paulo', '05050000', '150', 'LuzSegura2024', 'A4B5C6'),
+	('SolEnergia', '22334455000155', 'Av. Solar', 'Sol Nascente', 'Belo Horizonte', '30110000', '250', 'SolForte2024', 'A5B6C7');
 
 SELECT * FROM empresa;
 
