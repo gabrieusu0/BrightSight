@@ -26,8 +26,8 @@ INSERT INTO empresa (nome, CNPJ, rua, bairro, cidade, cep, numero, senha, codigo
 CREATE TABLE usuario (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45),
-    email VARCHAR(45),
-    senha VARCHAR(45),
+    email VARCHAR(45) UNIQUE,
+    senha VARCHAR(45) UNIQUE,
     fkEmpresa int,
     CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
     );
@@ -119,16 +119,10 @@ CREATE TABLE dados (
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
-alter table dados
-modify column potenciaAtual decimal;
-
-    
 SELECT * FROM dados;
 
 SELECT * FROM usuario;
-
-
-SELECT * FROM empresa JOIN local_sensor ON FkEmpresa = idEmpresa;
+SELECT * FROM empresa;
 
 SELECT 
     e.nome AS 'Nome Empresa', 

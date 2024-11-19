@@ -14,7 +14,7 @@
     <input name="nome" id="nome" type="text" />
     <input name="email" id="email" type="url" />
     <input name="foto" id="foto" type="file" />
-    <button onclick="enviar()">Enviar</button>
+    <button onclick="enviare()">Enviar</button>
   </div>
 
   <div id="container"></div>
@@ -23,7 +23,7 @@
 </html>
 
 <script>
-  function enviar() {
+  function enviare() {
     const formData = new FormData();
     formData.append('foto', foto.files[0])
     formData.append('nome', nome.value)

@@ -12,4 +12,9 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/enviarEmpresa", function (req, res) {
+    usuarioController.BuscarEnviar(req, res);
+});
+
+
 module.exports = router;

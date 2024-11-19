@@ -152,12 +152,91 @@
 </div>
 
 </section>
+
+<div class="fundo">
+  <div class="elementos">
+      <div class="textos">Faça seu Orcamento! <br> Entraremos em contato o quanto antes</div>
+      <div class="quadradao">
+          <div class="inputs">
+              <p>Nome da Empresa</p>
+              <input id="ipt_nome" type="text">
+          </div>
+          <div class="inputs">
+              <p>CNPJ</p>
+              <input id="ipt_cnpj" type="text">
+          </div>
+
+          <div class="inputs">
+            <p>Telefone para contato</p>
+            <input id="ipt_telefone" type="text">
+        </div>
+          <div class="inputs">
+              <p>Código de Verificação</p>
+              <input id="ipt_codigo" type="text">
+          </div>
+          <div>
+              <button onclick="enviar()" class="botao">Enviar</button>
+          </div>
+      </div>
+  </div>
+</div>
       <footer>
         <b>Faça parte da nossa comunidade!</b>
     </footer>
 </body>
 </html>
 <script>
+
+
+
+  function enviar() {
+
+    var nomeVar = ipt_nome.value;
+    var cnpjVar = ipt_cnpj.value;
+    var telefone_Var = ipt_telefone.value;
+    var codigoVar = ipt_codigo.value;
+    
+    fetch("/usuarios/enviarEmpresa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeEServer: nomeVar,
+        cnpjServer: cnpjVar,
+        telefoneServer: telefone_Var,
+        codigoServer: codigoVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          // cardErro.style.display = "block";
+
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          // setTimeout(() => {
+          //   window.location = "login2.html";
+          // }, "2000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } 
+        // else {
+        //   throw "Houve um erro ao tentar realizar o cadastro!";
+        // }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+  }
+
   function calcularIrradiancia() {
       // Captura os valores dos campos do formulário
       var modelo = slc_modelo.value;
