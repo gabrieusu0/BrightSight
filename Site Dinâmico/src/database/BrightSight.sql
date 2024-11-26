@@ -103,6 +103,8 @@ SELECT * FROM empresa;
 SELECT * FROM sensor;
 
 
+-- SENSORES DE MG
+
 SELECT 
 	local_sensor.cidade as 'Cidade',
     local_sensor.estado as 'Estado',
@@ -115,7 +117,7 @@ JOIN quadrante
 	ON local_sensor.IdLocal = quadrante.fkLocal
 JOIN sensor
 	ON quadrante.idQuadrante = sensor.fkQuadrante
-WHERE empresa.nome = 'EnergiaLimpa' and local_sensor.estado = 'MG';
+WHERE empresa.nome = 'SolarTech' and local_sensor.estado = 'MG';
 
 
 SELECT 
@@ -137,7 +139,7 @@ JOIN sensor
 	ON quadrante.idQuadrante = sensor.fkQuadrante
 JOIN dados
 	ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'EnergiaLimpa' and local_sensor.cidade = 'Belo Horizonte' and quadrante.posicao = 'Sul';
+WHERE empresa.nome = 'SolarTech' and local_sensor.estado = 'MG';
 
 
 SELECT 
@@ -181,7 +183,7 @@ JOIN sensor
     ON quadrante.idQuadrante = sensor.fkQuadrante
 JOIN dados
     ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'EnergiaLimpa' AND local_sensor.cidade = 'Belo Horizonte'  AND dados.horaData LIKE '%-09-%'
+WHERE empresa.nome = 'SolarTech' AND local_sensor.cidade = 'Belo Horizonte'  AND dados.horaData LIKE '%-09-%'
 GROUP BY 
     empresa.nome,
     local_sensor.estado,
@@ -225,7 +227,7 @@ WHERE empresa.nome = 'EnergiaLimpa'
         ON quadrante.idQuadrante = sensor.fkQuadrante
     JOIN dados
         ON sensor.idSensor = dados.fkSensor
-    WHERE empresa.nome = 'EnergiaLimpa' 
+    WHERE empresa.nome = 'SolarTech' 
       AND local_sensor.cidade = 'Belo Horizonte'  
       AND dados.horaData LIKE '%-09-%' -- Filtro para o mês desejado (setembro)
     GROUP BY DATE(dados.horaData)
