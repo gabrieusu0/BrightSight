@@ -6,6 +6,43 @@ function buscarInfosRegiao(id) {
   return database.executar(instrucaoSql);
 }
 
+function buscarInfosQuadrante(id) {
+  var instrucaoSql = `SELECT 
+	quadrante.posicao as 'Quadrante'
+FROM quadrante JOIN local_sensor
+	ON quadrante.fkLocal = local_sensor.idLocal
+JOIN empresa
+	ON local_sensor.fkEmpresa = empresa.idEmpresa
+WHERE idEmpresa = ${id};`;
+
+  return database.executar(instrucaoSql);
+}
+
+
+function buscarQuadranteSulPR() {
+  var instrucaoSql = `
+  SELECT 
+	ROUND((SUM(dados.potenciaAtual) / 180), 0) AS 'Media', -- 30 DIAS * 6H = 1 QUADRANTE (180)    |     VEZES 2 (Pois são dois quadrantes nesse local)
+    sensor.numero_serie as 'Nome'
+FROM empresa
+JOIN local_sensor
+    ON empresa.idEmpresa = local_sensor.fkEmpresa
+JOIN quadrante
+    ON local_sensor.idLocal = quadrante.fkLocal
+JOIN sensor
+    ON quadrante.idQuadrante = sensor.fkQuadrante
+JOIN dados
+    ON sensor.idSensor = dados.fkSensor
+WHERE empresa.nome = 'SolarTech' 
+  AND local_sensor.cidade = 'Curitiba'
+  AND sensor.idSensor = 2;  
+  `;
+
+  return database.executar(instrucaoSql);
+}
+
+
+
 function buscarPorId(id) {
   var instrucaoSql = `SELECT * FROM empresa WHERE id = ${id}`;
 
@@ -38,4 +75,4 @@ function buscarFuncionarioPorEmpresa(empresaId) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarInfosRegiao, buscarFuncionarioPorEmpresa};
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarInfosRegiao, buscarFuncionarioPorEmpresa, buscarInfosQuadrante, buscarQuadranteSulPR};

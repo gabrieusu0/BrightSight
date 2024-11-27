@@ -24,4 +24,12 @@ router.get("/buscarInfosRegiao/:id", function (req, res) {
   empresaController.buscarInfosRegiao(req, res);
 });
 
+router.get("/buscarInfosQuadrante/:id", function (req, res) {
+  empresaController.buscarInfosQuadrante(req, res);
+});
+
+router.get("/buscarQuadranteSulPR", function (req, res) {
+  empresaController.buscarQuadranteSulPR(req, res);
+});
+
 module.exports = router;

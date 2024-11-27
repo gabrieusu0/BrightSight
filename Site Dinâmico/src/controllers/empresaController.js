@@ -9,6 +9,24 @@ function buscarInfosRegiao(req, res){
   })
 }
 
+function buscarInfosQuadrante(req, res){
+  var idEmpresa = req.params.id;
+
+  empresaModel.buscarInfosQuadrante(idEmpresa)
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
+function buscarQuadranteSulPR(req, res){
+
+  empresaModel.buscarQuadranteSulPR()
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
+
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
 
@@ -53,5 +71,7 @@ module.exports = {
   buscarPorId,
   cadastrar,
   listar,
-  buscarInfosRegiao
+  buscarInfosRegiao,
+  buscarInfosQuadrante,
+  buscarQuadranteSulPR
 };
