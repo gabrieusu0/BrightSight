@@ -29,7 +29,7 @@ function BuscarEnviar(nome, cnpj, telefone, codigo) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO empresa (nome, cnpj, numero, codigoVerificacao) VALUES ('${nome}', '${cnpj}', '${telefone}', '${codigo}');
+        INSERT INTO empresa (nome, cnpj, telefone, codigoVerificacao) VALUES ('${nome}', '${cnpj}', '${telefone}', '${codigo}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
