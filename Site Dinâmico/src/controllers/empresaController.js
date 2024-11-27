@@ -1,5 +1,14 @@
 var empresaModel = require("../models/empresaModel");
 
+function buscarInfosRegiao(req, res){
+  var idEmpresa = req.params.id;
+
+  empresaModel.buscarInfosRegiao(idEmpresa)
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
 
@@ -44,4 +53,5 @@ module.exports = {
   buscarPorId,
   cadastrar,
   listar,
+  buscarInfosRegiao
 };

@@ -17,6 +17,9 @@ CREATE TABLE empresa (
     codigoVerificacao CHAR(6)
 );
 
+
+SELECT * FROM usuario;
+
 INSERT INTO empresa (nome, telefone, CNPJ, rua, bairro, cidade, cep, numero, senha, codigoVerificacao) VALUES
 	('SolarTech', '11940028922', '12345678000199', 'Rua das Flores', 'Centro', 'São Paulo', '01001000', '100', 'Senha123', 'A1B2C3');
     
@@ -29,7 +32,11 @@ CREATE TABLE usuario (
     CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
     );
 
-SELECT * FROM empresa;
+SELECT * FROM empresa JOIN local_sensor ON fkEmpresa = idEmpresa WHERE idEmpresa = 1 AND local_sensor.estado = "MG";
+
+SELECT local_sensor.estado, local_sensor.cidade FROM empresa JOIN local_sensor ON fkEmpresa = idEmpresa WHERE idEmpresa = 1;
+
+SELECT * FROM usuario;
 
 CREATE TABLE local_sensor (
 idLocal INT AUTO_INCREMENT PRIMARY KEY,
@@ -103,44 +110,6 @@ SELECT * FROM empresa;
 SELECT * FROM sensor;
 
 
--- SENSORES DE MG
-
-SELECT 
-	local_sensor.cidade as 'Cidade',
-    local_sensor.estado as 'Estado',
-	quadrante.posicao as 'Posição do Quadrante',
-    sensor.idSensor as 'ID do Sensor'
-FROM empresa
-JOIN local_sensor
-	ON empresa.idEmpresa = local_sensor.fkEmpresa
-JOIN quadrante
-	ON local_sensor.IdLocal = quadrante.fkLocal
-JOIN sensor
-	ON quadrante.idQuadrante = sensor.fkQuadrante
-WHERE empresa.nome = 'SolarTech' and local_sensor.estado = 'MG';
-
-
-SELECT 
-	empresa.nome AS 'Nome da Empresa',
-	local_sensor.estado AS 'Estado',
-    local_sensor.cidade AS 'Cidade',
-	local_sensor.CepLocal AS 'CEP',
-    quadrante.posicao AS 'Posição do Quadrante',
-    sensor.numero_serie AS 'Número de Sériedo sensor',
-    dados.fkSensor as 'FK do sensor',
-    dados.horaData as 'Hora e Data',
-    dados.potenciaAtual as 'Potencia Atual'
-FROM empresa
-JOIN local_sensor
-	ON empresa.idEmpresa = local_sensor.fkEmpresa
-JOIN quadrante
-	ON local_sensor.idLocal = quadrante.fkLocal
-JOIN sensor
-	ON quadrante.idQuadrante = sensor.fkQuadrante
-JOIN dados
-	ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'SolarTech' and local_sensor.estado = 'MG';
-
 
 SELECT 
     e.nome AS 'Nome Empresa', 
@@ -163,84 +132,6 @@ ON s.idSensor = d.fkSensor;          /*idSensor em sensor = fkSensor em dados*/
 
 
 
-SELECT 
-    empresa.nome AS 'Nome da Empresa',
-    local_sensor.estado AS 'Estado',
-    local_sensor.cidade AS 'Cidade',
-    local_sensor.CepLocal AS 'CEP',
-    quadrante.posicao AS 'Posição do Quadrante',
-    sensor.numero_serie AS 'Número de Série do Sensor',
-    dados.fkSensor AS 'FK do Sensor',
-    dados.horaData AS 'Mês Atual',
-    COUNT(dados.potenciaAtual) AS 'Quantidade de Registros',
-    SUM(dados.potenciaAtual) AS 'Soma de Potência no Mês'
-FROM empresa
-JOIN local_sensor
-    ON empresa.idEmpresa = local_sensor.fkEmpresa
-JOIN quadrante
-    ON local_sensor.idLocal = quadrante.fkLocal
-JOIN sensor
-    ON quadrante.idQuadrante = sensor.fkQuadrante
-JOIN dados
-    ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'SolarTech' AND local_sensor.cidade = 'Belo Horizonte'  AND dados.horaData LIKE '%-09-%'
-GROUP BY 
-    empresa.nome,
-    local_sensor.estado,
-    local_sensor.cidade,
-    local_sensor.CepLocal,
-    quadrante.posicao,
-    sensor.numero_serie,
-    dados.fkSensor,
-    dados.horaData;
-    
-    
-SELECT 
-    SUM(dados.potenciaAtual) AS 'Soma Total de Potência no Mês',
-    ROUND((SUM(dados.potenciaAtual) / 30), 2) AS 'Média Mensal de Potência'
-FROM empresa
-JOIN local_sensor
-    ON empresa.idEmpresa = local_sensor.fkEmpresa
-JOIN quadrante
-    ON local_sensor.idLocal = quadrante.fkLocal
-JOIN sensor
-    ON quadrante.idQuadrante = sensor.fkQuadrante
-JOIN dados
-    ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'EnergiaLimpa' 
-  AND local_sensor.cidade = 'Belo Horizonte'  
-  AND quadrante.posicao = 'Norte'
-  AND dados.horaData LIKE '%-09-%';    
-  
-  
-  
-  WITH MediaPorDia AS (
-    SELECT 
-        DATE(dados.horaData) AS 'Dia',
-        AVG(dados.potenciaAtual) AS 'MediaDiaria'
-    FROM empresa
-    JOIN local_sensor
-        ON empresa.idEmpresa = local_sensor.fkEmpresa
-    JOIN quadrante
-        ON local_sensor.idLocal = quadrante.fkLocal
-    JOIN sensor
-        ON quadrante.idQuadrante = sensor.fkQuadrante
-    JOIN dados
-        ON sensor.idSensor = dados.fkSensor
-    WHERE empresa.nome = 'SolarTech' 
-      AND local_sensor.cidade = 'Belo Horizonte'  
-      AND dados.horaData LIKE '%-09-%' -- Filtro para o mês desejado (setembro)
-    GROUP BY DATE(dados.horaData)
-),
-SomaDasMedias AS (
-    SELECT 
-        ROUND(SUM(MediaDiaria), 2) AS 'SomaDasMedias',
-        COUNT(MediaDiaria) AS 'DiasRegistrados'
-    FROM MediaPorDia
-)
-SELECT 
-    SomaDasMedias,
-    ROUND((SomaDasMedias / DiasRegistrados), 0) AS 'MediaMensal'
-FROM SomaDasMedias;
+
 
 

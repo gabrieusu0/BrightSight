@@ -3,6 +3,11 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    scroll-behavior: smooth;
+}
+
+a, button, img{
+    cursor: pointer; 
 }
 
 body::-webkit-scrollbar {

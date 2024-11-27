@@ -1,7 +1,13 @@
 var database = require("../database/config");
 
+function buscarInfosRegiao(id) {
+  var instrucaoSql = `SELECT local_sensor.estado, local_sensor.cidade FROM empresa JOIN local_sensor ON fkEmpresa = idEmpresa WHERE idEmpresa = ${id};`;
+
+  return database.executar(instrucaoSql);
+}
+
 function buscarPorId(id) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE id = '${id}'`;
+  var instrucaoSql = `SELECT * FROM empresa WHERE id = ${id}`;
 
   return database.executar(instrucaoSql);
 }
@@ -24,4 +30,12 @@ function cadastrar(razaoSocial, cnpj) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+function buscarFuncionarioPorEmpresa(empresaId) {
+
+  var instrucaoSql = `SELECT * FROM usuario WHERE fkEmpresa = ${empresaId}`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarInfosRegiao, buscarFuncionarioPorEmpresa};

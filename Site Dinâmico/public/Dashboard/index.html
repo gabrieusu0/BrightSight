@@ -7,9 +7,10 @@
     <title>DashBoard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chamando a biblioteca -->
     <link rel="stylesheet" href="estilo.css">
+    <script src="../global.js"></script>
 </head>
 
-<body style="display: flex;">
+<body style="display: flex;" onload="carregar()">
     <div class="perfil">
         <div class="centralizar">
             <div>
@@ -25,37 +26,29 @@
 
             <!-- <img src="calendario.selectng" alt=""> -->
 
-            <input 
+            <!-- <input 
             type="text" 
             placeholder="DD/MM/YYYY"
             onfocus="this.type='date'" 
             onblur="if (!this.value) this.type='text'"
             class="box2"
-            >
+            > -->
             <!-- Quando o usuário clica no campo, a função onfocus é disparada. Ela altera o tipo do campo para "date", 
               Quando o campo perde o foco (o usuário clica fora dele), a função onblur é ativada. Se o campo estiver vazio (!this.value),
             ele volta a ser um campo de TYPE TEXT -->
 
             <!-- <img src="locais.selectng" alt=""> -->
-            <select class="box3" id="slc_estados">
-                <option value="#">ESTADOS</option>
-                <option value="sp">São Paulo</option>
-                <option value="rj">Rio de Janeiro</option> <!-- Futuramente será por cidades, mais especifico-->
-            </select>
+            <select class="box3" id="slc_estados"> </select>
 
-            <select class="box1" id="slc_cidades">
-                <option value="#">CIDADES</option>
-                <option value="camp">Campinas</option>
-                <option value="atibaia">Atibaia</option>
-            </select>
+            <select class="box1" id="slc_cidades"> </select>
 
-            <!-- <select class="box1" id="slc_cidades">
+            <select class="box1" id="slc_quadrantes">
                 <option value="#">QUADRANTE</option>
                 <option value="Norte">Norte</option>
                 <option value="Sul">Sul</option>
                 <option value="Leste">Leste</option>
                 <option value="Oeste">Oeste</option>
-            </select> -->
+            </select>
 
 
             <!-- <img src="sair.selectng" alt=""> -->
@@ -150,8 +143,14 @@
 </body>
 
 </html>
+
 <script>
     // Função para exibir a div com a classe 'dash'
+
+    // chamer um fecth (get) pra pegar os dados
+    // colocar nos selects 
+    // carregar a página
+
     function mostrarDash() {
         var estado = slc_estados.value;
         var cidade = slc_cidades.value;
