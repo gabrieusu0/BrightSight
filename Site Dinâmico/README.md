@@ -102,3 +102,7 @@ Abaixo, uma figura que ajuda a compreender o caminho percorrido para, por exempl
 
 [1] https://datatracker.ietf.org/doc/html/rfc2396  
 [2] https://datatracker.ietf.org/doc/html/rfc7231
+
+
+
+  
