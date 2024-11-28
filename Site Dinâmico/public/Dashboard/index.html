@@ -102,7 +102,7 @@ var kpi3 = document.querySelector('.parte1');
 
 
 
-    function mostrarDash() {
+function mostrarDash() {
 
 var estado = slc_estados.value;
 var cidade = slc_cidades.value;
@@ -159,9 +159,162 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         console.log(erro);
     })
 
+} else if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Norte') {
+    dash.style.display = 'flex'; // tornando a div visível 
+    
+    
+    fetch("/empresas/buscarQuadranteNortePR", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+    
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+    
+                setTimeout(function () {
+                    media = json[0].Media;
+                    nome = json[0].Nome;
+                    resultado = media - 1100;
+                    div_valor.innerHTML = `${media} (lux)`
+                    div_nome.innerHTML = `${nome}`
+                    div_diferenca.innerHTML = `${resultado} (lux)`
+    
+                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+    
+    
+                    if (resultado < 0) {
+                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'red';
+                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        
+                        
+                    } else {
+                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'green';
+                        kpi2.style.backgroundColor = '#148fd5de';
+                        
+                    }
+                }, 1000); // apenas para exibir o loading
+    
+            });
+    
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+} else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Oeste') {
+    dash.style.display = 'flex'; // tornando a div visível 
+    
+    
+    fetch("/empresas/buscarQuadranteOesteMG", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+    
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+    
+                setTimeout(function () {
+                    media = json[0].Media;
+                    nome = json[0].Nome;
+                    resultado = media - 800;
+                    div_valor.innerHTML = `${media} (lux)`
+                    div_nome.innerHTML = `${nome}`
+                    div_diferenca.innerHTML = `${resultado} (lux)`
+    
+                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+    
+    
+                    if (resultado < 0) {
+                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'red';
+                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        
+                        
+                    } else {
+                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'green';
+                        kpi2.style.backgroundColor = '#148fd5de';
+                        
+                    }
+                }, 1000); // apenas para exibir o loading
+    
+            });
+    
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+} else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Leste') {
+    dash.style.display = 'flex'; // tornando a div visível 
+    
+    
+    fetch("/empresas/buscarQuadranteLesteMG", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+    
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+    
+                setTimeout(function () {
+                    media = json[0].Media;
+                    nome = json[0].Nome;
+                    resultado = media - 1100;
+                    div_valor.innerHTML = `${media} (lux)`
+                    div_nome.innerHTML = `${nome}`
+                    div_diferenca.innerHTML = `${resultado} (lux)`
+    
+                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+    
+    
+                    if (resultado < 0) {
+                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'red';
+                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        
+                        
+                    } else {
+                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'green';
+                        kpi2.style.backgroundColor = '#148fd5de';
+                        
+                    }
+                }, 1000); // apenas para exibir o loading
+    
+            });
+    
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
 } else {
     dash.style.display = 'none'; 
-    alert('AINDA NÃO CHEGUEI AQUI')
+    alert('VOCÊ NÃO POSSUI FISCALIZAÇÕES NESSES LOCAIS')
 
 }
 

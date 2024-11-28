@@ -26,6 +26,30 @@ function buscarQuadranteSulPR(req, res){
   })
 }
 
+function buscarQuadranteNortePR(req, res){
+
+  empresaModel.buscarQuadranteNortePR()
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
+function buscarQuadranteOesteMG(req, res){
+
+  empresaModel.buscarQuadranteOesteMG()
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
+function buscarQuadranteLesteMG(req, res){
+
+  empresaModel.buscarQuadranteLesteMG()
+  .then(function (resposta){
+    res.status(200).json(resposta);
+  })
+}
+
 
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
@@ -73,5 +97,8 @@ module.exports = {
   listar,
   buscarInfosRegiao,
   buscarInfosQuadrante,
-  buscarQuadranteSulPR
+  buscarQuadranteSulPR,
+  buscarQuadranteNortePR,
+  buscarQuadranteOesteMG,
+  buscarQuadranteLesteMG
 };

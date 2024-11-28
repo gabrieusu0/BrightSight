@@ -32,4 +32,16 @@ router.get("/buscarQuadranteSulPR", function (req, res) {
   empresaController.buscarQuadranteSulPR(req, res);
 });
 
+router.get("/buscarQuadranteNortePR", function (req, res) {
+  empresaController.buscarQuadranteNortePR(req, res);
+});
+
+router.get("/buscarQuadranteLesteMG", function (req, res) {
+  empresaController.buscarQuadranteLesteMG(req, res);
+});
+
+router.get("/buscarQuadranteOesteMG", function (req, res) {
+  empresaController.buscarQuadranteOesteMG(req, res);
+});
+
 module.exports = router;

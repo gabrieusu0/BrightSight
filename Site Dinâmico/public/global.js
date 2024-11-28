@@ -1,5 +1,5 @@
 function carregar() {
-    let idEmpresa = 1;
+    var idEmpresa = sessionStorage.ID_EMPRESA;
 
     fetch(`/empresas/buscarInfosRegiao/${idEmpresa}`)
     .then((res) => {

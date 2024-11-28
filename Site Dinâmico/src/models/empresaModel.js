@@ -27,6 +27,30 @@ function buscarQuadranteSulPR() {
   return database.executar(instrucaoSql);
 }
 
+function buscarQuadranteNortePR() {
+  var instrucaoSql = `
+  SELECT * FROM media_quadrante_norte_pr;
+  `;
+
+  return database.executar(instrucaoSql);
+}
+
+function buscarQuadranteOesteMG() {
+  var instrucaoSql = `
+  SELECT * FROM media_quadrante_oeste_bh;
+  `;
+
+  return database.executar(instrucaoSql);
+}
+
+function buscarQuadranteLesteMG() {
+  var instrucaoSql = `
+  SELECT * FROM media_quadrante_leste_bh;
+  `;
+
+  return database.executar(instrucaoSql);
+}
+
 
 
 function buscarPorId(id) {
@@ -61,4 +85,16 @@ function buscarFuncionarioPorEmpresa(empresaId) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarInfosRegiao, buscarFuncionarioPorEmpresa, buscarInfosQuadrante, buscarQuadranteSulPR};
+module.exports = { 
+  buscarPorCnpj, 
+  buscarPorId, 
+  cadastrar, 
+  listar, 
+  buscarInfosRegiao, 
+  buscarFuncionarioPorEmpresa, 
+  buscarInfosQuadrante, 
+  buscarQuadranteSulPR,
+  buscarQuadranteNortePR,
+  buscarQuadranteOesteMG,
+  buscarQuadranteLesteMG
+};
