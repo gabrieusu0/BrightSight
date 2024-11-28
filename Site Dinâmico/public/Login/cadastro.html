@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="listar()">
+  <div class="carregando" id="div_carregar" style="display: none;">
+    <img src="./assets/imgs/loading-gif.gif" id="gif_loading">
+    <h1>Realizando cadastro...</h1>
+    </div>
     <div class="header">
         <div class="container">
           <h1><img class="imagem2" src="./assets/imgs/logo.png" alt=""></h1>
@@ -21,38 +25,39 @@
         </div>
       </div>
     <div class="principal">
-            <div class="cadastro">
-            <h1>Cadastro</h1>
-            <p class="texto_forte">Digite o usuário: </p>
-            <input type="text" oninput="analisar()" id="ipt_usuario" class="inputCadastro">
-            <div id="div_mensagemLogin" class="MsgErro"></div>
-            <div id="div_tlogin" class="MsgErro"></div>
-
-            <p class="texto_forte">Informe seu email: </p>
-            <input type="text" oninput="analisar()" id="ipt_emaiil" class="inputCadastro">
-            <div id="div_mensagemEmail" class="MsgErro"></div>
-
-            <p class="texto_forte">Informe sua senha: </p>
-            <input type="password" oninput="analisar()" id="ipt_senha" class="inputCadastro">
-            <div id="div_senha" class="MsgErro"></div>
-            <div id="div_tsenha" class="MsgErro"></div>
-
-            <p class="texto_forte">Confirme sua senha: </p>
-            <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
-            <div id="div_senhaConfirmada" class="MsgErro"></div>
-            
-            <p class="texto_forte">Código de confirmação: </p>
-            <input type="text" oninput="analisar()" id="ipt_codigoConfirmacao" class="inputCadastro">
-            <div id="div_codigoCorfimacao" class="MsgErro"></div><br>
-
-            <button disabled onclick="cadastrar()" id="button_cadastro" class="button">Cadastrar</button>
-            <div id="div_msgFinal" class="MsgErro"></div>
-
-            <div>
-                <p>Já possui um cadastro?</p>
-                <a href="../Login/login2.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para fazer o login</p></a>
-            </div>
-            </div>
+   
+      <div class="cadastro">
+        <h1>Cadastro</h1>
+        <p class="texto_forte">Digite o usuário: </p>
+        <input type="text" oninput="analisar()" id="ipt_usuario" class="inputCadastro">
+        <div id="div_mensagemLogin" class="MsgErro"></div>
+        <div id="div_tlogin" class="MsgErro"></div>
+        
+        <p class="texto_forte">Informe seu email: </p>
+        <input type="text" oninput="analisar()" id="ipt_emaiil" class="inputCadastro">
+        <div id="div_mensagemEmail" class="MsgErro"></div>
+        
+        <p class="texto_forte">Informe sua senha: </p>
+        <input type="password" oninput="analisar()" id="ipt_senha" class="inputCadastro">
+        <div id="div_senha" class="MsgErro"></div>
+        <div id="div_tsenha" class="MsgErro"></div>
+        
+        <p class="texto_forte">Confirme sua senha: </p>
+        <input type="password" oninput="analisar()" id="ipt_senhaconfirmada" class="inputCadastro">
+        <div id="div_senhaConfirmada" class="MsgErro"></div>
+        
+        <p class="texto_forte">Código de confirmação: </p>
+        <input type="text" oninput="analisar()" id="ipt_codigoConfirmacao" class="inputCadastro">
+        <div id="div_codigoCorfimacao" class="MsgErro"></div><br>
+        
+        <button disabled onclick="cadastrar()" id="button_cadastro" class="button">Cadastrar</button>
+        <div id="div_msgFinal" class="MsgErro"></div>
+        
+        <div>
+          <p>Já possui um cadastro?</p>
+          <a href="../Login/login2.html" style="color: #F66B0E;"><p style="color:#F66B0E;">Clique aqui para fazer o login</p></a>
+        </div>
+      </div>
             <div>
                 <img class="imagemCadastro" src="../Login/assets/imgs/cadastro.jpeg" alt="imagem ilustrativa da inserção do login">
             </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
@@ -85,7 +90,8 @@
     var confirmacaoSenhaVar = ipt_senhaconfirmada.value;
     var codigoVar = ipt_codigoConfirmacao.value;
     var idEmpresaVincular;
-
+    
+    
     // Verificando se o código de ativação é de alguma empresa cadastrada
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
       if (listaEmpresasCadastradas[i].codigoVerificacao == codigoVar) {
@@ -94,36 +100,37 @@
         break;
       } 
       // else {
-      //   // cardErro.style.display = "block";
-      //   // mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-      //   finalizarAguardar();
-      // }
-    }
-    console.log("id empresa: "+idEmpresaVincular)
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
-      }),
+        //   // cardErro.style.display = "block";
+        //   // mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        //   finalizarAguardar();
+        // }
+      }
+      console.log("id empresa: "+idEmpresaVincular)
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          idEmpresaVincularServer: idEmpresaVincular
+        }),
     })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+      
+      if (resposta.ok) {
           // cardErro.style.display = "block";
 
           // mensagem_erro.innerHTML =
           //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+          document.getElementById("div_carregar").style.display = "block";
+          
           setTimeout(() => {
             window.location = "login2.html";
           }, "2000");

@@ -438,10 +438,11 @@ footer b {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: rgb(169, 180, 189);
-    height: 530px;
+    height: 550px;
     width: 530px;
+    border-radius: 30px;
 }
 
 .inputs{
@@ -452,8 +453,9 @@ footer b {
 
 .inputs input{
     height: 40px;
-    width: 300px;
+    width: 400px;
     border: none;
+    border-radius: 20px;
 }
 
 .inputs p {

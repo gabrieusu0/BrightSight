@@ -276,3 +276,24 @@ footer b {
     display: flex;
     text-align: center;
 }
+
+.carregando{
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    align-self: center;
+    color: white;
+    width: 400px;
+    height: 200px;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #F66B0E;
+}
+
+#gif_loading {
+    padding-top: 20px;
+    height: 100px;
+    width: 100px;
+}
