@@ -53,30 +53,27 @@
         <div class="indicadores">
             <div class="parte1">
                 <p>Média de incidência</p>
-                <div class="media">
-                    <img class="imagem" src="imgs/media.png" alt="">
-                    <div class="mensagem">
-                        <p><span id="div_nome"></span> <br> <span id="div_valor"></span> (lux)</p>
-                    </div>
-                </div>
+             
+                <!-- <img class="imagem" src="imgs/media.png" alt=""> -->
+                <p id="div_nome"></p> <p id="div_valor"></p>
+               
             </div>
-            <div class="parte2">
-                <p>Maior pico de Captação</p>
-                <div class="media">
-                    <img class="imagem" src="imgs/temperatura-alta (3).png" alt="">
-                    <div class="mensagem">
-                        <p>ATIBAIA (13h):<br> 610 (lux)</p>
-                    </div>
-                </div>
+            <div id="teste" class="parte2">
+                <p>Resultado Final:</p>
+         
+                <!-- <img class="imagem" src="imgs/temperatura-alta (3).png" alt=""> -->
+               
+                <p id="div_bom_ou_ruim">  </p>
+              
             </div>
+
             <div class="parte3">
                 <p>Diferença Real-Esperado</p>
-                <div class="media">
-                    <img class="imagem" src="imgs/placas-tectonicas.png" alt="">
-                    <div class="mensagem">
-                        <p>Diferença de: <br> 25 (lux/dia)</p>
-                    </div>
-                </div>
+                
+                <!-- <img class="imagem" src="imgs/placas-tectonicas.png" alt=""> -->
+                
+                <p>Diferença de: <br> <span id="div_diferenca"></span></p>
+
             </div>
         </div>
         <div class="chartjs">
@@ -98,40 +95,75 @@
 <script>
 
 
+var kpi = document.querySelector('.parte2');
+var kpi2 = document.querySelector('.parte3');
+var kpi3 = document.querySelector('.parte1');
+
+
+
 
     function mostrarDash() {
-        dash.style.display = 'flex'; // tornando a div visível 
 
-        var sul;
+var estado = slc_estados.value;
+var cidade = slc_cidades.value;
+var quadrante = slc_quadrantes.value;
 
-fetch("/empresas/buscarQuadranteSulPR", {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    }
-}).then(function (resposta) {
-    console.log("ESTOU NO THEN DO entrar()!")
+if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
+    dash.style.display = 'flex'; // tornando a div visível 
+    
+    
+    fetch("/empresas/buscarQuadranteSulPR", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+    
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+    
+                setTimeout(function () {
+                    media = json[0].Media;
+                    nome = json[0].Nome;
+                    resultado = media - 800;
+                    div_valor.innerHTML = `${media} (lux)`
+                    div_nome.innerHTML = `${nome}`
+                    div_diferenca.innerHTML = `${resultado} (lux)`
+    
+                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+    
+    
+                    if (resultado < 0) {
+                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'red';
+                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        
+                        
+                    } else {
+                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                        kpi.style.backgroundColor = 'green';
+                        kpi2.style.backgroundColor = '#148fd5de';
+                        
+                    }
+                }, 1000); // apenas para exibir o loading
+    
+            });
+    
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 
-    if (resposta.ok) {
-        console.log(resposta);
+} else {
+    dash.style.display = 'none'; 
+    alert('AINDA NÃO CHEGUEI AQUI')
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-
-            setTimeout(function () {
-                media = json[0].Media;
-                nome = json[0].Nome;
-                div_valor.innerHTML = `${media}`
-                div_nome.innerHTML = `${nome}`
-            }, 1000); // apenas para exibir o loading
-
-        });
-
-    }
-}).catch(function (erro) {
-    console.log(erro);
-})
+}
 
     }
 </script>

@@ -142,7 +142,7 @@ a {
     font-family: 'Karla', Helvetica, sans-serif;
 }
 
-.media{
+/* .media{
     display: flex;
     height: 70%;
     width: 100%;
@@ -157,22 +157,23 @@ a {
 
 .mensagem{
     display: flex;
-    /* border: 2px solid red; */
-    margin-right: 30px;
+     border: 2px solid red; 
+     margin-right: 30px; 
 }
 
 .media p {
     display: flex;
     margin-top: 12px;
 
-}
+} */
 
 .parte1 {
     border-radius: 10px;
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #f2f535de;
+    background-color: rgb(167, 224, 223);
+    /* background-color: #f59f35de; */
 }
 
 .parte2 {
@@ -180,7 +181,7 @@ a {
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: rgb(31, 204, 45);
+    background-color: rgb(167, 224, 223);
 }
 
 .parte3 {
@@ -188,7 +189,7 @@ a {
     height: 90%;
     width: 30%;
     text-align: center;
-    background-color: #fa0000e7;
+    background-color: rgb(167, 224, 223);
 }
 
 .chartjs{

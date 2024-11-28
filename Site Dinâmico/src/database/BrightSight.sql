@@ -17,7 +17,6 @@ CREATE TABLE empresa (
     codigoVerificacao CHAR(6)
 );
 
-
 SELECT * FROM usuario;
 
 INSERT INTO empresa (nome, telefone, CNPJ, rua, bairro, cidade, cep, numero, senha, codigoVerificacao) VALUES
@@ -106,7 +105,6 @@ SELECT * FROM sensor;
 SELECT * FROM dados;
 SELECT * FROM usuario;
 SELECT * FROM empresa;
-
 SELECT * FROM sensor;
 
 
@@ -129,6 +127,17 @@ JOIN sensor as s                    /*sensor para mostrar seu numero de serie*/
 ON q.idQuadrante = s.fkQuadrante AND q.fkLocal = s.fkLocal   /*Referencias as duas chaves primarias pois é composta*/
 JOIN dados as d                     /*dados para mostrar a potencia registrada e data/hora*/
 ON s.idSensor = d.fkSensor;          /*idSensor em sensor = fkSensor em dados*/
+
+
+SELECT 
+	quadrante.posicao as 'Quadrante'
+FROM quadrante JOIN local_sensor
+	ON quadrante.fkLocal = local_sensor.idLocal
+JOIN empresa
+	ON local_sensor.fkEmpresa = empresa.idEmpresa
+WHERE idEmpresa = 1;
+
+SELECT local_sensor.estado, local_sensor.cidade, quadrante.posicao FROM empresa JOIN local_sensor ON fkEmpresa = idEmpresa JOIN quadrante ON quadrante.fkLocal = local_sensor.idLocal WHERE idEmpresa = 1;
 
 
 

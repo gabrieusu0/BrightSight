@@ -21,21 +21,7 @@ WHERE idEmpresa = ${id};`;
 
 function buscarQuadranteSulPR() {
   var instrucaoSql = `
-  SELECT 
-	ROUND((SUM(dados.potenciaAtual) / 180), 0) AS 'Media', -- 30 DIAS * 6H = 1 QUADRANTE (180)    |     VEZES 2 (Pois são dois quadrantes nesse local)
-    sensor.numero_serie as 'Nome'
-FROM empresa
-JOIN local_sensor
-    ON empresa.idEmpresa = local_sensor.fkEmpresa
-JOIN quadrante
-    ON local_sensor.idLocal = quadrante.fkLocal
-JOIN sensor
-    ON quadrante.idQuadrante = sensor.fkQuadrante
-JOIN dados
-    ON sensor.idSensor = dados.fkSensor
-WHERE empresa.nome = 'SolarTech' 
-  AND local_sensor.cidade = 'Curitiba'
-  AND sensor.idSensor = 2;  
+  SELECT * FROM media_quadrante_sul_pr;
   `;
 
   return database.executar(instrucaoSql);
