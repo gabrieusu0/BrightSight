@@ -85,6 +85,26 @@ function buscarFuncionarioPorEmpresa(empresaId) {
   return database.executar(instrucaoSql);
 }
 
+function buscarCidade(idEstado) {
+  var instrucaoSql = `
+      SELECT local_sensor.cidade AS cidade
+      FROM local_sensor
+      WHERE local_sensor.estado = '${idEstado}';`;
+
+  return database.executar(instrucaoSql); // Passa o estado como parâmetro
+}
+
+function buscarQuadrantes(idCidade) {
+  var instrucaoSql = `
+      SELECT 
+          quadrante.posicao AS quadrante
+      FROM local_sensor
+      JOIN quadrante ON local_sensor.idLocal = quadrante.fkLocal
+      WHERE local_sensor.cidade = '${idCidade}';`;
+
+  return database.executar(instrucaoSql); // Passa a cidade como parâmetro
+}
+
 module.exports = { 
   buscarPorCnpj, 
   buscarPorId, 
@@ -96,5 +116,7 @@ module.exports = {
   buscarQuadranteSulPR,
   buscarQuadranteNortePR,
   buscarQuadranteOesteMG,
-  buscarQuadranteLesteMG
+  buscarQuadranteLesteMG,
+  buscarCidade,
+  buscarQuadrantes
 };

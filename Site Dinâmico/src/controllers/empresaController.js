@@ -90,6 +90,42 @@ function cadastrar(req, res) {
   });
 }
 
+function buscarQuadrantes(req, res) {
+  var idCidade = req.body.cidadeServer;
+
+  if (idCidade == undefined) {
+      res.status(400).send("Seu idCidade está undefined!");
+      return;
+  }
+
+  empresaModel.buscarQuadrantes(idCidade)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhum quadrante encontrado para esta cidade.");
+          }
+      })
+}
+
+function buscarCidade(req, res) {
+  var idEstado = req.body.estadoServer;
+
+  if (idEstado == undefined) {
+      res.status(400).send("Seu idEstado está undefined!");
+      return;
+  }
+
+  empresaModel.buscarCidade(idEstado)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhuma cidade encontrada para este estado.");
+          }
+      })
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
@@ -100,5 +136,7 @@ module.exports = {
   buscarQuadranteSulPR,
   buscarQuadranteNortePR,
   buscarQuadranteOesteMG,
-  buscarQuadranteLesteMG
+  buscarQuadranteLesteMG,
+  buscarCidade,
+  buscarQuadrantes
 };

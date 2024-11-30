@@ -44,4 +44,13 @@ router.get("/buscarQuadranteOesteMG", function (req, res) {
   empresaController.buscarQuadranteOesteMG(req, res);
 });
 
+router.post("/buscarCidadeMesmo", function (req, res) {
+  empresaController.buscarCidade(req, res);
+});
+
+router.post("/buscarQuadrantes", function (req, res) {
+  empresaController.buscarQuadrantes(req, res);
+});
+
+
 module.exports = router;

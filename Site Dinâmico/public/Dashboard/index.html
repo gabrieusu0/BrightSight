@@ -10,11 +10,11 @@
     <script src="../global.js"></script>
 </head>
 
-<body style="display: flex;" onload="carregar(), teste()">
+<body style="display: flex;" onload="carregar()">
     <div class="perfil">
         <div class="centralizar">
             <div>
-                <a href="../Página Inicial/juntos.html">
+                <a href="../index.html">
                     <img class="foto" src="imgs/logo.png" alt="">
                 </a>
             </div>
@@ -38,9 +38,9 @@
             ele volta a ser um campo de TYPE TEXT -->
 
             <!-- <img src="locais.selectng" alt=""> -->
-            <select class="box3" id="slc_estados"> </select>
+            <select oninput="buscarCidade()" class="box3" id="slc_estados"> </select>
 
-            <select class="box1" id="slc_cidades"> </select>
+            <select oninput="buscarQuadrantes()" class="box1" id="slc_cidades"> </select>
 
             <select class="box1" id="slc_quadrantes"> </select>
 
