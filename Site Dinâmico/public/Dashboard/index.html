@@ -79,11 +79,11 @@
         <div class="chartjs">
 
             <div class="grafico1">
-                <canvas id="myChart" style="position: relative; height:40vh; width:30vw;"></canvas>
+                <canvas id="myChart"></canvas>
                 <!-- Adicionando quadro para pintar o gráfico -->
             </div>
             <div class="grafico2">
-                <canvas id="myChart2" style="position: relative; height:40vh; width:30vw"></canvas>
+                <canvas id="myChart2" style=" height:40vh; width:30vw"></canvas>
                 <!-- Adicionando quadro para pintar o gráfico -->
             </div>
         </div>
@@ -99,8 +99,9 @@ var kpi = document.querySelector('.parte2');
 var kpi2 = document.querySelector('.parte3');
 var kpi3 = document.querySelector('.parte1');
 
-
-
+var media;
+var cor = "";
+var esperado;
 
 function mostrarDash() {
 
@@ -119,22 +120,23 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         }
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-    
+        
         if (resposta.ok) {
             console.log(resposta);
     
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-    
+                
                 setTimeout(function () {
                     media = json[0].Media;
                     nome = json[0].Nome;
-                    resultado = media - 800;
+                    esperado = 900;
+                    resultado = media - esperado;
                     div_valor.innerHTML = `${media} (lux)`
                     div_nome.innerHTML = `${nome}`
                     div_diferenca.innerHTML = `${resultado} (lux)`
-    
+                    
                     kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
     
     
@@ -142,15 +144,23 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
                         div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'red';
                         kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        cor = 'red'
                         
                         
                     } else {
                         div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'green';
                         kpi2.style.backgroundColor = '#148fd5de';
+                        cor = 'green'
                         
                     }
+                    trazerDados()
                 }, 1000); // apenas para exibir o loading
+
+
+                setTimeout(() => {
+                    gerarGrafico();
+                        }, 1500);
     
             });
     
@@ -170,38 +180,45 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         }
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-    
+        
         if (resposta.ok) {
             console.log(resposta);
-    
+            
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-    
+                
                 setTimeout(function () {
                     media = json[0].Media;
                     nome = json[0].Nome;
-                    resultado = media - 1100;
+                    esperado = 950;
+                    resultado = media - esperado;
                     div_valor.innerHTML = `${media} (lux)`
                     div_nome.innerHTML = `${nome}`
                     div_diferenca.innerHTML = `${resultado} (lux)`
     
                     kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
     
-    
+                    
                     if (resultado < 0) {
                         div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'red';
                         kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                        cor = 'red'
                         
                         
                     } else {
                         div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'green';
                         kpi2.style.backgroundColor = '#148fd5de';
-                        
+                        cor = 'green'
                     }
+                    trazerDados()
                 }, 1000); // apenas para exibir o loading
+                
+                setTimeout(() => {
+                    gerarGrafico();
+                }, 1500);
     
             });
     
@@ -221,46 +238,52 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         }
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-    
+        
         if (resposta.ok) {
             console.log(resposta);
     
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-    
+                
                 setTimeout(function () {
                     media = json[0].Media;
                     nome = json[0].Nome;
-                    resultado = media - 800;
+                    esperado = 850;
+                    resultado = media - esperado;
                     div_valor.innerHTML = `${media} (lux)`
                     div_nome.innerHTML = `${nome}`
                     div_diferenca.innerHTML = `${resultado} (lux)`
-    
+                    
                     kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-    
-    
+                    
+                    
                     if (resultado < 0) {
                         div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'red';
                         kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        
+                        cor = 'red'
                         
                     } else {
                         div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'green';
                         kpi2.style.backgroundColor = '#148fd5de';
-                        
+                        cor = 'green'
                     }
+                    trazerDados()
                 }, 1000); // apenas para exibir o loading
+
+                setTimeout(() => {
+                    gerarGrafico();
+                }, 1500);
     
             });
-    
+            
         }
     }).catch(function (erro) {
         console.log(erro);
     })
-
+    
 } else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Leste') {
     dash.style.display = 'flex'; // tornando a div visível 
     
@@ -272,128 +295,195 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         }
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-    
+        
         if (resposta.ok) {
             console.log(resposta);
     
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-    
+                
                 setTimeout(function () {
                     media = json[0].Media;
                     nome = json[0].Nome;
-                    resultado = media - 1100;
+                    esperado = 850;
+                    resultado = media - esperado;
                     div_valor.innerHTML = `${media} (lux)`
                     div_nome.innerHTML = `${nome}`
                     div_diferenca.innerHTML = `${resultado} (lux)`
     
                     kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-    
-    
+                    
+                    
                     if (resultado < 0) {
                         div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'red';
                         kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        
+                        cor = 'red'
                         
                     } else {
                         div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                         kpi.style.backgroundColor = 'green';
                         kpi2.style.backgroundColor = '#148fd5de';
-                        
+                        cor = 'green'
                     }
+                    trazerDados()
                 }, 1000); // apenas para exibir o loading
-    
+
+
+
+
+                setTimeout(() => {
+                    gerarGrafico();
+                }, 1500);
+
+                // setTimeout(() => {
+                //     trazerDados();
+                // }, 1500);
+                
             });
-    
+            
         }
     }).catch(function (erro) {
         console.log(erro);
     })
-
+    
 } else {
     dash.style.display = 'none'; 
     alert('VOCÊ NÃO POSSUI FISCALIZAÇÕES NESSES LOCAIS')
+    
+}
+
+// setTimeout(() => {
+//         gerarGrafico();
+//     }, 1500);
 
 }
 
-    }
-</script>
+var primeira_semana;
+var segunda_semana;
+var terceira_semana;
+var quarta_semana;
 
+function trazerDados() {
 
-<script>
-    const labels = [
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
+    console.log("nome: ", nome)
 
-    ];
+    var nomeSensor = nome;
 
-    const data = {
-        labels: labels,
-        datasets: [ 
-            {
-                label: 'Potência Real (Atibaia)',
-                backgroundColor: 'rgb(0, 0, 255)',
-                borderColor: 'rgb(0, 0, 255)',
-                data: [170, 190, 320, 480, 440, 500, 570, 610, 570, 610, 590, 530, 380, 150],
+    console.log("nomeSensor: ", nomeSensor)
+
+    fetch(`/empresas/primeiraSemana`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            {
-                label: 'Potência Esperado',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [165, 200, 300, 460, 500, 550, 620, 650, 630, 620, 610, 550, 400, 150],
-            }
-        ]
-
-    };
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true, // Começa o eixo Y em zero
-                    max: 700, // Define o valor máximo do eixo Y
-                    ticks: {
-                        stepSize: 50 // Define o intervalo entre os ticks
-                    }
+            body: JSON.stringify({
+                sensorServer: nomeSensor, // Envia a cidade selecionada
+            }),
+        })
+            .then((resposta) => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log("Erro ao buscar quadrantes.");
                 }
+            })
+            .then((semana1) => {
+                console.log("Semana 1:", semana1[0].Media);
+
+                primeira_semana = semana1[0].Media;
+
+                })
+
+
+                fetch(`/empresas/segundaSemana`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                sensorServer: nomeSensor, // Envia a cidade selecionada
+            }),
+        })
+            .then((resposta) => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log("Erro ao buscar quadrantes.");
+                }
+            })
+            .then((semana2) => {
+                console.log("Semana 2:", semana2[0].Media);
+
+                segunda_semana = semana2[0].Media;
+
+                });
+
+                fetch(`/empresas/terceiraSemana`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                sensorServer: nomeSensor, // Envia a cidade selecionada
+            }),
+        })
+            .then((resposta) => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log("Erro ao buscar quadrantes.");
+                }
+            })
+            .then((semana3) => {
+                console.log("Semana 3:", semana3[0].Media);
+
+                terceira_semana = semana3[0].Media;
+
+                });
+
+                fetch(`/empresas/quartaSemana`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                sensorServer: nomeSensor, // Envia a cidade selecionada
+            }),
+        })
+            .then((resposta) => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log("Erro ao buscar quadrantes.");
+                }
+            })
+            .then((semana4) => {
+                console.log("Semana 4:", semana4[0].Media);
+
+                quarta_semana = semana4[0].Media;
+
+                });
+
+                console.log("esperado: ", esperado)
             }
-        }
-    };
 
-    // SEGUNDO GRÁFICO
+var myChart2; 
+var myChart; // Variável global para armazenar o gráfico
 
-
-    const labels2 = [
-        'Real (%)', 'Esperado (%)'
-    ]; // As duas metades do gráfico
+function gerarGrafico() {
 
     const data2 = {
-        labels: labels2, // Os estados serão as categorias do gráfico
+        labels: ['Esperado (%)', 'Real (%)'], // Inverte a ordem da legenda
         datasets: [{
             label: 'Luminosidade Média',
-            backgroundColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor de cada fatia
-            borderColor: ['rgb(0, 0, 255)', 'rgb(255, 99, 132)'], // Cor das bordas
-            // data: [436, 458], // Dados de luminosidade para cada estado
-            data: [48.77, 51.23], // Dados de luminosidade para cada estado
-        }
-        ]
+            backgroundColor: ['rgb(0, 0, 255)', `${cor}`, ], // Azul fixo para Esperado, ${cor} para Real
+            data: [`${esperado}`, `${media}`], // ${esperado} para Esperado, ${media} para Real
+        }]
     };
+
+    console.log("média gráfico", media);
 
     const config2 = {
         type: 'pie', // Mude o tipo do gráfico para 'pie' ou 'doughnut'
@@ -403,16 +493,64 @@ if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
         }
     };
 
+    
+    const data = {
+            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4',],
+        datasets: [{
+            label: 'Potência Real',
+            backgroundColor: `${cor}`,
+                borderColor: `${cor}`,
+                data: [`${primeira_semana}`, `${segunda_semana}`, `${terceira_semana}`, `${quarta_semana}`],
+                },
+                {
+                        label: 'Potência Esperada',
+                        backgroundColor: 'rgb(0, 0, 255)',
+                        borderColor: 'rgb(0, 0, 255)',
+                        data: [`${esperado}`, `${esperado}`, `${esperado}`, `${esperado}`],
+                    }
+                ]
+            
+            };
+            
+            const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                            responsive: true,
+                            scales: {
+                                    y: {
+                                            beginAtZero: true, // Começa o eixo Y em zero
+                                            max: 1100, // Define o valor máximo do eixo Y
+                                            min: 500, // Define o valor máximo do eixo Y
+                                            ticks: {
+                                                    stepSize: 50 // Define o intervalo entre os ticks
+                                                }
+                                            }
+            }
+        }
+    };
+    
+    
+    // Destrua o gráfico anterior, se existir
+    if (myChart2) myChart2.destroy();
+    if (myChart) myChart.destroy();
 
-</script>
 
-<script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-    const myChart2 = new Chart(
+    // Crie um novo gráfico
+    myChart2 = new Chart(
         document.getElementById('myChart2'),
         config2
     );
+
+    myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+}
+
+    
+
+    
 </script>
+    
+    

@@ -105,6 +105,62 @@ function buscarQuadrantes(idCidade) {
   return database.executar(instrucaoSql); // Passa a cidade como parâmetro
 }
 
+
+
+function buscarPrimeiraSemana(idSensor) {
+  var instrucaoSql = `
+      SELECT 
+	ROUND((SUM(dados.potenciaAtual) / 42), 0) AS 'Media' /*6h por dia * 7 dias = 42*/
+    FROM dados
+    JOIN sensor
+    ON sensor.idSensor = dados.fkSensor
+    WHERE sensor.numero_serie = '${idSensor}' AND horaData >= '2024-09-01 10:00:00' AND horaData < '2024-09-07 10:00:00';`;
+
+  return database.executar(instrucaoSql); // Passa a cidade como parâmetro
+}
+
+
+
+function buscarSegundaSemana(idSensor) {
+  var instrucaoSql = `
+      SELECT 
+	ROUND((SUM(dados.potenciaAtual) / 42), 0) AS 'Media' /*6h por dia * 7 dias = 42*/
+    FROM dados
+    JOIN sensor
+    ON sensor.idSensor = dados.fkSensor
+    WHERE sensor.numero_serie = '${idSensor}' AND horaData >= '2024-09-07 10:00:00' AND horaData < '2024-09-14 10:00:00';`;
+
+  return database.executar(instrucaoSql); // Passa a cidade como parâmetro
+}
+
+
+
+function buscarTerceiraSemana(idSensor) {
+  var instrucaoSql = `
+      SELECT 
+	ROUND((SUM(dados.potenciaAtual) / 42), 0) AS 'Media' /*6h por dia * 7 dias = 42*/
+    FROM dados
+    JOIN sensor
+    ON sensor.idSensor = dados.fkSensor
+    WHERE sensor.numero_serie = '${idSensor}' AND horaData >= '2024-09-14 10:00:00' AND horaData < '2024-09-21 10:00:00';`;
+
+  return database.executar(instrucaoSql); // Passa a cidade como parâmetro
+}
+
+
+
+function buscarQuartaSemana(idSensor) {
+  var instrucaoSql = `
+      SELECT 
+	ROUND((SUM(dados.potenciaAtual) / 42), 0) AS 'Media' /*6h por dia * 7 dias = 42*/
+    FROM dados
+    JOIN sensor
+    ON sensor.idSensor = dados.fkSensor
+    WHERE sensor.numero_serie = '${idSensor}' AND horaData >= '2024-09-21 10:00:00' AND horaData < '2024-09-28 10:00:00';`;
+
+  return database.executar(instrucaoSql); // Passa a cidade como parâmetro
+}
+
 module.exports = { 
   buscarPorCnpj, 
   buscarPorId, 
@@ -118,5 +174,9 @@ module.exports = {
   buscarQuadranteOesteMG,
   buscarQuadranteLesteMG,
   buscarCidade,
-  buscarQuadrantes
+  buscarQuadrantes,
+  buscarPrimeiraSemana,
+  buscarSegundaSemana,
+  buscarTerceiraSemana,
+  buscarQuartaSemana
 };

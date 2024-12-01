@@ -126,6 +126,85 @@ function buscarCidade(req, res) {
       })
 }
 
+
+
+
+function buscarPrimeiraSemana(req, res) {
+  var idSensor = req.body.sensorServer;
+
+  if (idSensor == undefined) {
+      res.status(400).send("Seu idSensor está undefined!");
+      return;
+  }
+
+  empresaModel.buscarPrimeiraSemana(idSensor)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhuma cidade encontrada para este estado.");
+          }
+      })
+}
+
+
+function buscarSegundaSemana(req, res) {
+  var idSensor = req.body.sensorServer;
+
+  if (idSensor == undefined) {
+      res.status(400).send("Seu idSensor está undefined!");
+      return;
+  }
+
+  empresaModel.buscarSegundaSemana(idSensor)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhuma cidade encontrada para este estado.");
+          }
+      })
+}
+
+
+function buscarTerceiraSemana(req, res) {
+  var idSensor = req.body.sensorServer;
+
+  if (idSensor == undefined) {
+      res.status(400).send("Seu idSensor está undefined!");
+      return;
+  }
+
+  empresaModel.buscarTerceiraSemana(idSensor)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhuma cidade encontrada para este estado.");
+          }
+      })
+}
+
+
+function buscarQuartaSemana(req, res) {
+  var idSensor = req.body.sensorServer;
+
+  if (idSensor == undefined) {
+      res.status(400).send("Seu idSensor está undefined!");
+      return;
+  }
+
+  empresaModel.buscarQuartaSemana(idSensor)
+      .then(function (resposta) {
+          if (resposta.length > 0) {
+              res.status(200).json(resposta); 
+          } else {
+              res.status(404).send("Nenhuma cidade encontrada para este estado.");
+          }
+      })
+}
+
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
@@ -138,5 +217,9 @@ module.exports = {
   buscarQuadranteOesteMG,
   buscarQuadranteLesteMG,
   buscarCidade,
-  buscarQuadrantes
+  buscarQuadrantes,
+  buscarPrimeiraSemana,
+  buscarSegundaSemana,
+  buscarTerceiraSemana,
+  buscarQuartaSemana
 };

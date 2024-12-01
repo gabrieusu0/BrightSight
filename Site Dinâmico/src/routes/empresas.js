@@ -52,5 +52,21 @@ router.post("/buscarQuadrantes", function (req, res) {
   empresaController.buscarQuadrantes(req, res);
 });
 
+router.post("/primeiraSemana", function (req, res) {
+  empresaController.buscarPrimeiraSemana(req, res);
+});
+
+router.post("/segundaSemana", function (req, res) {
+  empresaController.buscarSegundaSemana(req, res);
+});
+
+router.post("/terceiraSemana", function (req, res) {
+  empresaController.buscarTerceiraSemana(req, res);
+});
+
+router.post("/quartaSemana", function (req, res) {
+  empresaController.buscarQuartaSemana(req, res);
+});
+
 
 module.exports = router;
