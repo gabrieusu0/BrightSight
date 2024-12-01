@@ -159,23 +159,23 @@
       <div class="quadradao">
           <div class="inputs">
               <p>Nome da Empresa:</p>
-              <input id="ipt_nome" type="text">
+              <input id="ipt_nome" oninput="validar()" oninput="validar()"  type="text">
           </div>
           <div class="inputs">
               <p>CNPJ:</p>
-              <input id="ipt_cnpj" type="text">
+              <input id="ipt_cnpj" oninput="validar()" oninput="validar()"   type="text">
           </div>
 
           <div class="inputs">
             <p>Telefone para contato:</p>
-            <input id="ipt_telefone" type="text">
+            <input id="ipt_telefone" oninput="validar()" oninput="validar()"   type="text">
         </div>
           <div class="inputs">
               <p>Código para validação de seus funcionários:</p>
-              <input id="ipt_codigo" type="text">
+              <input id="ipt_codigo" oninput="validar()" oninput="validar()"   type="text">
           </div>
           <div>
-              <button onclick="enviar()" class="botao">Enviar</button>
+              <button id="btn_empresa" onclick="enviar()"  class="botao">Enviar</button>
           </div>
       </div>
   </div>
@@ -188,6 +188,14 @@
 <!-- <script type="text/javascript">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"siqfb98af50cc106bb96c5fd0fcbc3a53d4fae9c9f66f8d167412da9d365f16e451", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");</script> -->
 </html>
 <script>
+  btn_empresa.disabled = true
+  function validar(){
+    if (ipt_nome.value == '' ||  ipt_cnpj.value == '' || ipt_telefone.value == '' || ipt_codigo.value == ''){
+      btn_empresa.disabled = true
+    }else{
+      btn_empresa.disabled = false
+    }
+  }
 
 
   function enviar() {

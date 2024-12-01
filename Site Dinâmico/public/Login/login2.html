@@ -121,7 +121,11 @@
                     sessionStorage.ID_EMPRESA = json.idEmpresa
 
                     setTimeout(function () {
-                        window.location.href = "../Dashboard/index.html";
+                        if(sessionStorage.ID_USUARIO == 1){
+                            window.location.href = "suporte.html";
+                        }else{
+                            window.location.href = "../Dashboard/index.html";
+                        }
                     }, 1000); // apenas para exibir o loading
 
                 });
