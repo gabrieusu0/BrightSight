@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+#navbar .foto {
+    height: 100px;
+}
+
+.pagina {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#resposta {
+    margin-top: 10px;
+}
+
+.chat {
+    margin-top: 20px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message.user {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #d1ecf1;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message.bot {
+    justify-content: flex-start;
+    background-color: #f8d7da;
+    text-align: left;
+}
+
+.message p {
+    margin: 0;
+    font-size: 14px;
+}
