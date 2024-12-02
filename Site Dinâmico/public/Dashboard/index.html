@@ -53,25 +53,26 @@
         <div class="indicadores">
             <div class="parte1">
                 <p>Média de incidência</p>
-             
+
                 <!-- <img class="imagem" src="imgs/media.png" alt=""> -->
-                <p id="div_nome"></p> <p id="div_valor"></p>
-               
+                <p id="div_nome"></p>
+                <p id="div_valor"></p>
+
             </div>
             <div id="teste" class="parte2">
                 <p>Resultado Final:</p>
-         
+
                 <!-- <img class="imagem" src="imgs/temperatura-alta (3).png" alt=""> -->
-               
-                <p id="div_bom_ou_ruim">  </p>
-              
+
+                <p id="div_bom_ou_ruim"> </p>
+
             </div>
 
             <div class="parte3">
                 <p>Diferença Real-Esperado</p>
-                
+
                 <!-- <img class="imagem" src="imgs/placas-tectonicas.png" alt=""> -->
-                
+
                 <p>Diferença de: <br> <span id="div_diferenca"></span></p>
 
             </div>
@@ -95,285 +96,290 @@
 <script>
 
 
-var kpi = document.querySelector('.parte2');
-var kpi2 = document.querySelector('.parte3');
-var kpi3 = document.querySelector('.parte1');
+    var kpi = document.querySelector('.parte2');
+    var kpi2 = document.querySelector('.parte3');
+    var kpi3 = document.querySelector('.parte1');
 
-var media;
-var cor = "";
-var esperado;
+    var media;
+    var cor = "";
+    var esperado;
+    var total;
 
-function mostrarDash() {
+    function mostrarDash() {
 
-var estado = slc_estados.value;
-var cidade = slc_cidades.value;
-var quadrante = slc_quadrantes.value;
+        var estado = slc_estados.value;
+        var cidade = slc_cidades.value;
+        var quadrante = slc_quadrantes.value;
 
-if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
-    dash.style.display = 'flex'; // tornando a div visível 
-    
-    
-    fetch("/empresas/buscarQuadranteSulPR", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        
-        if (resposta.ok) {
-            console.log(resposta);
-    
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                
-                setTimeout(function () {
-                    media = json[0].Media;
-                    nome = json[0].Nome;
-                    esperado = 900;
-                    resultado = media - esperado;
-                    div_valor.innerHTML = `${media} (lux)`
-                    div_nome.innerHTML = `${nome}`
-                    div_diferenca.innerHTML = `${resultado} (lux)`
-                    
-                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-    
-    
-                    if (resultado < 0) {
-                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'red';
-                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        cor = 'red'
-                        
-                        
-                    } else {
-                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'green';
-                        kpi2.style.backgroundColor = '#148fd5de';
-                        cor = 'green'
-                        
-                    }
-                    trazerDados()
-                }, 1000); // apenas para exibir o loading
+        if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Sul') {
+            dash.style.display = 'flex'; // tornando a div visível 
 
 
-                setTimeout(() => {
-                    gerarGrafico();
+            fetch("/empresas/buscarQuadranteSulPR", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        setTimeout(function () {
+                            media = json[0].Media;
+                            nome = json[0].Nome;
+                            esperado = 900;
+                            resultado = media - esperado;
+                            total = Number(media) + Number(esperado);
+                            div_valor.innerHTML = `${media} (lux)`
+                            div_nome.innerHTML = `${nome}`
+                            div_diferenca.innerHTML = `${resultado} (lux)`
+
+                            kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+
+
+                            if (resultado < 0) {
+                                div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'red';
+                                kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                                cor = 'red'
+
+
+                            } else {
+                                div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'green';
+                                kpi2.style.backgroundColor = '#148fd5de';
+                                cor = 'green'
+
+                            }
+                            trazerDados()
+                        }, 1000); // apenas para exibir o loading
+
+
+                        setTimeout(() => {
+                            gerarGrafico();
                         }, 1500);
-    
-            });
-    
+
+                    });
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        } else if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Norte') {
+            dash.style.display = 'flex'; // tornando a div visível 
+
+
+            fetch("/empresas/buscarQuadranteNortePR", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        setTimeout(function () {
+                            media = json[0].Media;
+                            nome = json[0].Nome;
+                            esperado = 950;
+                            resultado = media - esperado;
+                            total = Number(media) + Number(esperado);
+                            div_valor.innerHTML = `${media} (lux)`
+                            div_nome.innerHTML = `${nome}`
+                            div_diferenca.innerHTML = `${resultado} (lux)`
+
+                            kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+
+
+                            if (resultado < 0) {
+                                div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'red';
+                                kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                                cor = 'red'
+
+
+                            } else {
+                                div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'green';
+                                kpi2.style.backgroundColor = '#148fd5de';
+                                cor = 'green'
+                            }
+                            trazerDados()
+                        }, 1000); // apenas para exibir o loading
+
+                        setTimeout(() => {
+                            gerarGrafico();
+                        }, 1500);
+
+                    });
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        } else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Oeste') {
+            dash.style.display = 'flex'; // tornando a div visível 
+
+
+            fetch("/empresas/buscarQuadranteOesteMG", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        setTimeout(function () {
+                            media = json[0].Media;
+                            nome = json[0].Nome;
+                            esperado = 850;
+                            resultado = media - esperado;
+                            total = Number(media) + Number(esperado);
+                            div_valor.innerHTML = `${media} (lux)`
+                            div_nome.innerHTML = `${nome}`
+                            div_diferenca.innerHTML = `${resultado} (lux)`
+
+                            kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+
+
+                            if (resultado < 0) {
+                                div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'red';
+                                kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                                cor = 'red'
+
+                            } else {
+                                div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'green';
+                                kpi2.style.backgroundColor = '#148fd5de';
+                                cor = 'green'
+                            }
+                            trazerDados()
+                        }, 1000); // apenas para exibir o loading
+
+                        setTimeout(() => {
+                            gerarGrafico();
+                        }, 1500);
+
+                    });
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        } else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Leste') {
+            dash.style.display = 'flex'; // tornando a div visível 
+
+
+            fetch("/empresas/buscarQuadranteLesteMG", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        setTimeout(function () {
+                            media = json[0].Media;
+                            nome = json[0].Nome;
+                            esperado = 850;
+                            resultado = media - esperado;
+                            total = Number(media) + Number(esperado);
+                            div_valor.innerHTML = `${media} (lux)`
+                            div_nome.innerHTML = `${nome}`
+                            div_diferenca.innerHTML = `${resultado} (lux)`
+
+                            kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
+
+
+                            if (resultado < 0) {
+                                div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'red';
+                                kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
+                                cor = 'red'
+
+                            } else {
+                                div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
+                                kpi.style.backgroundColor = 'green';
+                                kpi2.style.backgroundColor = '#148fd5de';
+                                cor = 'green'
+                            }
+                            trazerDados()
+                        }, 1000); // apenas para exibir o loading
+
+
+
+
+                        setTimeout(() => {
+                            gerarGrafico();
+                        }, 1500);
+
+                        // setTimeout(() => {
+                        //     trazerDados();
+                        // }, 1500);
+
+                    });
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        } else {
+            dash.style.display = 'none';
+            alert('VOCÊ NÃO POSSUI FISCALIZAÇÕES NESSES LOCAIS')
+
         }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
 
-} else if (estado == 'PR' && cidade == 'Curitiba' && quadrante == 'Norte') {
-    dash.style.display = 'flex'; // tornando a div visível 
-    
-    
-    fetch("/empresas/buscarQuadranteNortePR", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        
-        if (resposta.ok) {
-            console.log(resposta);
-            
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                
-                setTimeout(function () {
-                    media = json[0].Media;
-                    nome = json[0].Nome;
-                    esperado = 950;
-                    resultado = media - esperado;
-                    div_valor.innerHTML = `${media} (lux)`
-                    div_nome.innerHTML = `${nome}`
-                    div_diferenca.innerHTML = `${resultado} (lux)`
-    
-                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-    
-                    
-                    if (resultado < 0) {
-                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'red';
-                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        cor = 'red'
-                        
-                        
-                    } else {
-                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'green';
-                        kpi2.style.backgroundColor = '#148fd5de';
-                        cor = 'green'
-                    }
-                    trazerDados()
-                }, 1000); // apenas para exibir o loading
-                
-                setTimeout(() => {
-                    gerarGrafico();
-                }, 1500);
-    
-            });
-    
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+        // setTimeout(() => {
+        //         gerarGrafico();
+        //     }, 1500);
 
-} else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Oeste') {
-    dash.style.display = 'flex'; // tornando a div visível 
-    
-    
-    fetch("/empresas/buscarQuadranteOesteMG", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        
-        if (resposta.ok) {
-            console.log(resposta);
-    
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                
-                setTimeout(function () {
-                    media = json[0].Media;
-                    nome = json[0].Nome;
-                    esperado = 850;
-                    resultado = media - esperado;
-                    div_valor.innerHTML = `${media} (lux)`
-                    div_nome.innerHTML = `${nome}`
-                    div_diferenca.innerHTML = `${resultado} (lux)`
-                    
-                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-                    
-                    
-                    if (resultado < 0) {
-                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'red';
-                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        cor = 'red'
-                        
-                    } else {
-                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'green';
-                        kpi2.style.backgroundColor = '#148fd5de';
-                        cor = 'green'
-                    }
-                    trazerDados()
-                }, 1000); // apenas para exibir o loading
+    }
 
-                setTimeout(() => {
-                    gerarGrafico();
-                }, 1500);
-    
-            });
-            
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-    
-} else if (estado == 'MG' && cidade == 'Belo Horizonte' && quadrante == 'Leste') {
-    dash.style.display = 'flex'; // tornando a div visível 
-    
-    
-    fetch("/empresas/buscarQuadranteLesteMG", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        
-        if (resposta.ok) {
-            console.log(resposta);
-    
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                
-                setTimeout(function () {
-                    media = json[0].Media;
-                    nome = json[0].Nome;
-                    esperado = 850;
-                    resultado = media - esperado;
-                    div_valor.innerHTML = `${media} (lux)`
-                    div_nome.innerHTML = `${nome}`
-                    div_diferenca.innerHTML = `${resultado} (lux)`
-    
-                    kpi3.style.backgroundColor = 'rgb(238, 181, 84)'
-                    
-                    
-                    if (resultado < 0) {
-                        div_bom_ou_ruim.innerHTML = `Esse é não é bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'red';
-                        kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
-                        cor = 'red'
-                        
-                    } else {
-                        div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
-                        kpi.style.backgroundColor = 'green';
-                        kpi2.style.backgroundColor = '#148fd5de';
-                        cor = 'green'
-                    }
-                    trazerDados()
-                }, 1000); // apenas para exibir o loading
+    var primeira_semana;
+    var segunda_semana;
+    var terceira_semana;
+    var quarta_semana;
 
+    function trazerDados() {
 
+        console.log("nome: ", nome)
 
+        var nomeSensor = nome;
 
-                setTimeout(() => {
-                    gerarGrafico();
-                }, 1500);
+        console.log("nomeSensor: ", nomeSensor)
 
-                // setTimeout(() => {
-                //     trazerDados();
-                // }, 1500);
-                
-            });
-            
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-    
-} else {
-    dash.style.display = 'none'; 
-    alert('VOCÊ NÃO POSSUI FISCALIZAÇÕES NESSES LOCAIS')
-    
-}
-
-// setTimeout(() => {
-//         gerarGrafico();
-//     }, 1500);
-
-}
-
-var primeira_semana;
-var segunda_semana;
-var terceira_semana;
-var quarta_semana;
-
-function trazerDados() {
-
-    console.log("nome: ", nome)
-
-    var nomeSensor = nome;
-
-    console.log("nomeSensor: ", nomeSensor)
-
-    fetch(`/empresas/primeiraSemana`, {
+        fetch(`/empresas/primeiraSemana`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -394,10 +400,10 @@ function trazerDados() {
 
                 primeira_semana = semana1[0].Media;
 
-                })
+            })
 
 
-                fetch(`/empresas/segundaSemana`, {
+        fetch(`/empresas/segundaSemana`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -418,9 +424,9 @@ function trazerDados() {
 
                 segunda_semana = semana2[0].Media;
 
-                });
+            });
 
-                fetch(`/empresas/terceiraSemana`, {
+        fetch(`/empresas/terceiraSemana`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -441,9 +447,9 @@ function trazerDados() {
 
                 terceira_semana = semana3[0].Media;
 
-                });
+            });
 
-                fetch(`/empresas/quartaSemana`, {
+        fetch(`/empresas/quartaSemana`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -464,93 +470,111 @@ function trazerDados() {
 
                 quarta_semana = semana4[0].Media;
 
-                });
+            });
 
-                console.log("esperado: ", esperado)
+        console.log("esperado: ", esperado)
+    }
+
+    var myChart2;
+    var myChart; // Variável global para armazenar o gráfico
+
+    function gerarGrafico() {
+
+        console.log("Total", total)
+        
+        const data2 = {
+            labels: ['Esperado (%)', 'Real (%)'], // Inverte a ordem da legenda
+            datasets: [{
+                label: 'Luminosidade Média',
+                backgroundColor: ['rgb(0, 0, 255)', `${cor}`,], // Azul fixo para Esperado, ${cor} para Real
+                data: [`${((esperado / total) * 100).toFixed(1)}`, `${((media / total) * 100).toFixed(1)}`], // ${esperado} para Esperado, ${media} para Real
+            }]
+        };
+
+        console.log("média gráfico", media);
+
+        const config2 = {
+            type: 'pie', 
+            data: data2,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true, // Exibe o título
+                        text: 'Luminosidade Média ao mês (%)', // Texto do título
+                        font: {
+                            size: 18, // Tamanho da fonte
+                        }
+                    }
+                } // O gráfico será ajustado automaticamente ao tamanho da tela
             }
+        };
 
-var myChart2; 
-var myChart; // Variável global para armazenar o gráfico
 
-function gerarGrafico() {
-
-    const data2 = {
-        labels: ['Esperado (%)', 'Real (%)'], // Inverte a ordem da legenda
-        datasets: [{
-            label: 'Luminosidade Média',
-            backgroundColor: ['rgb(0, 0, 255)', `${cor}`, ], // Azul fixo para Esperado, ${cor} para Real
-            data: [`${esperado}`, `${media}`], // ${esperado} para Esperado, ${media} para Real
-        }]
-    };
-
-    console.log("média gráfico", media);
-
-    const config2 = {
-        type: 'pie', // Mude o tipo do gráfico para 'pie' ou 'doughnut'
-        data: data2,
-        options: {
-            responsive: true, // O gráfico será ajustado automaticamente ao tamanho da tela
-        }
-    };
-
-    
-    const data = {
+        const data = {
             labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4',],
-        datasets: [{
-            label: 'Potência Real',
-            backgroundColor: `${cor}`,
+            datasets: [{
+                label: 'Potência Real',
+                backgroundColor: `${cor}`,
                 borderColor: `${cor}`,
                 data: [`${primeira_semana}`, `${segunda_semana}`, `${terceira_semana}`, `${quarta_semana}`],
-                },
-                {
-                        label: 'Potência Esperada',
-                        backgroundColor: 'rgb(0, 0, 255)',
-                        borderColor: 'rgb(0, 0, 255)',
-                        data: [`${esperado}`, `${esperado}`, `${esperado}`, `${esperado}`],
-                    }
-                ]
-            
-            };
-            
-            const config = {
-                    type: 'line',
-                    data: data,
-                    options: {
-                            responsive: true,
-                            scales: {
-                                    y: {
-                                            beginAtZero: true, // Começa o eixo Y em zero
-                                            max: 1100, // Define o valor máximo do eixo Y
-                                            min: 500, // Define o valor máximo do eixo Y
-                                            ticks: {
-                                                    stepSize: 50 // Define o intervalo entre os ticks
-                                                }
-                                            }
+            },
+            {
+                label: 'Potência Esperada',
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderColor: 'rgb(0, 0, 255)',
+                data: [`${esperado}`, `${esperado}`, `${esperado}`, `${esperado}`],
             }
-        }
-    };
-    
-    
-    // Destrua o gráfico anterior, se existir
-    if (myChart2) myChart2.destroy();
-    if (myChart) myChart.destroy();
+            ]
+
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true, 
+                        text: 'Potência ao Longo das Semanas', 
+                        font: {
+                            size: 18, 
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true, // Começa o eixo Y em zero
+                        max: 1100, // Define o valor máximo do eixo Y
+                        min: 500, // Define o valor máximo do eixo Y
+                        ticks: {
+                            stepSize: 50 // Define o intervalo entre os ticks
+                        }
+                    }
+                }
+            }
+        };
 
 
-    // Crie um novo gráfico
-    myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
+        // Destrua o gráfico anterior, se existir
+        if (myChart2) myChart2.destroy();
+        if (myChart) myChart.destroy();
 
-    myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-}
 
-    
+        // Crie um novo gráfico
+        myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );
 
-    
+        myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    }
+
+
+
+
 </script>
-    
-    

@@ -108,7 +108,6 @@ SELECT * FROM empresa;
 SELECT * FROM sensor;
 
 
-
 SELECT 
     e.nome AS 'Nome Empresa', 
     ls.cidade AS 'Cidade do Local do Sensor',
