@@ -184,6 +184,23 @@ a {
     background-color: rgb(167, 224, 223);
 }
 
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0.8); /* Sem sombra no início */
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); /* Expande o brilho */
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0.8); /* Volta ao estado inicial */
+    }
+}
+
+.pulsar {
+    animation: pulsar 1.5s infinite; /* Animação de 1.5 segundos, repetindo infinitamente */
+}
+
+
 .parte3 {
     border-radius: 10px;
     height: 90%;

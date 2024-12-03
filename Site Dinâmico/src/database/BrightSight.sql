@@ -30,6 +30,7 @@ CREATE TABLE usuario (
     fkEmpresa int,
     CONSTRAINT fkCodigoUsuario FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
     );
+    
 
 SELECT * FROM empresa JOIN local_sensor ON fkEmpresa = idEmpresa WHERE idEmpresa = 1 AND local_sensor.estado = "MG";
 

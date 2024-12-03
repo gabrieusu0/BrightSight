@@ -151,6 +151,7 @@
                                 kpi.style.backgroundColor = 'red';
                                 kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
                                 cor = 'red'
+                                kpi.classList.add('pulsar');
 
 
                             } else {
@@ -158,6 +159,7 @@
                                 kpi.style.backgroundColor = 'green';
                                 kpi2.style.backgroundColor = '#148fd5de';
                                 cor = 'green'
+                                kpi.classList.remove('pulsar');
 
                             }
                             trazerDados()
@@ -212,6 +214,7 @@
                                 kpi.style.backgroundColor = 'red';
                                 kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
                                 cor = 'red'
+                                kpi.classList.add('pulsar');
 
 
                             } else {
@@ -219,6 +222,8 @@
                                 kpi.style.backgroundColor = 'green';
                                 kpi2.style.backgroundColor = '#148fd5de';
                                 cor = 'green'
+                                kpi.classList.remove('pulsar');
+                                
                             }
                             trazerDados()
                         }, 1000); // apenas para exibir o loading
@@ -271,12 +276,14 @@
                                 kpi.style.backgroundColor = 'red';
                                 kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
                                 cor = 'red'
+                                kpi.classList.add('pulsar');
 
                             } else {
                                 div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                                 kpi.style.backgroundColor = 'green';
                                 kpi2.style.backgroundColor = '#148fd5de';
                                 cor = 'green'
+                                kpi.classList.remove('pulsar');
                             }
                             trazerDados()
                         }, 1000); // apenas para exibir o loading
@@ -329,12 +336,14 @@
                                 kpi.style.backgroundColor = 'red';
                                 kpi2.style.backgroundColor = 'rgb(220, 123, 32)';
                                 cor = 'red'
+                                kpi.classList.add('pulsar');
 
                             } else {
                                 div_bom_ou_ruim.innerHTML = `Esse é um bom local para instalar seus paíneis!`;
                                 kpi.style.backgroundColor = 'green';
                                 kpi2.style.backgroundColor = '#148fd5de';
                                 cor = 'green'
+                                kpi.classList.remove('pulsar');
                             }
                             trazerDados()
                         }, 1000); // apenas para exibir o loading
